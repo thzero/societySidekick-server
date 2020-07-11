@@ -1,3 +1,7 @@
+![GitHub package.json version](https://img.shields.io/github/package-json/v/thzero/societySidekick-server)
+![David](https://img.shields.io/david/thzero/societySidekick-server)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 # SocietySidekick
 
 An API layer to manage society play characters.  The following features are available currently
