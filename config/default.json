@@ -1,0 +1,17 @@
+{
+	"app": {
+		"auth": {
+			"claims": {
+				"check": false,
+				"useDefault": false
+			}
+		},
+		"cors": {
+			"origin": "*"
+		},
+		"logging": {
+			"level": 30,
+			"prettify": true
+		}
+	}
+}

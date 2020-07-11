@@ -1,0 +1,137 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Society Sidekick
+  description: ''
+  contact:
+    name: Society Sidekick Team
+schemes:
+- http
+- https
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  "/api/test":
+    post:
+      description: Test
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: x-api-key
+        required: true
+        type: string
+      responses:
+        '200':
+          description: Something
+  "/api/news/latest/{date}":
+    get:
+      description: Latest news
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: x-api-key
+        required: true
+        type: string
+      - in: path
+        name: date
+        required: true
+        schema:
+          type: date
+        description: Date to fetch news for
+      responses:
+        '200':
+          description: Something
+  "/api/user/register":
+    post:
+      description: Register User
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: x-api-key
+        required: true
+        type: string
+      - in: body
+        name: "body"
+        description: "User that needs to be registered"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        '200':
+          description: Something
+  "/api/user/updateSettings/{id}":
+    post:
+      description: Update a user's settings
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: x-api-key
+        required: true
+        type: string
+      - in: path
+        name: date
+        required: true
+        schema:
+          type: date
+        description: Id to of the user the settings are for
+      - in: body
+        name: "body"
+        description: "Settings that needs to be updated"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        '200':
+          description: Something
+  "/api/user/updateExternal/{id}":
+    post:
+      description: Update a user
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: x-api-key
+        required: true
+        type: string
+      - in: path
+        name: date
+        required: true
+        schema:
+          type: date
+        description: Id to of the user
+      - in: body
+        name: "body"
+        description: "User that needs to be updated"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        '200':
+          description: Something
+definitions:
+  User:
+    type: object
+    required:
+    - "id"
+    - "name"
+    properties:
+      id:
+        type: string
+      name:
+        type: string

@@ -1,0 +1,123 @@
+# SocietySidekick
+
+An API layer to manage society play characters.  The following features are available currently
+
+* Social login authentication via Google
+* Support for the following societies
+  * Pathfinder 2e (https://paizo.com/pathfinderSociety)
+  * Starfinder 1e (https://paizo.com/starfindersociety)
+* Register your society number
+  * Print out a society card!
+* Register your society characters and track
+  * Scenarios your character has played, how many XP, fame, and gold (or credits) was received
+    * Automatically computes gold/credits gained
+    * Automatically computes XP gained
+    * Select boons earned
+  * Manage boons for your character
+  * Manage equipment bought for your character
+    * Tracks against your earned gold/credits
+* Listing of
+  * Characters
+  * Scenarios
+    * Share your list of scenarios with friends!
+    * Favorite shared lists of friends.
+  * Boons
+
+## Project setup
+
+The server application is a KoaJS server application.  The server application provides the API for use by the companion client application (https://github.com/thzero/societySidekick-client).
+
+### Requirements
+
+#### Mongo
+
+Mongo is required as the server side data source.
+
+* Install the MongoDb (either locally or in the cloud) server
+  * Recommendation is MongoDb Atlas (https://www.mongodb.com/cloud/atlas) for development/sandbox
+* Create a new MongoDb database in the Mongo server
+* Restore the default SocietySidekick MongoDb
+  * Use the following MongoDb CLI tool to restore the default database located at (https://github.com/thzero/societySidekick-database)
+
+```
+.\bin\mongorestore --host <mongodb host name> --ssl --username <mongo user name> --password <mongo user password> --authenticationDatabase admin -d production <location of default database>
+```
+
+Recommended tools for managing Mongo database
+* MongoDb Compass (https://www.mongodb.com/products/compass)
+* Robo3T (https://robomongo.org)
+
+#### Firebase
+
+Google Firebase (https://firebase.google.com) provides the social based authentication; currently only Google social accounts are supported.
+
+* Add a new project
+* Setup **Authentication**, enabled Google in the **Sign-in method**.
+* Get the Firebase SDK configuration
+  * Go to Project Overview->Settings->Service accounts
+  * Select **Node.js** option
+  * Click **Generate new private key**
+
+#### Configuration
+
+* Setup the configuration found in the config\development.json
+  * Note that this is ignored in the .gitignore
+* Configuration looks like the following
+
+```
+{
+    "app": {
+        "auth": {
+          "apiKey": "<generate a GUID as key in standard nomeclature '#######-####-####-####-############'>",
+          "claims": {
+            "check": false,
+            "useDefault": false
+          }
+        },
+        "cors": {
+            "origin": "*"
+        },
+        "db": {
+            "atlas": {
+                "connection": "<mongo connection string>",
+                "name": "<environment name>"
+            }
+        },
+        "logging": {
+            "level": <see https://github.com/pinojs/pino/issues/123 for logging levels>,
+            "prettify": <true of false if you want prettify, if true requres 'pino-prettify' as a dependency>
+        },
+        "port": <port to run the server on>
+    }
+}
+```
+
+#### NPM Dependencies
+
+Install the NPM dependencies for the client.
+
+```
+npm install
+```
+
+Other global dependencies required
+
+```
+npm -g i nodemon
+```
+
+### Compiles and hot-reloads for development
+
+#### NPM CLI
+
+Run the application server locally in debug mode with hot reloading via Nodemon.
+
+```
+npm run debug
+```
+
+#### Visual Code
+
+Install VisualCode, open the 'server' folder via 'Open Folder'.
+
+Using the Menu->Run->Start Debugging will launch the application in debug mode with hot reloading via Nodemon
