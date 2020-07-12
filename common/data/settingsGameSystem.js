@@ -1,6 +1,6 @@
 class SettingsGameSystem {
-	constructor() {
-		this.id = null;
+	constructor(id) {
+		this.id = id;
 		this.number = null;
 	}
 }

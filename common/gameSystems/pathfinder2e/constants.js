@@ -147,6 +147,6 @@ Constants.AdvancementPoints = [
 		event: Constants.ScenarioEvents.PREMIER_PLUS,
 		earned: 12
 	}
-]
+];
 
 export default Constants;

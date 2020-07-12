@@ -1,3 +1,4 @@
+import Constants from '../../../constants';
 import SharedConstants from '../../constants';
 
 import Utility from '@thzero/library/utility';
@@ -8,7 +9,13 @@ import NotImplementedError from '@thzero/library/errors/notImplemented';
 import Service from '@thzero/library/service/index';
 
 class BaseRulesGamesSystemService extends Service {
-	calculateCharacter(character, id) {
+	async init(injector) {
+		await super.init(injector);
+
+		this._serviceCharacters = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
+	}
+
+	async calculateCharacter(character, user, equipmentId) {
 		if (!character)
 			return;
 
@@ -68,7 +75,7 @@ class BaseRulesGamesSystemService extends Service {
 			if (character.inventory) {
 				inventory = character.inventory.filter(l => l.boughtScenarioId === item.id);
 				for (const inventoryItem of inventory) {
-					if (inventoryItem.id === id)
+					if (inventoryItem.id === equipmentId)
 						continue;
 
 					inventoryItem.total = this.calculateItemTotal(inventoryItem.quantity, inventoryItem.value);
@@ -80,7 +87,7 @@ class BaseRulesGamesSystemService extends Service {
 
 				inventory = character.inventory.filter(l => l.soldScenarioId === item.id);
 				for (const inventoryItem of inventory) {
-					if (inventoryItem.id === id)
+					if (inventoryItem.id === equipmentId)
 						continue;
 
 					const currencySold = this._initDecimal(this.calculateItemTotal(inventoryItem.quantity, inventoryItem.value)) * 0.5;
@@ -120,17 +127,17 @@ class BaseRulesGamesSystemService extends Service {
 
 		character.level = this.calculateLevel(character.experiencePoints);
 
-		this.calculateCharacterAdditional(character);
+		await this.calculateCharacterAdditional(character, user);
 
-		this.calculateCharacterCleanup(character);
+		await this.calculateCharacterCleanup(character, user);
 	}
 
 	// eslint-disable-next-line
-	calculateCharacterAdditional(character) {
+	async calculateCharacterAdditional(character, user) {
 	}
 
 	// eslint-disable-next-line
-	calculateCharacterCleanup(character) {
+	async calculateCharacterCleanup(character, user) {
 	}
 
 	calculateCharacterCurrencyCurrent(character, value) {

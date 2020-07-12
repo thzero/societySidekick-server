@@ -6,7 +6,7 @@ import BaseRulesGamesSystemService from '../../services/baseRules';
 class Starfinder1eRulesGamesSystemService extends BaseRulesGamesSystemService {
 	static CurrencyFixed = 2;
 
-	calculateCharacterAdditional(character) {
+	async calculateCharacterAdditional(character) {
 		let fameTotalEarned = this._initDecimal(0);
 		let fameTotalSpent = this._initDecimal(0);
 		character.fame.forEach((item) => {
@@ -15,7 +15,7 @@ class Starfinder1eRulesGamesSystemService extends BaseRulesGamesSystemService {
 			fameTotalEarned = fameTotalEarned.plus(item.earned);
 			item.spent = this._toFixed(item.spent, 1);
 			fameTotalSpent = fameTotalSpent.plus(item.spent);
-		})
+		});
 		let fameTotalRemaining = fameTotalEarned.minus(fameTotalSpent);
 		character.fame.push({
 			earned: this._toFixed(fameTotalEarned, 1),
@@ -24,12 +24,12 @@ class Starfinder1eRulesGamesSystemService extends BaseRulesGamesSystemService {
 		});
 
 		character.reputation.forEach((item) => {
-			item.earned = this._toFixed(item.earned, 1)
-			item.spent = this._toFixed(item.spent, 1)
+			item.earned = this._toFixed(item.earned, 1);
+			item.spent = this._toFixed(item.spent, 1);
 		});
 	}
 
-	calculateCharacterCleanup(character) {
+	async calculateCharacterCleanup(character) {
 		delete character.class;
 		delete character.factionF;
 		character.reputationEarned = this._toFixed(character.reputationEarned, 1);
@@ -74,7 +74,7 @@ class Starfinder1eRulesGamesSystemService extends BaseRulesGamesSystemService {
 		if (this.calculateCharacterScenarioInitial(scenario))
 			return false;
 
-		const order = Number(scenario.order)
+		const order = Number(scenario.order);
 		if (order === 1)
 			return true;
 

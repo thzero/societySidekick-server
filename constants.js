@@ -93,8 +93,8 @@ const Constants = {
 	Version: {
 		major: 0,
 		minor: 9,
-		patch: 2,
-		date: '7/10/2020'
+		patch: 3,
+		date: '7/12/2020'
 	}
 }
 

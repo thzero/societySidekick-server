@@ -97,14 +97,22 @@ class CharactersMongoRepository extends AppMongoRepository {
 		return response;
 	}
 
-	async listing(correlationId, userId, sections) {
-		const collection = await this._getCollectionCharacters();
-		const response = this._initResponse();
+	async listing(correlationId, userId, sections, gameSystemId) {
+		const criteriaMatchAnd = [
+			{ 'userId': userId }
+		];
+		if (gameSystemId)
+			criteriaMatchAnd.push({ 'gameSystemId': gameSystemId });
 
 		const queryF = { 'userId' : userId };
 		const queryA = [
+			// {
+			// 	$match: { 'userId': userId }
+			// }
 			{
-				$match: { 'userId': userId }
+				$match: {
+					$and: criteriaMatchAnd
+				}
 			}
 		]
 

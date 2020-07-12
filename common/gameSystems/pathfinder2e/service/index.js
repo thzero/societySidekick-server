@@ -72,7 +72,7 @@ class Pathfinder2eGamesSystemService extends BaseGamesSystemService {
 		if (!store || !value)
 			return '';
 
-		const className = this.classNameById(value.classId, store)
+		const className = this.classNameById(value.classId, store);
 		if (value.archetypeId) {
 			const archetypeName = this.archetypeNameById(value.archetypeId, store);
 			return `${className} ${archetypeName}`;
@@ -171,7 +171,7 @@ class Pathfinder2eGamesSystemService extends BaseGamesSystemService {
 	}
 
 	_initializeLookupsI(injector, lookups, key) {
-		lookups = super._initializeLookupsI(injector, lookups, key)
+		lookups = super._initializeLookupsI(injector, lookups, key);
 		if (!lookups || !injector || !key)
 			return null;
 
