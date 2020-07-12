@@ -262,7 +262,7 @@ class BaseGameSystemService extends Service {
 		if (!store || !gameSystemId)
 			return [];
 
-		const results = store.state.scenarios.listing.filter(l => l.gameSystemId == gameSystemId)
+		const results = store.state.scenarios.listing.filter(l => l.gameSystemId == gameSystemId);
 		if (hasBlank)
 			return Utility.selectBlank(results);
 

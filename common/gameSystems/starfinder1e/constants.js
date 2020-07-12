@@ -54,6 +54,6 @@ const Constants = {
 		INITIAL: 'initial'
 	},
 	ScenarionInitialId: '8BZtABADxeJeXZj7H5Es4f'
-}
+};
 
 export default Constants;

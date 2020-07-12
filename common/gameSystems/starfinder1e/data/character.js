@@ -29,7 +29,7 @@ class Starfinder1eCharacterData extends CharacterData {
 
 		const scenario = new Starfinder1eCharacterScenario();
 		scenario.currencyEarned = 1000;
-		scenarios.experiencePointsEarned = 0;
+		scenario.experiencePointsEarned = 0;
 		scenario.fameEarned = 0;
 		scenario.scenarioAdvancementSpeed = Starfinder1eSharedConstants.ScenarioAdvancementSpeeds.INITIAL;
 		scenario.scenarioAdventure = Starfinder1eSharedConstants.ScenarioAdventures.INITIAL;

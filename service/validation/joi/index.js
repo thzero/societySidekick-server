@@ -51,6 +51,7 @@ class JoiValidationService extends GamerJoiValidationService {
 	_settingsGameSystem = Joi.object({
 		id: this._id.required(),
 		number: this._number.allow(null).allow(''),
+		achievementPoints: this._number.allow(null).allow(''), // TODO
 		gearSets: Joi.array().items(this._settingGearSet).allow(null)
 	});
 	_settingsGameSystems = Joi.array().items(this._settingsGameSystem);

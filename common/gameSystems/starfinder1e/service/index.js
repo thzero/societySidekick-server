@@ -174,7 +174,7 @@ class Starfinder1eGamesSystemService extends BaseGamesSystemService {
 	}
 
 	_initializeLookupsI(injector, lookups, key) {
-		lookups = super._initializeLookupsI(injector, lookups, key)
+		lookups = super._initializeLookupsI(injector, lookups, key);
 		if (!lookups || !injector || !key)
 			return null;
 

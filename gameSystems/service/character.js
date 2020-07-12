@@ -13,9 +13,8 @@ class CharacterGameSystemService extends Service {
 		this._serviceRules = this._initializeRules();
 	}
 
-	calculate(character) {
-		this._serviceRules.calculateCharacter(character);
-
+	async calculate(character, user) {
+		await this._serviceRules.calculateCharacter(character, user);
 		return this._success();
 	}
 
