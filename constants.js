@@ -89,12 +89,6 @@ const Constants = {
 		ScenarioSearch: 'scenarioSearch',
 		ScenarioUpdate: 'scenarioUpdate',
 		UserSettingsSchema: 'userSettings'
-	},
-	Version: {
-		major: 0,
-		minor: 9,
-		patch: 3,
-		date: '7/12/2020'
 	}
 }
 

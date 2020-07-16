@@ -1,6 +1,10 @@
 {
   "name": "skick_server",
-  "version": "0.9.3",
+  "version": "0.9.4",
+  "version_date": "07/15/2020",
+  "version_major": 0,
+  "version_minor": 9,
+  "version_patch": 4,
   "description": "An API layer to manage society play characters.",
   "author": "thZero",
   "license": "MIT",
@@ -25,7 +29,8 @@
     "start": "node -r esm --trace-uncaught index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "./node_modules/.bin/eslint .",
-    "cli": "node -r esm cli.js"
+    "cli-id": "node -r esm ./node_modules/@thzero/library/cli.js --generate",
+    "cli-update": "node -r esm ./node_modules/@thzero/library/cli.js --updateversion --pi --package \"../../../package.json\""
   },
   "dependencies": {
     "@godaddy/terminus": "^4.4.1",
@@ -33,7 +38,7 @@
     "@hapi/joi-date": "^2.0.1",
     "@koa/cors": "^3.1.0",
     "@koa/router": "^9.3.1",
-    "@thzero/library": "npm:@thzero/library_server@^0.6.5",
+    "@thzero/library": "npm:@thzero/library_server@^0.6.12",
     "async-mutex": "^0.2.4",
     "config": "^3.3.1",
     "crc": "^3.8.0",
