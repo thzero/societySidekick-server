@@ -1,6 +1,10 @@
 {
   "name": "skick_server",
-  "version": "0.9.3",
+  "version": "0.9.5",
+  "version_date": "07/16/2020",
+  "version_major": 0,
+  "version_minor": 9,
+  "version_patch": 5,
   "description": "An API layer to manage society play characters.",
   "author": "thZero",
   "license": "MIT",
@@ -25,7 +29,8 @@
     "start": "node -r esm --trace-uncaught index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "./node_modules/.bin/eslint .",
-    "cli": "node -r esm cli.js"
+    "cli-id": "node -r esm ./node_modules/@thzero/library/cli.js --generate",
+    "cli-update": "node -r esm ./node_modules/@thzero/library/cli.js --updateversion --pi --package \"../../../package.json\""
   },
   "dependencies": {
     "@godaddy/terminus": "^4.4.1",
@@ -33,7 +38,7 @@
     "@hapi/joi-date": "^2.0.1",
     "@koa/cors": "^3.1.0",
     "@koa/router": "^9.3.1",
-    "@thzero/library": "npm:@thzero/library_server@^0.6.5",
+    "@thzero/library": "npm:@thzero/library_server@^0.6.15",
     "async-mutex": "^0.2.4",
     "config": "^3.3.1",
     "crc": "^3.8.0",
@@ -43,7 +48,7 @@
     "easy-rbac": "^3.1.1",
     "esm": "^3.2.25",
     "firebase": "^7.16.0",
-    "firebase-admin": "^8.13.0",
+    "firebase-admin": "^9.0.0",
     "koa": "^2.13.0",
     "koa-body": "^4.2.0",
     "koa-helmet": "^5.2.0",
@@ -51,15 +56,15 @@
     "lodash": "^4.17.19",
     "minimist": "^1.2.5",
     "mongodb": "^3.5.9",
-    "pino": "^6.3.2",
-    "pino-pretty": "^4.0.0",
+    "pino": "^6.4.0",
+    "pino-pretty": "^4.0.3",
     "reflect-metadata": "^0.1.13",
     "short-uuid": "^3.1.1",
     "swagger2-koa": "^2.0.0",
     "uuid": "^8.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.10.4",
+    "@babel/core": "^7.10.5",
     "@babel/plugin-proposal-class-properties": "^7.10.4",
     "@babel/preset-env": "^7.10.4",
     "babel-loader": "^8.1.0",
