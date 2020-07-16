@@ -38,7 +38,7 @@
     "@hapi/joi-date": "^2.0.1",
     "@koa/cors": "^3.1.0",
     "@koa/router": "^9.3.1",
-    "@thzero/library": "npm:@thzero/library_server@^0.6.12",
+    "@thzero/library": "npm:@thzero/library_server@^0.6.13",
     "async-mutex": "^0.2.4",
     "config": "^3.3.1",
     "crc": "^3.8.0",
