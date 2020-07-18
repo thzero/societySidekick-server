@@ -1,6 +1,6 @@
 import Joi from '@hapi/joi';
 
-import BaseNewsJoiBaseValidationService from '@thzero/library/service_validation_joi/news';
+import BaseNewsJoiBaseValidationService from '@thzero/library_validation_joi/news';
 
 class NewsJoiBaseValidationService extends BaseNewsJoiBaseValidationService {
 	getNewsSchema() {

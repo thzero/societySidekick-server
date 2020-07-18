@@ -4,7 +4,7 @@ Joi.extend(JoiDate);
 
 import SharedConstants from '../../../common/constants';
 
-import GamerJoiValidationService from '@thzero/library/service_validation_joi/gamer';
+import GamerJoiValidationService from '@thzero/library_validation_joi/gamer';
 
 class JoiValidationService extends GamerJoiValidationService {
 	_characterNumber = Joi.number().min(1).max(99);

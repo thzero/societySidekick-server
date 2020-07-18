@@ -1,4 +1,4 @@
-import BaseAppCollectionsService from '@thzero/library/repository_mongo/collections';
+import BaseAppCollectionsService from '@thzero/library_repository_mongo/collections';
 
 class AppCollectionsService extends BaseAppCollectionsService {
 	getClientName() {
