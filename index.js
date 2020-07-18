@@ -1,5 +1,5 @@
 import Constants from './constants';
-import RepositoryConstants from '@thzero/library/repository_mongo/constants';
+import RepositoryConstants from '@thzero/library_repository_mongo/constants';
 
 // Admin Updates
 import adminBoonsRoute from './routes/admin/boons';
@@ -34,12 +34,12 @@ import cleanupRepository from './repository/mongo/cleanup';
 import equipmentRepository from './repository/mongo/equipment';
 import factionsRepository from './repository/mongo/factions';
 import gameSystemsRepository from './repository/mongo/gameSystems';
-import newsRepository from '@thzero/library/repository_mongo/news';
-import plansRepository from '@thzero/library/repository_mongo/plans';
+import newsRepository from '@thzero/library_repository_mongo/news';
+import plansRepository from '@thzero/library_repository_mongo/plans';
 import scenariosRepository from './repository/mongo/scenarios';
 import siteRepository from './repository/mongo/site';
 import userRepository from './repository/mongo/user';
-import usageMetricsRepository from '@thzero/library/repository_mongo/usageMetrics';
+import usageMetricsRepository from '@thzero/library_repository_mongo/usageMetrics';
 
 // Admin Updates
 import adminBoonsService from './service/admin/boons';
@@ -56,7 +56,7 @@ import charactersService from './service/characters';
 import equipmentService from './service/equipment';
 import factionsService from './service/factions';
 import gameSystemsService from './service/gameSystems';
-import loggerService from '@thzero/library/service_logger_pino';
+import loggerService from '@thzero/library_logger_pino';
 import versionService from './service/version';
 
 // GameSystems Update

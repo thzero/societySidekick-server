@@ -1,4 +1,4 @@
-import BaseAdminMongoRepository from '@thzero/library/repository_mongo/admin/index';
+import BaseAdminMongoRepository from '@thzero/library_repository_mongo/admin/index';
 
 class BoonsMongoRepository extends BaseAdminMongoRepository {
 	// eslint-disable-next-line

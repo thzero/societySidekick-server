@@ -2,7 +2,7 @@ import Constants from '../../constants';
 
 import AppUtility from '../../utility/app'
 
-import BaseUserMongoRepository from '@thzero/library/repository_mongo/baseUser';
+import BaseUserMongoRepository from '@thzero/library_repository_mongo/baseUser';
 
 class UserMongoRepository extends BaseUserMongoRepository {
 	async fetchByExternalId(correlationId, userId, excludePlan) {

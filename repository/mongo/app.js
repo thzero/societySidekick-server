@@ -1,4 +1,4 @@
-import MongoRepository from '@thzero/library/repository_mongo';
+import MongoRepository from '@thzero/library_repository_mongo';
 
 class AppMongoRepository extends MongoRepository {
 	async _getCollectionBoons() {
