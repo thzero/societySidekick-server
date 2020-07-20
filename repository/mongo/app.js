@@ -29,10 +29,6 @@ class AppMongoRepository extends MongoRepository {
 		return await this._getCollectionFromConfig(this._collectionsConfig.getCollectionModules());
 	}
 
-	async _getCollectionNews() {
-		return await this._getCollectionFromConfig(this._collectionsConfig.getCollectionNews());
-	}
-
 	async _getCollectionPlans() {
 		return await this._getCollectionFromConfig(this._collectionsConfig.getCollectionPlans());
 	}
@@ -43,10 +39,6 @@ class AppMongoRepository extends MongoRepository {
 
 	async _getCollectionSite() {
 		return await this._getCollectionFromConfig(this._collectionsConfig.getCollectionSite());
-	}
-
-	async _getCollectionUsageMetrics() {
-		return await this._getCollectionFromConfig(this._collectionsConfig.getCollectionUsageMetrics());
 	}
 
 	async _getCollectionUsers() {
