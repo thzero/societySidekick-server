@@ -6,7 +6,7 @@ class AuthService extends FirebaseAuthAdminService {
 	}
 
 	_initConfig() {
-		return require('../../config/serviceAccountKey.json');
+		return require('../config/serviceAccountKey.json');
 	}
 }
 

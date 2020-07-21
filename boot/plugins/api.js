@@ -5,8 +5,8 @@ import BaseApiBootPlugin from '@thzero/library/boot/plugins/api';
 
 import boonsRepository from '../../repository/mongo/boons';
 import charactersRepository from '../../repository/mongo/characters';
-import classesRepository from '../../repository/mongo/classes';
 import cleanupRepository from '../../repository/mongo/cleanup';
+import classesRepository from '../../repository/mongo/classes';
 import equipmentRepository from '../../repository/mongo/equipment';
 import factionsRepository from '../../repository/mongo/factions';
 import gameSystemsRepository from '../../repository/mongo/gameSystems';
@@ -18,8 +18,8 @@ import userRepository from '../../repository/mongo/user';
 
 import apiRoute from '../../routes/api';
 import boonsRoute from '../../routes/boons'
-import classesRoute from '../../routes/classes'
 import charactersRoute from '../../routes/characters';
+import classesRoute from '../../routes/classes'
 import cleanupRoute from '../../routes/cleanup';
 import equipmentRoute from '../../routes/equipment';
 import factionsRoute from '../../routes/factions';
@@ -68,14 +68,14 @@ class ApiBootPlugin extends BaseApiBootPlugin {
 		await super._initRepositories();
 
 		this._injectRepository(Constants.InjectorKeys.REPOSITORY_BOONS, new boonsRepository());
-		this._injectRepository(Constants.InjectorKeys.REPOSITORY_CLASSES, new classesRepository());
 		this._injectRepository(Constants.InjectorKeys.REPOSITORY_CHARACTERS, new charactersRepository());
+		this._injectRepository(Constants.InjectorKeys.REPOSITORY_CLASSES, new classesRepository());
+		this._injectRepository(Constants.InjectorKeys.REPOSITORY_CLEANUP, new cleanupRepository());
 		this._injectRepository(Constants.InjectorKeys.REPOSITORY_EQUIPMENT, new equipmentRepository());
 		this._injectRepository(Constants.InjectorKeys.REPOSITORY_FACTIONS, new factionsRepository());
 		this._injectRepository(Constants.InjectorKeys.REPOSITORY_GAMESYSTEMS, new gameSystemsRepository());
 		this._injectRepository(Constants.InjectorKeys.REPOSITORY_SCENARIOS, new scenariosRepository());
 		this._injectRepository(Constants.InjectorKeys.REPOSITORY_SITE, new siteRepository());
-		this._injectRepository(Constants.InjectorKeys.REPOSITORY_CLEANUP, new cleanupRepository());
 	}
 
 	async _initRoutes() {
@@ -83,8 +83,8 @@ class ApiBootPlugin extends BaseApiBootPlugin {
 
 		this._initRoute(new apiRoute());
 		this._initRoute(new boonsRoute());
-		this._initRoute(new classesRoute());
 		this._initRoute(new charactersRoute());
+		this._initRoute(new classesRoute());
 		this._initRoute(new equipmentRoute());
 		this._initRoute(new factionsRoute());
 		this._initRoute(new scenariosRoute());
@@ -97,15 +97,12 @@ class ApiBootPlugin extends BaseApiBootPlugin {
 		this._injectService(RepositoryConstants.InjectorKeys.SERVICE_REPOSITORY_COLLECTIONS, new repositoryCollectionsService());
 
 		this._injectService(Constants.InjectorKeys.SERVICE_BOONS, new boonsService());
-		this._injectService(Constants.InjectorKeys.SERVICE_CLASSES, new classesService());
 		this._injectService(Constants.InjectorKeys.SERVICE_CHARACTERS, new charactersService());
+		this._injectService(Constants.InjectorKeys.SERVICE_CLASSES, new classesService());
+		this._injectService(Constants.InjectorKeys.SERVICE_CLEANUP, new cleanupService());
 		this._injectService(Constants.InjectorKeys.SERVICE_EQUIPMENT, new equipmentService());
 		this._injectService(Constants.InjectorKeys.SERVICE_FACTIONS, new factionsService());
 		this._injectService(Constants.InjectorKeys.SERVICE_GAMESYSTEMS, new gameSystemsService());
-		this._injectService(Constants.InjectorKeys.SERVICE_SCENARIOS, new scenariosService());
-		this._injectService(Constants.InjectorKeys.SERVICE_SITE, new siteService());
-		this._injectService(Constants.InjectorKeys.SERVICE_VALIDATION, new validationService());
-		this._injectService(Constants.InjectorKeys.SERVICE_CLEANUP, new cleanupService());
 
 		// GameSystems Update
 		this._injectService(Constants.InjectorKeys.SERVICE_GAMESYSTEMS_UTILITY, new gameSystemsUtilityService());
@@ -125,6 +122,10 @@ class ApiBootPlugin extends BaseApiBootPlugin {
 		this._injectService(Constants.InjectorKeys.SERVICE_GAMESYSTEMS_SCENARIOS_VALIDATION_STARFINDER_1E, new gameSystemsScenarioValidationStarfinder1eService());
 		this._injectService(Constants.InjectorKeys.SERVICE_GAMESYSTEMS_STARFINDER_1E, new gameSystemsStarfinder1eService());
 		this._injectService(Constants.InjectorKeys.SERVICE_GAMESYSTEMS_VALIDATION_STARFINDER_1E, new gameSystemsValidationStarfinder1eService());
+
+		this._injectService(Constants.InjectorKeys.SERVICE_SCENARIOS, new scenariosService());
+		this._injectService(Constants.InjectorKeys.SERVICE_SITE, new siteService());
+		this._injectService(Constants.InjectorKeys.SERVICE_VALIDATION, new validationService());
 	}
 
 	_initRepositoriesNews() {
