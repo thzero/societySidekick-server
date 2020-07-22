@@ -1,4 +1,4 @@
-import NewsBaseAdminMongoRepository from '@thzero/library/repository_mongo/admin/baseNews';
+import NewsBaseAdminMongoRepository from '@thzero/library_repository_mongo/admin/baseNews';
 
 class NewMongoRepository extends NewsBaseAdminMongoRepository {
 }

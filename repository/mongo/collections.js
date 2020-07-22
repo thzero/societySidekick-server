@@ -1,6 +1,6 @@
-import BaseAppCollectionsService from '@thzero/library/repository_mongo/collections';
+import ApiCollectionsService from '@thzero/library_repository_mongo/collections/api';
 
-class AppCollectionsService extends BaseAppCollectionsService {
+class AppCollectionsService extends ApiCollectionsService {
 	getClientName() {
 		return AppCollectionsService.Client;
 	}

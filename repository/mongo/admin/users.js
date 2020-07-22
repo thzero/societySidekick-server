@@ -1,4 +1,4 @@
-import UsersBaseAdminMongoRepository from '@thzero/library/repository_mongo/admin/baseUsers';
+import UsersBaseAdminMongoRepository from '@thzero/library_repository_mongo/admin/baseUsers';
 
 class UsersMongoRepository extends UsersBaseAdminMongoRepository {
 }

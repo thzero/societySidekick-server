@@ -1,4 +1,4 @@
-import FirebaseAuthAdminService from '@thzero/library/service_auth_firebase';
+import FirebaseAuthAdminService from '@thzero/library_firebase/auth';
 
 class AuthService extends FirebaseAuthAdminService {
 	_defaultClaims() {
@@ -6,7 +6,7 @@ class AuthService extends FirebaseAuthAdminService {
 	}
 
 	_initConfig() {
-		return require('../../config/serviceAccountKey.json');
+		return require('../config/serviceAccountKey.json');
 	}
 }
 

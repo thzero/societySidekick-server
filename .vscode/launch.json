@@ -11,7 +11,8 @@
 			"restart": true,
 			"console": "integratedTerminal",
 			"internalConsoleOptions": "neverOpen",
-			"env": { "LOG_LEVEL" : "debug" }
+			"env": { "LOG_LEVEL" : "debug" },
+			"port": 9229
 		}
 	]
 }
