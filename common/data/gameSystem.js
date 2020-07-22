@@ -1,4 +1,4 @@
-import NamedData from '@thzero/library/data/named';
+import NamedData from '@thzero/library_common/data/named';
 
 class GameSystemData extends NamedData {
 	constructor() {

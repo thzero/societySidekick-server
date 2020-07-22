@@ -1,6 +1,6 @@
 import SharedConstants from '../constants';
 
-import Utility from '@thzero/library/utility';
+import Utility from '@thzero/library_common/utility';
 
 class CharacterScenario {
 	constructor() {

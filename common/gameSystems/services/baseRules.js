@@ -1,10 +1,10 @@
 import Constants from '../../../constants';
 import SharedConstants from '../../constants';
 
-import Utility from '@thzero/library/utility';
+import Utility from '@thzero/library_common/utility';
 import DecimalUtility from '../../../utility/decimal';
 
-import NotImplementedError from '@thzero/library/errors/notImplemented';
+import NotImplementedError from '@thzero/library_common/errors/notImplemented';
 
 import Service from '@thzero/library/service/index';
 

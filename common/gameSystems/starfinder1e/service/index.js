@@ -2,7 +2,7 @@ import Constants from '../../../../constants';
 import SharedConstants from '../../../constants';
 import Starfinder1eSharedConstants from '../constants';
 
-import Utility from '@thzero/library/utility';
+import Utility from '@thzero/library_common/utility';
 
 import BaseGamesSystemService from '../../services/index';
 

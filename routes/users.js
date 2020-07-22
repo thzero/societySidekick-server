@@ -2,7 +2,7 @@ import koaBody from 'koa-body';
 
 import LibraryConstants from '@thzero/library/constants';
 
-import Utility from '@thzero/library/utility';
+import Utility from '@thzero/library_common/utility';
 
 import authentication from '@thzero/library/middleware/authentication';
 import authorization from '@thzero/library/middleware/authorization';

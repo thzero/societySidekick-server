@@ -1,6 +1,6 @@
 import AppMongoRepository from './app';
 
-import Utility from '@thzero/library/utility';
+import Utility from '@thzero/library_common/utility';
 
 class CleanupMongoRepository extends AppMongoRepository {
 	async cleanup(correlationId) {
