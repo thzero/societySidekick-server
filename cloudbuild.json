@@ -2,10 +2,9 @@
   "steps": [
     {
       "name": "gcr.io/google.com/cloudsdktool/cloud-sdk",
-      "entrypoint": "bash",
-      "env": [ 'GIT_DISCOVERY_ACROSS_FILESYSTEM=1' ],
+      "entrypoint": "git",
+      "env": [ "GIT_DISCOVERY_ACROSS_FILESYSTEM=1" ],
       "args": [
-          "git",
           "submodule",
           "update",
           "--init",
