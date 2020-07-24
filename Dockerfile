@@ -1,4 +1,3 @@
-# Use the official Node.js 10 image.
 # https://hub.docker.com/_/node
 FROM node:13
 
@@ -12,10 +11,6 @@ COPY package*.json ./
 
 # Install production dependencies.
 RUN npm install --only=production
-
-RUN ls -a
-
-RUN ls -a common
 
 # Copy local code to the container image.
 COPY . .
