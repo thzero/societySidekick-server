@@ -3,7 +3,7 @@
     {
       "name": "gcr.io/google.com/cloudsdktool/cloud-sdk",
       "entrypoint": "git",
-      "env": [ "GIT_DISCOVERY_ACROSS_FILESYSTEM=1" ] 
+      "env": [ "GIT_DISCOVERY_ACROSS_FILESYSTEM=1" ],
       "args": [
           "submodule",
           "update",
