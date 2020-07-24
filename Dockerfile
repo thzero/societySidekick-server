@@ -13,6 +13,10 @@ COPY package*.json ./
 # Install production dependencies.
 RUN npm install --only=production
 
+RUN ls -a
+
+RUN ls -a common
+
 # Copy local code to the container image.
 COPY . .
 
