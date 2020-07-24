@@ -1,6 +1,15 @@
 {
   "steps": [
     {
+      "name": "gcr.io/cloud-builders/git",
+      "args": [
+          "submodule",
+          "update",
+          "--init",
+          "--recursive"
+        ]
+    },
+    {
       "name": "docker:stable",
       "args": [
           "build",
