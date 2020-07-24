@@ -1,47 +1,49 @@
-{
-  "steps": [
-    {
-      "name": "gcr.io/cloud-builders/git",
-      "args": [
-          "submodule",
-          "update",
-          "--init",
-          "--recursive"
-        ]
-    },
-    {
-      "name": "docker:stable",
-      "args": [
-          "build",
-          "-t",
-          "gcr.io/$PROJECT_ID/api:$COMMIT_SHA",
-          "."
-        ]
-    },
-    {
-      "name": "docker:stable",
-      "args": [
-          "push",
-          "gcr.io/$PROJECT_ID/api:$COMMIT_SHA"
-        ]
-    },
-    {
-        "name": "gcr.io/google.com/cloudsdktool/cloud-sdk",
-        "entrypoint": "gcloud",
-        "args": [
-          "run",
-          "deploy",
-          "api",
-          "--image",
-          "gcr.io/$PROJECT_ID/api:$COMMIT_SHA",
-          "--region",
-          "us-central1",
-          "--platform",
-          "managed"
-        ]
-    }
-  ],
-  "images": [
-     "gcr.io/$PROJECT_ID/api:$COMMIT_SHA"
-   ]
-}
+---
+steps:
+- name: 'gcr.io/cloud-builders/git'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    ls -a
+- name: 'gcr.io/cloud-builders/git'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    git config -f .gitmodules submodule.common.url https://source.developers.google.com/p/societysidekick/github_thzero_societysidekick_common
+    git submodule init
+    git submodule update
+    echo 'hi'
+    ls -a
+    echo 'bye'
+- name: 'gcr.io/cloud-builders/git'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    ls -a
+- name: "docker:stable"
+  args:
+  - "build"
+  - "-t"
+  - "gcr.io/$PROJECT_ID/api:$COMMIT_SHA"
+  - "."
+- name: "docker:stable"
+  args:
+  - "push"
+  - "gcr.io/$PROJECT_ID/api:$COMMIT_SHA"
+- name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+  entrypoint: "gcloud"
+  args:
+  - "run"
+  - "deploy"
+  - "api"
+  - "--image"
+  - "gcr.io/$PROJECT_ID/api:$COMMIT_SHA"
+  - "--region"
+  - "us-central1"
+  - "--platform"
+  - "managed"
+images:
+- "gcr.io/$PROJECT_ID/api:$COMMIT_SHA"
