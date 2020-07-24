@@ -18,6 +18,9 @@ steps:
     tail .gitmodules
     echo 'mmmms'
     ls -a
+    echo 'common'
+    cd common
+    ls -a
     echo 'bye'
 - name: 'gcr.io/cloud-builders/git'
   entrypoint: 'bash'
