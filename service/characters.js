@@ -2,7 +2,7 @@ import Constants from '../constants';
 import LibraryConstants from '@thzero/library/constants';
 import SharedConstants from '../common/constants';
 
-import Utility from '@thzero/library/utility';
+import Utility from '@thzero/library_common/utility';
 
 import Service from '@thzero/library/service/index';
 

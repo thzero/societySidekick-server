@@ -2,7 +2,7 @@ import Joi from '@hapi/joi';
 
 import BaseGameSystemValidationService from './base';
 
-import NotImplementedError from '@thzero/library/errors/notImplemented';
+import NotImplementedError from '@thzero/library_common/errors/notImplemented';
 
 class GameSystemValidationService extends BaseGameSystemValidationService {
 	_equipmentCategories() {

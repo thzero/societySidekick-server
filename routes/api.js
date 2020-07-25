@@ -1,7 +1,7 @@
 import Constants from '../constants';
 import LibraryConstants from '@thzero/library/constants';
 
-import Utility from '@thzero/library/utility';
+import Utility from '@thzero/library_common/utility';
 
 import BaseRoute from '@thzero/library/routes/index';
 

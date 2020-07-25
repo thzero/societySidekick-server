@@ -1,6 +1,6 @@
 import Service from '@thzero/library/service/index';
 
-import NotImplementedError from '@thzero/library/errors/notImplemented';
+import NotImplementedError from '@thzero/library_common/errors/notImplemented';
 
 class BaseGameSystemService extends Service {
 	determineCharactersService() {
