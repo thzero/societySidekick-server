@@ -1,18 +1,11 @@
 {
-	"app": {
-		"auth": {
-			"apiKey": "12d0ee90-b72c-4d6f-9934-c925307b8049",
-			"claims": {
-				"check": false,
-				"useDefault": false
-			}
-		},
-		"cors": {
-			"origin": "*"
-		},
+    "app": {
+        "cors": {
+            "origin": "*"
+        },
 		"logging": {
-			"level": 30,
+			"level": "info",
 			"prettify": true
 		}
-	}
+    }
 }

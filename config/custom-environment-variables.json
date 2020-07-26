@@ -1,20 +1,10 @@
 {
 	"app": {
-		"auth": {
-			"apiKey": "AUTH_API_KEY",
-			"claims": {
-				"check": "AUTH_CLAIMS_CHECK",
-				"useDefault": "AUTH_CLAIMS_USE_DEFAULT"
-			}
-		},
+        "apiKey": "API_KEY",
+		"port": "PORT",
 		"cors": {
 			"origin": "ORIGIN"
 		},
-		"logging": {
-			"level": "LOG_LEVEL",
-			"prettify": "LOG_PRETTIFY"
-		},
-		"port": "PORT",
 		"db": {
 			"atlas" : {
 				"connection": "ALTAS_DB_CONNECTION",
