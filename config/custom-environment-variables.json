@@ -7,8 +7,6 @@
 				"useDefault": "AUTH_CLAIMS_USE_DEFAULT"
 			}
 		},
-		"apiKey": "API_KEY",
-		"port": "PORT",
 		"cors": {
 			"origin": "ORIGIN"
 		},
@@ -17,6 +15,7 @@
 				"connection": "ALTAS_DB_CONNECTION",
 				"name": "ALTAS_DB_NAME"
 			}
-		}
+		},
+		"port": "PORT"
 	}
 }
