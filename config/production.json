@@ -1,11 +1,11 @@
 {
-    "app": {
-        "cors": {
-            "origin": "*"
-        },
+	"app": {
+		"cors": {
+			"origin": "*"
+		},
 		"logging": {
 			"level": "info",
 			"prettify": true
 		}
-    }
+	}
 }

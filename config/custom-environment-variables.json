@@ -1,6 +1,13 @@
 {
 	"app": {
-        "apiKey": "API_KEY",
+		"auth": {
+			"apiKey": "AUTH_API_KEY",
+			"claims": {
+				"check": "AUTH_CLAIMS_CHECK",
+				"useDefault": "AUTH_CLAIMS_USE_DEFAULT"
+			}
+		},
+		"apiKey": "API_KEY",
 		"port": "PORT",
 		"cors": {
 			"origin": "ORIGIN"
