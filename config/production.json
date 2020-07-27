@@ -1,18 +1,4 @@
 {
 	"app": {
-		"auth": {
-			"apiKey": "AUTH_API_KEY",
-			"claims": {
-				"check": "AUTH_CLAIMS_CHECK",
-				"useDefault": "AUTH_CLAIMS_USE_DEFAULT"
-			}
-		},
-		"cors": {
-			"origin": "*"
-		},
-		"logging": {
-			"level": "info",
-			"prettify": true
-		}
 	}
 }
