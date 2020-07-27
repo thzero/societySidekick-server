@@ -15,11 +15,6 @@ class AppBootMain extends BootMain {
 	_initServicesLogger() {
 		return new loggerService();
 	}
-
-	_initServer(serverHttp) {
-		console.log(this._appConfig);
-		console.log('AUTH_API_KEY: ' + process.env.AUTH_API_KEY);
-	}
 }
 
 (async function() {
