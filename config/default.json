@@ -1,6 +1,7 @@
 {
 	"app": {
 		"auth": {
+			"apiKey": "",
 			"claims": {
 				"check": false,
 				"useDefault": false
