@@ -11,7 +11,7 @@
 			"origin": "*"
 		},
 		"logging": {
-			"level": "info",
+			"level": "debug",
 			"prettify": true
 		}
 	}
