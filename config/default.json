@@ -1,5 +1,11 @@
 {
 	"app": {
+		"auth": {
+			"claims": {
+				"check": false,
+				"useDefault": false
+			}
+		},
 		"cors": {
 			"origin": "*"
 		},
