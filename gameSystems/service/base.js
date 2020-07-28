@@ -1,8 +1,8 @@
-import Service from '@thzero/library_server/service/index';
+import BaseGameSystemsService from './index';
 
 import NotImplementedError from '@thzero/library_common/errors/notImplemented';
 
-class BaseGameSystemService extends Service {
+class BaseGameSystemGameSystemsService extends BaseGameSystemsService {
 	determineCharactersService() {
 		return null;
 	}
@@ -24,4 +24,4 @@ class BaseGameSystemService extends Service {
 	}
 }
 
-export default BaseGameSystemService;
+export default BaseGameSystemGameSystemsService;
