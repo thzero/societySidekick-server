@@ -2,7 +2,7 @@ import Constants from '../../../constants';
 
 import BaseGameSystemGameSystemsService from '../../service/base';
 
-class Pathfinder2eGameSystemService extends BaseGameSystemGameSystemsService {
+class Pathfinder2eGameSystemGameSystemsService extends BaseGameSystemGameSystemsService {
 	constructor() {
 		super();
 
@@ -92,4 +92,4 @@ class Pathfinder2eGameSystemService extends BaseGameSystemGameSystemsService {
 	}
 }
 
-export default Pathfinder2eGameSystemService;
+export default Pathfinder2eGameSystemGameSystemsService;

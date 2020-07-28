@@ -1,6 +1,6 @@
 import Service from '@thzero/library_server/service/index';
 
-class CharacterGameSystemService extends Service {
+class CharacterGameSystemsService extends Service {
 	constructor() {
 		super();
 
@@ -102,4 +102,4 @@ class CharacterGameSystemService extends Service {
 	}
 }
 
-export default CharacterGameSystemService;
+export default CharacterGameSystemsService;

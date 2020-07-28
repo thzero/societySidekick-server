@@ -1,8 +1,8 @@
 import Constants from '../../../constants';
 
-import BaseGameSystemService from '../../service/base';
+import BaseGameSystemGameSystemsService from '../../service/base';
 
-class Starfinder1eGameSystemService extends BaseGameSystemService {
+class Starfinder1eGameSystemGameSystemsService extends BaseGameSystemGameSystemsService {
 	constructor() {
 		super();
 
@@ -84,4 +84,4 @@ class Starfinder1eGameSystemService extends BaseGameSystemService {
 	}
 }
 
-export default Starfinder1eGameSystemService;
+export default Starfinder1eGameSystemGameSystemsService;
