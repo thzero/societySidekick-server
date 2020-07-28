@@ -1,6 +1,6 @@
-import NewsApiBootPlugin from '@thzero/library/boot/plugins/news';
+import NewsApiBootPlugin from '@thzero/library_server/boot/plugins/news';
 
-import newsRepository from '@thzero/library_repository_mongo/news';
+import newsRepository from '@thzero/library_server_repository_mongo/news';
 
 import newsService from '../../service/news';
 import newsValidationService from '../../service/news/validation/joi';

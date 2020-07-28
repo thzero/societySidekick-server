@@ -2,7 +2,7 @@ import Constants from '../../constants';
 
 import NotImplementedError from '@thzero/library_common/errors/notImplemented'
 
-import BaseAdminService from '@thzero/library/service/admin/index';
+import BaseAdminService from '@thzero/library_server/service/admin/index';
 
 class GameSystemAdminService extends BaseAdminService {
 	constructor() {

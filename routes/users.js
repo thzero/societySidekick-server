@@ -1,13 +1,13 @@
 import koaBody from 'koa-body';
 
-import LibraryConstants from '@thzero/library/constants';
+import LibraryConstants from '@thzero/library_server/constants';
 
 import Utility from '@thzero/library_common/utility';
 
-import authentication from '@thzero/library/middleware/authentication';
-import authorization from '@thzero/library/middleware/authorization';
+import authentication from '@thzero/library_server/middleware/authentication';
+import authorization from '@thzero/library_server/middleware/authorization';
 
-import BaseUsersRoute from '@thzero/library/routes/baseUsers';
+import BaseUsersRoute from '@thzero/library_server/routes/baseUsers';
 
 class UsersRoute extends BaseUsersRoute {
 	_initializeRoutes(router) {

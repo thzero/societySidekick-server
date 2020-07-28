@@ -1,10 +1,10 @@
 import Constants from '../constants';
-import LibraryConstants from '@thzero/library/constants';
+import LibraryConstants from '@thzero/library_server/constants';
 import SharedConstants from '../common/constants';
 
 import AppUtility from '../utility/app'
 
-import BaseUserService from '@thzero/library/service/baseUser';
+import BaseUserService from '@thzero/library_server/service/baseUser';
 
 import UserData from '../common/data/user';
 

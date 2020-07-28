@@ -1,6 +1,6 @@
-import UsersApiBootPlugin from '@thzero/library/boot/plugins/users';
+import UsersApiBootPlugin from '@thzero/library_server/boot/plugins/users';
 
-import plansRepository from '@thzero/library_repository_mongo/plans';
+import plansRepository from '@thzero/library_server_repository_mongo/plans';
 import userRepository from '../../repository/mongo/user';
 
 import authService from '../../service/auth';

@@ -1,6 +1,6 @@
-import LibraryConstants from '@thzero/library/constants';
+import LibraryConstants from '@thzero/library_server/constants';
 
-import Service from '@thzero/library/service/index';
+import Service from '@thzero/library_server/service/index';
 
 class PlansService extends Service {
 	constructor() {

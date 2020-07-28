@@ -6,11 +6,11 @@ import ApiPlugin from './boot/plugins/api';
 import NewsApiPlugin from './boot/plugins/news';
 import UsersApiPlugin from './boot/plugins/users';
 
-import BootMain from '@thzero/library/boot/main';
+import BootMain from '@thzero/library_server/boot/main';
 
-import usageMetricsRepository from '@thzero/library_repository_mongo/usageMetrics';
+import usageMetricsRepository from '@thzero/library_server_repository_mongo/usageMetrics';
 
-import loggerService from '@thzero/library_logger_pino';
+import loggerService from '@thzero/library_server_logger_pino';
 
 class AppBootMain extends BootMain {
 	_initRepositoriesUsageMetrics() {

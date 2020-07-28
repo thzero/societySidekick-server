@@ -1,6 +1,6 @@
 import Constants from '../../../constants';
 
-import BootPlugin from '@thzero/library/boot/plugins/index';
+import BootPlugin from '@thzero/library_server/boot/plugins/index';
 
 import adminBoonsRepository from '../../../repository/mongo/admin/boons';
 import adminClassesRepository from '../../../repository/mongo/admin/classes';

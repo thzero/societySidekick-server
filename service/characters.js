@@ -1,10 +1,10 @@
 import Constants from '../constants';
-import LibraryConstants from '@thzero/library/constants';
+import LibraryConstants from '@thzero/library_server/constants';
 import SharedConstants from '../common/constants';
 
 import Utility from '@thzero/library_common/utility';
 
-import Service from '@thzero/library/service/index';
+import Service from '@thzero/library_server/service/index';
 
 import ScenarioResult from '../common/data/scenarioResult';
 

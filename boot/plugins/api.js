@@ -1,7 +1,7 @@
 import Constants from '../../constants';
-import RepositoryConstants from '@thzero/library_repository_mongo/constants';
+import RepositoryConstants from '@thzero/library_server_repository_mongo/constants';
 
-import ApiBootPlugin from '@thzero/library/boot/plugins/api';
+import ApiBootPlugin from '@thzero/library_server/boot/plugins/api';
 
 import boonsRepository from '../../repository/mongo/boons';
 import charactersRepository from '../../repository/mongo/characters';

@@ -1,4 +1,4 @@
-import BaseUsersAdminService from '@thzero/library/service/admin/users';
+import BaseUsersAdminService from '@thzero/library_server/service/admin/users';
 
 import UserData from '../../common/data/user';
 

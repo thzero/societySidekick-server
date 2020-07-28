@@ -1,4 +1,4 @@
-import Service from '@thzero/library/service/index';
+import Service from '@thzero/library_server/service/index';
 
 class CharacterGameSystemService extends Service {
 	constructor() {

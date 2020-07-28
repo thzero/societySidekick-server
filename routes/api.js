@@ -1,9 +1,9 @@
 import Constants from '../constants';
-import LibraryConstants from '@thzero/library/constants';
+import LibraryConstants from '@thzero/library_server/constants';
 
 import Utility from '@thzero/library_common/utility';
 
-import BaseRoute from '@thzero/library/routes/index';
+import BaseRoute from '@thzero/library_server/routes/index';
 
 class ApiRoute extends BaseRoute {
 	constructor(prefix) {
