@@ -4,7 +4,7 @@ import Constants from '../constants';
 
 import Utility from '@thzero/library_common/utility';
 
-import BaseRoute from '@thzero/library/routes/index';
+import BaseRoute from '@thzero/library_server/routes/index';
 
 class EquipmentRoute extends BaseRoute {
 	constructor(prefix) {

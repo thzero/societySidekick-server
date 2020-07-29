@@ -1,9 +1,9 @@
 import Constants from '../../constants';
 import SharedConstants from '../../common/constants';
 
-import BaseGameSystemsUtilityService from './baseUtility';
+import Service from '@thzero/library_server/service/index';
 
-class GameSystemsUtilityService extends BaseGameSystemsUtilityService {
+class UtilityGameSystemsService extends Service {
 	characterByGameSystemId(gameSystemId) {
 		const serviceResponse = this._getServiceByGameSystemId(gameSystemId);
 		if (!serviceResponse.success)
@@ -58,6 +58,21 @@ class GameSystemsUtilityService extends BaseGameSystemsUtilityService {
 		return this._serviceValidation.check(schema, value, params, 'scenarios');
 	}
 
+	validateByGameSystemId(gameSystemId, value, type, params) {
+		if (!gameSystemId || !value || !type)
+			return this._error();
+
+		const serviceResponse = this._getServiceByGameSystemId(gameSystemId);
+		if (!serviceResponse.success)
+			return serviceResponse;
+
+		const schema = serviceResponse.results.determineValidation(type)
+		if (!schema)
+			return this._error(`Invalid validation for gamesystem '${gameSystemId}'.`);
+
+		return this._serviceValidation.check(schema, value, params, 'characters');
+	}
+
 	_getServiceByGameSystemId(gameSystemId) {
 		const validationGameSystemIdResponse = this._validateId(gameSystemId, 'gameSystemId');
 		if (!validationGameSystemIdResponse.success)
@@ -78,4 +93,4 @@ class GameSystemsUtilityService extends BaseGameSystemsUtilityService {
 	}
 }
 
-export default GameSystemsUtilityService;
+export default UtilityGameSystemsService;

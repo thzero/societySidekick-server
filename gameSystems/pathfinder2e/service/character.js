@@ -1,13 +1,13 @@
 import Constants from '../../../constants';
 
-import CharacterGameSystemCharacterService from '../../service/character';
+import CharacterGameSystemsService from '../../service/character';
 
 import Pathfinder2eInventoryCharacter from '../../../common/gameSystems/pathfinder2e/data/character';
 import Pathfinder2eInventory from '../../../common/gameSystems/pathfinder2e/data/characterInventory';
 import Pathfinder2eCharacterBoon from '../../../common/gameSystems/pathfinder2e/data/characterBoon';
 import Pathfinder2eCharacterScenario from '../../../common/gameSystems/pathfinder2e/data/characterScenario';
 
-class Pathfinder2eCharacterGameSystemCharacterService extends CharacterGameSystemCharacterService {
+class Pathfinder2eCharacterGameSystemsService extends CharacterGameSystemsService {
 	calculateScenario(character, scenario) {
 		this_serviceRules.calculateScenario(scenario);
 		scenario.level = this_serviceRules.calculateScenarioLevel(character, scenario);
@@ -109,4 +109,4 @@ class Pathfinder2eCharacterGameSystemCharacterService extends CharacterGameSyste
 	}
 }
 
-export default Pathfinder2eCharacterGameSystemCharacterService;
+export default Pathfinder2eCharacterGameSystemsService;

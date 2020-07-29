@@ -1,13 +1,13 @@
 import Constants from '../../../constants'
 
-import CharacterGameSystemCharacterService from '../../service/character';
+import CharacterGameSystemsService from '../../service/character';
 
 import Stafinder1eCharacter from '../../../common/gameSystems/starfinder1e/data/character';
 import Stafinder1eInventory from '../../../common/gameSystems/starfinder1e/data/characterInventory'
 import Stafinder1eCharacterBoon from '../../../common/gameSystems/starfinder1e/data/characterBoon'
 import Stafinder1eCharacterScenario from '../../../common/gameSystems/starfinder1e/data/characterScenario'
 
-class Starfinder1eCharacterGameSystemCharacterService extends CharacterGameSystemCharacterService {
+class Starfinder1eCharacterGameSystemsService extends CharacterGameSystemsService {
 	calculateScenario(character, scenario) {
 		this._serviceRules.calculateScenario(scenario);
 		scenario.level = this_serviceRules.calculateScenarioLevel(character, scenario);
@@ -92,4 +92,4 @@ class Starfinder1eCharacterGameSystemCharacterService extends CharacterGameSyste
 	}
 }
 
-export default Starfinder1eCharacterGameSystemCharacterService;
+export default Starfinder1eCharacterGameSystemsService;

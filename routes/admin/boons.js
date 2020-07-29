@@ -1,6 +1,6 @@
 import Constants from '../../constants';
 
-import AdminRoute from '@thzero/library/routes/admin/index'
+import AdminRoute from '@thzero/library_server/routes/admin/index'
 
 class BoonAdminRoute extends AdminRoute {
 	constructor() {

@@ -1,6 +1,6 @@
 import Constants from '../constants';
 
-import Service from '@thzero/library/service/index';
+import Service from '@thzero/library_server/service/index';
 class EquipmentService extends Service {
 	constructor() {
 		super();

@@ -1,7 +1,7 @@
 import Constants from '../../constants';
-import RepositoryConstants from '@thzero/library_repository_mongo/constants';
+import RepositoryConstants from '@thzero/library_server_repository_mongo/constants';
 
-import BaseApiBootPlugin from '@thzero/library/boot/plugins/api';
+import ApiBootPlugin from '@thzero/library_server/boot/plugins/api';
 
 import boonsRepository from '../../repository/mongo/boons';
 import charactersRepository from '../../repository/mongo/characters';
@@ -10,11 +10,8 @@ import classesRepository from '../../repository/mongo/classes';
 import equipmentRepository from '../../repository/mongo/equipment';
 import factionsRepository from '../../repository/mongo/factions';
 import gameSystemsRepository from '../../repository/mongo/gameSystems';
-import newsRepository from '@thzero/library_repository_mongo/news';
-import plansRepository from '@thzero/library_repository_mongo/plans';
 import scenariosRepository from '../../repository/mongo/scenarios';
 import siteRepository from '../../repository/mongo/site';
-import userRepository from '../../repository/mongo/user';
 
 import apiRoute from '../../routes/api';
 import boonsRoute from '../../routes/boons'
@@ -25,7 +22,6 @@ import equipmentRoute from '../../routes/equipment';
 import factionsRoute from '../../routes/factions';
 import scenariosRoute from '../../routes/scenarios';
 
-import authService from '../../service/auth';
 import boonsService from '../../service/boons';
 import charactersService from '../../service/characters';
 import classesService from '../../service/classes';
@@ -53,17 +49,14 @@ import gameSystemsScenarioStarfinder1eService from '../../gameSystems/starfinder
 import gameSystemsScenarioValidationStarfinder1eService from '../../gameSystems/starfinder1e/service/validation/joi/scenario';
 import gameSystemsValidationStarfinder1eService from '../../gameSystems/starfinder1e/service/validation/joi';
 
-import newsService from '../../service/news';
-import newsValidationService from '../../service/news/validation/joi';
 import repositoryCollectionsService from '../../repository/mongo/collections';
 import scenariosService from '../../service/scenarios';
 import securityService from '../../service/security';
 import siteService from '../../service/site';
-import userService from '../../service/user';
 import validationService from '../../service/validation/joi';
 import versionService from '../../service/version';
 
-class ApiBootPlugin extends BaseApiBootPlugin {
+class AppApiBootPlugin extends ApiBootPlugin {
 	async _initRepositories() {
 		await super._initRepositories();
 
@@ -128,36 +121,8 @@ class ApiBootPlugin extends BaseApiBootPlugin {
 		this._injectService(Constants.InjectorKeys.SERVICE_VALIDATION, new validationService());
 	}
 
-	_initRepositoriesNews() {
-		return new newsRepository();
-	}
-
-	_initRepositoriesPlans() {
-		return new plansRepository();
-	}
-
-	_initRepositoriesUsers() {
-		return new userRepository();
-	}
-
-	_initServicesAuth() {
-		return new authService();
-	}
-
-	_initServicesNews() {
-		return new newsService();
-	}
-
-	_initServicesNewsValidation() {
-		return new newsValidationService();
-	}
-
 	_initServicesSecurity() {
 		return new securityService();
-	}
-
-	_initServicesUser() {
-		return new userService();
 	}
 
 	_initServiceVersion() {
@@ -165,4 +130,4 @@ class ApiBootPlugin extends BaseApiBootPlugin {
 	}
 }
 
-export default ApiBootPlugin;
+export default AppApiBootPlugin;

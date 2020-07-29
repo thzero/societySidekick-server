@@ -1,4 +1,4 @@
-import BaseNewsAdminService from '@thzero/library/service/admin/news';
+import BaseNewsAdminService from '@thzero/library_server/service/admin/news';
 
 import NewsData from '../../common/data/news';
 
