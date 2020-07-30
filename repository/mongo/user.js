@@ -1,6 +1,6 @@
 import Constants from '../../constants';
 
-import AppUtility from '../../utility/app'
+import AppUtility from '../../utility/app';
 
 import BaseUserMongoRepository from '@thzero/library_server_repository_mongo/baseUser';
 

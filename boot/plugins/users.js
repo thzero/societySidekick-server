@@ -1,4 +1,4 @@
-import UsersApiBootPlugin from '@thzero/library_server/boot/plugins/users';
+import UsersApiBootPlugin from '@thzero/library_server/boot/plugins/usersExtended';
 
 import plansRepository from '@thzero/library_server_repository_mongo/plans';
 import userRepository from '../../repository/mongo/user';
