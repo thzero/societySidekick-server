@@ -53,7 +53,8 @@ class GameSystemValidationService extends BaseGameSystemValidationService {
 		gameSystemId: this._id.required(),
 		name: this._extendedName.required(),
 		description: this._description.allow(null).allow(''),
-		type: this._typeClasses()
+		type: this._typeClasses(),
+		url: this._url.allow(null).allow('')
 	});
 
 	_classUpdateSchema = Joi.object({
@@ -62,7 +63,8 @@ class GameSystemValidationService extends BaseGameSystemValidationService {
 		name: this._extendedName.required(),
 		description: this._description.allow(null).allow(''),
 		type: this._typeClasses(),
-		updatedTimestamp: this._timestamp.required()
+		updatedTimestamp: this._timestamp.required(),
+		url: this._url.allow(null).allow('')
 	});
 
 	_equipmentCreateSchema = Joi.object({
@@ -72,7 +74,8 @@ class GameSystemValidationService extends BaseGameSystemValidationService {
 		description: this._description.allow(null).allow(''),
 		category: this._equipmentCategories(),
 		categorySecondary: this._equipmentCategoriesSecondary(),
-		categoryTertiary: this._equipmentCategoriesTertiary()
+		categoryTertiary: this._equipmentCategoriesTertiary(),
+		url: this._url.allow(null).allow('')
 	});
 
 	_equipmentUpdateSchema = Joi.object({
@@ -84,13 +87,15 @@ class GameSystemValidationService extends BaseGameSystemValidationService {
 		category: this._equipmentCategories(),
 		categorySecondary: this._equipmentCategoriesSecondary(),
 		categoryTertiary: this._equipmentCategoriesTertiary(),
-		updatedTimestamp: this._timestamp.required()
+		updatedTimestamp: this._timestamp.required(),
+		url: this._url.allow(null).allow('')
 	});
 
 	_factionCreateSchema = Joi.object({
 		gameSystemId: this._id.required(),
 		name: this._extendedName.required(),
-		description: this._description.allow(null)
+		description: this._description.allow(null),
+		url: this._url.allow(null).allow('')
 	});
 
 	_factionUpdateSchema = Joi.object({
@@ -98,7 +103,8 @@ class GameSystemValidationService extends BaseGameSystemValidationService {
 		gameSystemId: this._id.required(),
 		name: this._extendedName.required(),
 		description: this._description.allow(null).allow(''),
-		updatedTimestamp: this._timestamp.required()
+		updatedTimestamp: this._timestamp.required(),
+		url: this._url.allow(null).allow('')
 	});
 
 	_scenarioCreateSchema = Joi.object({
@@ -107,7 +113,8 @@ class GameSystemValidationService extends BaseGameSystemValidationService {
 		description: this._description.allow(null).allow(''),
 		repeatable: Joi.boolean(),
 		scenario: this._scenarioNumber.allow(null),
-		season: this._number.allow(null)
+		season: this._number.allow(null),
+		url: this._url.allow(null).allow('')
 	});
 
 	_scenarioSearchSchema = Joi.object({
@@ -122,7 +129,8 @@ class GameSystemValidationService extends BaseGameSystemValidationService {
 		repeatable: Joi.boolean(),
 		scenario: this._scenarioNumber.allow(null),
 		season: this._number.allow(null),
-		updatedTimestamp: this._timestamp.required()
+		updatedTimestamp: this._timestamp.required(),
+		url: this._url.allow(null).allow('')
 	});
 
 	boonCreateSchema() {
