@@ -61,6 +61,9 @@ const Constants = {
 		SERVICE_GAMESYSTEMS_VALIDATION_STARFINDER_1E: BaseKeys.SERVICE_GAMESYSTEMS_VALIDATION + SharedConstants.GameSystems.Starfinder1e.id,
 
 		SERVICE_GAMESYSTEMS_UTILITY: 'serviceGameSystemsUtility',
+
+		SERVICE_LOGGER_PINO: 'serviceLoggerPino',
+		SERVICE_LOGGER_WISTON: 'serviceLoggerWinston',
 		SERVICE_SCENARIOS: 'serviceScenarios',
 		SERVICE_SITE: 'serviceSite',
 		SERVICE_VALIDATION: 'serviceValidation',
