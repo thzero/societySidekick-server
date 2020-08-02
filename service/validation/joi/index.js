@@ -38,9 +38,12 @@ class JoiValidationService extends GamerJoiValidationService {
 	_settingFavoritesSchema = Joi.array().items(this._settingFavorite).allow(null);
 
 	_settingGearSetInventory = Joi.object({
+		id: this._id.allow(null),
+		boughtScenarioId: this._id.allow(null),
 		itemId: this._id.allow(null),
 		item: this._inventoryItem.required(),
 		quantity: this._number.required(),
+		total: this._number.allow(null),
 		value: this._number.required()
 	});
 	_settingGearSet = Joi.object({

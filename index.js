@@ -1,3 +1,5 @@
+import Constants from './constants';
+
 import AdminPlugin from './boot/plugins/admin/admin';
 import NewsAdminPlugin from './boot/plugins/admin/news';
 import UsersAdminPlugin from './boot/plugins/admin/users';
@@ -10,15 +12,17 @@ import BootMain from '@thzero/library_server/boot/main';
 
 import usageMetricsRepository from '@thzero/library_server_repository_mongo/usageMetrics';
 
-import loggerService from '@thzero/library_server_logger_pino';
+import pinoLoggerService from '@thzero/library_server_logger_pino';
+import winstonLoggerService from '@thzero/library_server_logger_winston';
 
 class AppBootMain extends BootMain {
 	_initRepositoriesUsageMetrics() {
 		return new usageMetricsRepository();
 	}
 
-	_initServicesLogger() {
-		return new loggerService();
+	_initServicesLoggers() {
+		this._registerServicesLogger(Constants.InjectorKeys.SERVICE_LOGGER_PINO, new pinoLoggerService());
+		this._registerServicesLogger(Constants.InjectorKeys.SERVICE_LOGGER_WISTON, new winstonLoggerService());
 	}
 }
 
