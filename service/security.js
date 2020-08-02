@@ -2,8 +2,8 @@ import Utility from '@thzero/library_common/utility';
 
 import BaseSecurityService from '@thzero/library_server/service/baseSecurity';
 
-import securityUser from '../common/security/user'
-import securityAdmin from '../common/security/admin'
+import securityUser from '../common/security/user';
+import securityAdmin from '../common/security/admin';
 
 class SecurityService extends BaseSecurityService {
 	constructor() {
