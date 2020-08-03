@@ -63,7 +63,6 @@ const Constants = {
 		SERVICE_GAMESYSTEMS_UTILITY: 'serviceGameSystemsUtility',
 
 		SERVICE_LOGGER_PINO: 'serviceLoggerPino',
-		SERVICE_LOGGER_WISTON: 'serviceLoggerWinston',
 		SERVICE_SCENARIOS: 'serviceScenarios',
 		SERVICE_SITE: 'serviceSite',
 		SERVICE_VALIDATION: 'serviceValidation',
