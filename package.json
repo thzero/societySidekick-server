@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/thzero/societySidekick-server#readme",
   "engines": {
-    "node": ">=13.0.1"
+    "node": ">=12.8.3"
   },
   "main": "index.js",
   "scripts": {
