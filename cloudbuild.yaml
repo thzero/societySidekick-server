@@ -14,7 +14,7 @@
     - "-t"
     - "gcr.io/$PROJECT_ID/api:$COMMIT_SHA"
     - "."
-  - name: "docker:stable"
+  - name: "docker:latest"
     args:
     - "push"
     - "gcr.io/$PROJECT_ID/api:$COMMIT_SHA"
