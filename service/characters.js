@@ -33,7 +33,7 @@ class CharactersService extends Service {
 		if (!validationResponse.success)
 			return this._errorResponse(validationResponse);
 
-		this._logger.debug('character', requestedCharacter);
+		this._logger.debug('CharactersService', 'create', 'character', requestedCharacter);
 
 		const validationCheckCharacterNewResponse = this._serviceValidation.check(this._serviceValidation.characterNewSchema, requestedCharacter, null, 'characters');
 		if (!validationCheckCharacterNewResponse.success)
@@ -81,7 +81,7 @@ class CharactersService extends Service {
 		const respositoryFetchResponse = await this._repositoryCharacters.fetch(correlationId, user.id, characterId);
 		if (!respositoryFetchResponse.success)
 			// TODO: Security - Needs a real security check
-			return this._error().addGeneric('Invalid permissions', SharedConstants.ErrorCodes.InvalidPermissions);
+			return this._error('CharactersService', 'delete').addGeneric('Invalid permissions', SharedConstants.ErrorCodes.InvalidPermissions);
 
 		const respositoryResponse = await this._repositoryCharacters.delete(correlationId, user.id, characterId);
 		if (!respositoryResponse.success)
@@ -106,15 +106,15 @@ class CharactersService extends Service {
 		const respositoryFetchResponse = await this._repositoryCharacters.fetch(correlationId, user.id, characterId);
 		if (!respositoryFetchResponse.success)
 			// TODO: Security - Needs a real security check
-			return this._error().addGeneric('Invalid permissions', SharedConstants.ErrorCodes.InvalidPermissions);
+			return this._error('CharactersService', 'deleteBoon').addGeneric('Invalid permissions', SharedConstants.ErrorCodes.InvalidPermissions);
 
 		const character = respositoryFetchResponse.results;
 		if (!character)
-			return this._error();
+			return this._error('CharactersService', 'deleteBoon');
 
 		const boon = character.boons.find(l => l.id == boonId);
 		if (!boon)
-			return this._error();
+			return this._error('CharactersService', 'deleteBoon');
 		character.boons = character.boons.filter(l => l.id !== boonId);
 
 		const serviceResponse = this._characterServiceByGameSystemId(character.gameSystemId);
@@ -153,15 +153,15 @@ class CharactersService extends Service {
 		const respositoryFetchResponse = await this._repositoryCharacters.fetch(correlationId, user.id, characterId);
 		if (!respositoryFetchResponse.success)
 			// TODO: Security - Needs a real security check
-			return this._error().addGeneric('Invalid permissions', SharedConstants.ErrorCodes.InvalidPermissions);
+			return this._error('CharactersService', 'deleteInventory').addGeneric('Invalid permissions', SharedConstants.ErrorCodes.InvalidPermissions);
 
 		const character = respositoryFetchResponse.results;
 		if (!character)
-			return this._error();
+			return this._error('CharactersService', 'deleteInventory');
 
 		const inventory = character.inventory.filter(l => l.id == inventoryId);
 		if (!inventory)
-			return this._error();
+			return this._error('CharactersService', 'deleteInventory');
 		character.inventory = character.inventory.filter(l => l.id !== inventoryId);
 
 		const calculateResponse = await this._calculate(character.gameSystemId, character, user);
@@ -195,15 +195,15 @@ class CharactersService extends Service {
 		const respositoryFetchResponse = await this._repositoryCharacters.fetch(correlationId, user.id, characterId);
 		if (!respositoryFetchResponse.success)
 			// TODO: Security - Needs a real security check
-			return this._error().addGeneric('Invalid permissions', SharedConstants.ErrorCodes.InvalidPermissions);
+			return this._error('CharactersService', 'deleteScenario').addGeneric('Invalid permissions', SharedConstants.ErrorCodes.InvalidPermissions);
 
 		const character = respositoryFetchResponse.results;
 		if (!character)
-			return this._error();
+			return this._error('CharactersService', 'deleteScenario');
 
 		const scenario = character.scenarios.filter(l => l.id == scenarioId);
 		if (!scenario)
-			return this._error();
+			return this._error('CharactersService', 'deleteScenario');
 		character.scenarios = character.scenarios.filter(l => l.id !== scenarioId);
 
 		const calculateResponse = await this._calculate(character.gameSystemId, character, user);
@@ -265,8 +265,8 @@ class CharactersService extends Service {
 				return this._errorResponse(validationResponse);
 
 			if (!user.plan)
-				return this._error('Invalid user plan');
-			this._logger.debug('plan', user.plan);
+				return this._error('CharactersService', 'initialize', 'Invalid user plan');
+			this._logger.debug('CharactersService', 'initialize', 'plan', user.plan);
 		}
 
 		const statusResponse = this._getStatus();
@@ -394,15 +394,15 @@ class CharactersService extends Service {
 
 		const settingsGameSystem = user.settings.gameSystems.find(l => l.id === character.gameSystemId);
 		if (!settingsGameSystem)
-			return this._error();
+			return this._error('CharactersService', 'loadInventory');
 
 		const gearSet = settingsGameSystem.gearSets.find(l => l.id === gearSetId);
 		if (!gearSet)
-			return this._error();
+			return this._error('CharactersService', 'loadInventory');
 
 		const initialScenario = character.scenarios.find(l => l.order === 0);
 		if (!initialScenario)
-			return this._error();
+			return this._error('CharactersService', 'loadInventory');
 
 		character.inventory = gearSet.inventory.map(l => {
 			l.id = Utility.generateId();
@@ -488,7 +488,7 @@ class CharactersService extends Service {
 			return this._errorResponse(validationCharacterIdResponse);
 
 		if (!requestedBoon)
-			return this._error();
+			return this._error('CharactersService', 'updateBoon');
 
 		const isNew = requestedBoon.id === null || requestedBoon.id === undefined
 
@@ -527,7 +527,7 @@ class CharactersService extends Service {
 			return this._errorResponse(validationCharacterIdResponse);
 
 		if (!details)
-			return this._error();
+			return this._error('CharactersService', 'updateDetails');
 
 		const validationGameSystemIdResponse = this._characterValidateByGameSystemId(details.gameSystemId, details, Constants.ValidationSchemaTypes.CharacterDetailsUpdate);
 		if (!validationGameSystemIdResponse.success)
@@ -548,7 +548,7 @@ class CharactersService extends Service {
 
 		character.name = details.name.trim();
 		if (!details.name)
-			return this._error('Empty name after trim.');
+			return this._error('CharactersService', 'updateDetails', 'Empty name after trim.');
 
 		character.tagLine = details && details.tagLine ? details.tagLine.trim() : null
 
@@ -585,7 +585,7 @@ class CharactersService extends Service {
 			return this._errorResponse(validationCharacterIdResponse);
 
 		if (!requestedInventory)
-			return this._error();
+			return this._error('CharactersService', 'updateInventory');
 
 		const isNew = requestedInventory.id === null || requestedInventory.id === undefined
 
@@ -632,7 +632,7 @@ class CharactersService extends Service {
 			return this._errorResponse(validationCharacterIdResponse);
 
 		if (!requestedScenario)
-			return this._error();
+			return this._error('CharactersService', 'updateScenario');
 
 		const isNew = requestedScenario.id === null || requestedScenario.id === undefined
 
@@ -684,12 +684,12 @@ class CharactersService extends Service {
 		if (!validationResponse.success)
 			return this._errorResponse(validationResponse);
 
-		this._logger.debug('name', name);
+		this._logger.debug('CharactersService', 'valid', 'name', name);
 		if (String.isNullOrEmpty(name))
-			return this._error('Invalid name');
+			return this._error('CharactersService', 'valid', 'Invalid name');
 
 		name = decodeURI(name);
-		this._logger.debug('name.decoded', name);
+		this._logger.debug('CharactersService', 'valid', 'decoded', name);
 
 		const validationCheckNameResponse = this._serviceValidation.check(this._serviceValidation.nameSchema, name, null, 'characters');
 		if (!validationCheckNameResponse.success)
@@ -699,10 +699,10 @@ class CharactersService extends Service {
 		if (!respositoryResponse.success)
 			return this._errorResponse(respositoryResponse);
 
-		this._logger.debug('count', respositoryResponse.results.count);
-		this._logger.debug('total', respositoryResponse.results.total);
+		this._logger.debug('CharactersService', 'valid', 'count', respositoryResponse.results.count);
+		this._logger.debug('CharactersService', 'valid', 'total', respositoryResponse.results.total);
 		const quota = user.plan.characters;
-		this._logger.debug('count.plan.quota', quota);
+		this._logger.debug('CharactersService', 'valid', 'count.plan.quota', quota);
 
 		const response = this._initResponse();
 
@@ -745,7 +745,7 @@ class CharactersService extends Service {
 
 	_updateBoon(gameSystemId, character, requestedBoon) {
 		if (!character || !requestedBoon)
-			return this._error();
+			return this._error('CharactersService', '_updateBoon');
 
 		const serviceResponse = this._characterServiceByGameSystemId(gameSystemId);
 		if (!serviceResponse.success)
@@ -773,7 +773,7 @@ class CharactersService extends Service {
 
 	_updateInventory(gameSystemId, character, requestedInventory) {
 		if (!character || !requestedInventory)
-			return this._error();
+			return this._error('CharactersService', '_updateInventory');
 
 		const serviceResponse = this._characterServiceByGameSystemId(gameSystemId);
 		if (!serviceResponse.success)
@@ -801,7 +801,7 @@ class CharactersService extends Service {
 
 	_updateScenario(gameSystemId, character, requestedScenario) {
 		if (!character || !requestedScenario)
-			return this._error();
+			return this._error('CharactersService', '_updateScenario');
 
 		const serviceResponse = this._characterServiceByGameSystemId(gameSystemId);
 		if (!serviceResponse.success)
@@ -829,14 +829,14 @@ class CharactersService extends Service {
 
 	_characterServiceByGameSystemId(gameSystemId) {
 		if (!gameSystemId || !this._serviceGameSystemsUtility)
-			return this._error();
+			return this._error('CharactersService', '_characterServiceByGameSystemId');
 
 		return this._serviceGameSystemsUtility.characterByGameSystemId(gameSystemId);
 	}
 
 	_characterValidateByGameSystemId(gameSystemId, value, type, params) {
 		if (!this._serviceGameSystemsUtility)
-			return this._error();
+			return this._error('CharactersService', '_characterValidateByGameSystemId');
 
 		return this._serviceGameSystemsUtility.characterValidateByGameSystemId(gameSystemId, value, type, params)
 	}

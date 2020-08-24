@@ -63,7 +63,7 @@ class CharacterGameSystemsService extends Service {
 	updateDetails(character, details) {
 		character.name = details.name.trim();
 		if (!details.name)
-			return this._error('Empty name after trim.');
+			return this._error('CharacterGameSystemsService', 'updateDetails', 'Empty name after trim.');
 
 		character.tagLine = details && details.tagLine ? details.tagLine.trim() : null;
 		character.status = details.status;

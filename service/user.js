@@ -36,7 +36,7 @@ class UserService extends BaseUserService {
 
 		const user = respositoryResponse.results;
 		if (!user || !user.settings || !user.settings.favorites)
-			return this._error();
+			return this._error('UserService', 'fetchFavoritesByGamerId');
 
 		const userIds = [];
 		for (const fav of user.settings.favorites)
@@ -113,7 +113,7 @@ class UserService extends BaseUserService {
 
 	_validateByGameSystemId(gameSystemId, value, type, params) {
 		if (!this._serviceGameSystemsUtility)
-			return this._error();
+			return this._error('UserService', '_validateByGameSystemId');
 
 		return this._serviceGameSystemsUtility.validateByGameSystemId(gameSystemId, value, type, params)
 	}
