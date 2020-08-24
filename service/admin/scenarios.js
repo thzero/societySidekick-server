@@ -43,14 +43,14 @@ class ScenariosAdminService extends GameSystemAdminService {
 
 	_validateCreate(requestedValue, params) {
 		if (!this._serviceGameSystemsUtility)
-			return this._error();
+			return this._error('ScenariosAdminService', '_validateCreate');
 
 		return this._serviceGameSystemsUtility.scenarioValidateByGameSystemId(requestedValue.gameSystemId, requestedValue, this._validateCreateI, params)
 	}
 
 	_validateUpdate(requestedValue, params) {
 		if (!this._serviceGameSystemsUtility)
-			return this._error();
+			return this._error('ScenariosAdminService', '_validateUpdate');
 
 		return this._serviceGameSystemsUtility.scenarioValidateByGameSystemId(requestedValue.gameSystemId, requestedValue, this._validateUpdateI, params)
 	}
