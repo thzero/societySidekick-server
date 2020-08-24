@@ -11,14 +11,14 @@ class UtilityGameSystemsService extends Service {
 
 		const determineResponse = serviceResponse.results.determineCharactersService()
 		if (!determineResponse.success)
-			return this._error(`Invalid character service for gamesystem '${gameSystemId}'.`);
+			return this._error('UtilityGameSystemsService', 'characterByGameSystemId', `Invalid character service for gamesystem '${gameSystemId}'.`);
 
 		return determineResponse;
 	}
 
 	characterValidateByGameSystemId(gameSystemId, value, type, params) {
 		if (!gameSystemId || !value || !type)
-			return this._error();
+			return this._error('UtilityGameSystemsService', 'characterValidateByGameSystemId', );
 
 		const serviceResponse = this._getServiceByGameSystemId(gameSystemId);
 		if (!serviceResponse.success)
@@ -26,7 +26,7 @@ class UtilityGameSystemsService extends Service {
 
 		const schema = serviceResponse.results.determineCharactersValidation(type)
 		if (!schema)
-			return this._error(`Invalid character validation for gamesystem '${gameSystemId}'.`);
+			return this._error('UtilityGameSystemsService', 'characterValidateByGameSystemId', `Invalid character validation for gamesystem '${gameSystemId}'.`);
 
 		return this._serviceValidation.check(schema, value, params, 'characters');
 	}
@@ -38,14 +38,14 @@ class UtilityGameSystemsService extends Service {
 
 		const determineResponse = serviceResponse.results.determineScenariosService();
 		if (!determineResponse.success)
-			return this._error(`Invalid scenario service for gamesystem '${gameSystemId}'.`);
+			return this._error('UtilityGameSystemsService', 'scenarioByGameSystemId', `Invalid scenario service for gamesystem '${gameSystemId}'.`);
 
 		return determineResponse;
 	}
 
 	scenarioValidateByGameSystemId(gameSystemId, value, type, params) {
 		if (!gameSystemId || !value || !type)
-			return this._error();
+			return this._error('UtilityGameSystemsService', 'scenarioValidateByGameSystemId');
 
 		const serviceResponse = this._getServiceByGameSystemId(gameSystemId);
 		if (!serviceResponse.success)
@@ -53,14 +53,14 @@ class UtilityGameSystemsService extends Service {
 
 		const schema = serviceResponse.results.determineScenariosValidation(type);
 		if (!schema)
-			return this._error(`Invalid scenario validation for gamesystem '${gameSystemId}'.`);
+			return this._error('UtilityGameSystemsService', 'scenarioValidateByGameSystemId', `Invalid scenario validation for gamesystem '${gameSystemId}'.`);
 
 		return this._serviceValidation.check(schema, value, params, 'scenarios');
 	}
 
 	validateByGameSystemId(gameSystemId, value, type, params) {
 		if (!gameSystemId || !value || !type)
-			return this._error();
+			return this._error('UtilityGameSystemsService', 'validateByGameSystemId');
 
 		const serviceResponse = this._getServiceByGameSystemId(gameSystemId);
 		if (!serviceResponse.success)
@@ -68,7 +68,7 @@ class UtilityGameSystemsService extends Service {
 
 		const schema = serviceResponse.results.determineValidation(type)
 		if (!schema)
-			return this._error(`Invalid validation for gamesystem '${gameSystemId}'.`);
+			return this._error('UtilityGameSystemsService', 'validateByGameSystemId', `Invalid validation for gamesystem '${gameSystemId}'.`);
 
 		return this._serviceValidation.check(schema, value, params, 'characters');
 	}

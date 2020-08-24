@@ -22,7 +22,7 @@ class CharactersMongoRepository extends AppMongoRepository {
 		}
 		catch (err) {
 			await session.abortTransaction();
-			return this._error(null, err);
+			return this._error('CharactersMongoRepository', 'create', null, err);
 		}
 		finally {
 			session.endSession();
@@ -48,7 +48,7 @@ class CharactersMongoRepository extends AppMongoRepository {
 		}
 		catch (err) {
 			await session.abortTransaction();
-			return this._error(null, err);
+			return this._error('CharactersMongoRepository', 'delete', null, err);
 		}
 		finally {
 			session.endSession();
@@ -171,7 +171,7 @@ class CharactersMongoRepository extends AppMongoRepository {
 		}
 		catch (err) {
 			await session.abortTransaction();
-			return this._error(null, err);
+			return this._error('CharactersMongoRepository', 'update', null, err);
 		}
 		finally {
 			session.endSession();

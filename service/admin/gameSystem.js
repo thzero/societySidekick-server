@@ -19,14 +19,14 @@ class GameSystemAdminService extends BaseAdminService {
 
 	_validateCreate(requestedValue, params) {
 		if (!this._serviceGameSystemsUtility)
-			return this._error();
+			return this._error('GameSystemAdminService', '_validateCreate');
 
 		return this._serviceGameSystemsUtility.validateByGameSystemId(requestedValue.gameSystemId, requestedValue, this._validateCreateI, params);
 	}
 
 	_validateUpdate(requestedValue, params) {
 		if (!this._serviceGameSystemsUtility)
-			return this._error();
+			return this._error('GameSystemAdminService', '_validateUpdate');
 
 		return this._serviceGameSystemsUtility.validateByGameSystemId(requestedValue.gameSystemId, requestedValue, this._validateUpdateI, params);
 	}

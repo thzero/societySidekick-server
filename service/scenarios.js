@@ -96,7 +96,7 @@ class ScenariosService extends Service {
 
 	_scenarioServiceByGameSystemId(gameSystemId) {
 		if (!gameSystemId || !this._serviceGameSystemsUtility)
-			return this._error();
+			return this._error('ScenariosService', '_scenarioServiceByGameSystemId');
 
 		return this._serviceGameSystemsUtility.scenarioByGameSystemId(gameSystemId);
 	}
