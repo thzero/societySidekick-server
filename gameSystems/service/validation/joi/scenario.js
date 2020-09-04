@@ -17,8 +17,8 @@ class ScenarioGameSystemValidationService extends BaseGameSystemValidationServic
 		name: this._extendedName.required(),
 		description: this._description.allow(null).allow(''),
 		repeatable: Joi.boolean(),
-		scenario: this._scenarioNumber.allow(null),
-		season: this._number.allow(null),
+		scenario: this._scenarioNumber.allow(null).allow(''),
+		season: this._number.allow(null).allow(''),
 		url: this._url.allow(null).allow('')
 	});
 
@@ -32,8 +32,8 @@ class ScenarioGameSystemValidationService extends BaseGameSystemValidationServic
 		name: this._extendedName.required(),
 		description: this._description.allow(null).allow(''),
 		repeatable: Joi.boolean(),
-		scenario: this._scenarioNumber.allow(null),
-		season: this._number.allow(null),
+		scenario: this._scenarioNumber.allow(null).allow(''),
+		season: this._number.allow(null).allow(''),
 		updatedTimestamp: this._timestamp.required(),
 		url: this._url.allow(null).allow('')
 	});
