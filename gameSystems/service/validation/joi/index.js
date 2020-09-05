@@ -107,31 +107,31 @@ class GameSystemValidationService extends BaseGameSystemValidationService {
 		url: this._url.allow(null).allow('')
 	});
 
-	_scenarioCreateSchema = Joi.object({
-		gameSystemId: this._id.required(),
-		name: this._extendedName.required(),
-		description: this._description.allow(null).allow(''),
-		repeatable: Joi.boolean(),
-		scenario: this._scenarioNumber.allow(null),
-		season: this._number.allow(null),
-		url: this._url.allow(null).allow('')
-	});
+	// _scenarioCreateSchema = Joi.object({
+	// 	gameSystemId: this._id.required(),
+	// 	name: this._extendedName.required(),
+	// 	description: this._description.allow(null).allow(''),
+	// 	repeatable: Joi.boolean(),
+	// 	scenario: this._scenarioNumber.allow(null).allow(''),
+	// 	season: this._number.allow(null).allow(''),
+	// 	url: this._url.allow(null).allow('')
+	// });
 
-	_scenarioSearchSchema = Joi.object({
-		gameSystemId: this._id.allow(null)
-	});
+	// _scenarioSearchSchema = Joi.object({
+	// 	gameSystemId: this._id.allow(null)
+	// });
 
-	_scenarioUpdateSchema = Joi.object({
-		id: this._id.required(),
-		gameSystemId: this._id.required(),
-		name: this._extendedName.required(),
-		description: this._description.allow(null).allow(''),
-		repeatable: Joi.boolean(),
-		scenario: this._scenarioNumber.allow(null),
-		season: this._number.allow(null),
-		updatedTimestamp: this._timestamp.required(),
-		url: this._url.allow(null).allow('')
-	});
+	// _scenarioUpdateSchema = Joi.object({
+	// 	id: this._id.required(),
+	// 	gameSystemId: this._id.required(),
+	// 	name: this._extendedName.required(),
+	// 	description: this._description.allow(null).allow(''),
+	// 	repeatable: Joi.boolean(),
+	// 	scenario: this._scenarioNumber.allow(null).allow(''),
+	// 	season: this._number.allow(null).allow(''),
+	// 	updatedTimestamp: this._timestamp.required(),
+	// 	url: this._url.allow(null).allow('')
+	// });
 
 	boonCreateSchema() {
 		return this._boonCreateSchema;
