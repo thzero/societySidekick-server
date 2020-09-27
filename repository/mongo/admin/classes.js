@@ -1,8 +1,8 @@
 import BaseAdminMongoRepository from '@thzero/library_server_repository_mongo/admin/index';
 
 class ClassesMongoRepository extends BaseAdminMongoRepository {
-	async _getCollectionAdmin() {
-		return await this._getCollectionFromConfig(this._collectionsConfig.getCollectionClasses());
+	async _getCollectionAdmin(correlationId) {
+		return await this._getCollectionFromConfig(correlationId, this._collectionsConfig.getCollectionClasses());
 	}
 }
 

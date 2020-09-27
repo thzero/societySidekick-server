@@ -21,8 +21,8 @@ class BoonsMongoRepository extends BaseAdminMongoRepository {
 		});
 	}
 
-	async _getCollectionAdmin() {
-		return await this._getCollectionFromConfig(this._collectionsConfig.getCollectionBoons());
+	async _getCollectionAdmin(correlationId) {
+		return await this._getCollectionFromConfig(correlationId, this._collectionsConfig.getCollectionBoons());
 	}
 }
 

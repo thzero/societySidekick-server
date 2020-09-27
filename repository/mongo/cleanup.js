@@ -4,9 +4,9 @@ import Utility from '@thzero/library_common/utility';
 
 class CleanupMongoRepository extends AppMongoRepository {
 	async cleanup(correlationId) {
-		const response = this._initResponse();
+		const response = this._initResponse(correlationId);
 
-		const collectionCharacters = await this._getCollectionCharacters();
+		const collectionCharacters = await this._getCollectionCharacters(correlationId);
 		const client = await this._getClient();
 		const session = await this._transactionInit(client);
 		try {
@@ -50,7 +50,7 @@ class CleanupMongoRepository extends AppMongoRepository {
 			return response;
 		}
 		catch (err) {
-			return this._transactionAbort(session, null, err);
+			return this._transactionAbort(correlationId, session, null, err);
 		}
 		finally {
 			await this._transactionEnd(session);
@@ -58,15 +58,15 @@ class CleanupMongoRepository extends AppMongoRepository {
 	}
 
 	async cleanupBoons(correlationId) {
-		const response = this._initResponse();
+		const response = this._initResponse(correlationId);
 
-		const collectionBoons = await this._getCollectionBoons();
+		const collectionBoons = await this._getCollectionBoons(correlationId);
 		const client = await this._getClient();
 		const session = await this._transactionInit(client);
 		try {
 			await this._transactionStart(session);
 
-			let collectionCharacters = await this._getCollectionCharacters();
+			let collectionCharacters = await this._getCollectionCharacters(correlationId);
 			let results = await this._fetchExtract(await this._find(collectionBoons, { }), response);
 
 			let id;
@@ -140,7 +140,7 @@ class CleanupMongoRepository extends AppMongoRepository {
 			return response;
 		}
 		catch (err) {
-			return this._transactionAbort(session, null, err);
+			return this._transactionAbort(correlationId, session, null, err);
 		}
 		finally {
 			await this._transactionEnd(session);
@@ -148,14 +148,14 @@ class CleanupMongoRepository extends AppMongoRepository {
 	}
 
 	async cleanupClasses(correlationId) {
-		const response = this._initResponse();
+		const response = this._initResponse(correlationId);
 		const client = await this._getClient();
 		const session = await this._transactionInit(client);
 		try {
 			await this._transactionStart(session);
 
-			let collectionClasses = await this._getCollectionClasses();
-			let collectionCharacters = await this._getCollectionCharacters();
+			let collectionClasses = await this._getCollectionClasses(correlationId);
+			let collectionCharacters = await this._getCollectionCharacters(correlationId);
 			let results = await this._fetchExtract(await this._find(collectionClasses, { }), response);
 
 			let id;
@@ -193,7 +193,7 @@ class CleanupMongoRepository extends AppMongoRepository {
 			return response;
 		}
 		catch (err) {
-			return this._transactionAbort(session, null, err);
+			return this._transactionAbort(correlationId, session, null, err);
 		}
 		finally {
 			await this._transactionEnd(session);
@@ -201,10 +201,10 @@ class CleanupMongoRepository extends AppMongoRepository {
 	}
 
 	async cleanupFactions(correlationId) {
-		const response = this._initResponse();
+		const response = this._initResponse(correlationId);
 
-		const collectionFactions = await this._getCollectionFactions();
-		const collectionCharacters = await this._getCollectionCharacters();
+		const collectionFactions = await this._getCollectionFactions(correlationId);
+		const collectionCharacters = await this._getCollectionCharacters(correlationId);
 		const client = await this._getClient();
 		const session = await this._transactionInit(client);
 		try {
@@ -276,7 +276,7 @@ class CleanupMongoRepository extends AppMongoRepository {
 			return response;
 		}
 		catch (err) {
-			return this._transactionAbort(session, null, err);
+			return this._transactionAbort(correlationId, session, null, err);
 		}
 		finally {
 			await this._transactionEnd(session);
@@ -285,10 +285,10 @@ class CleanupMongoRepository extends AppMongoRepository {
 
 
 	async cleanupScenarios(correlationId) {
-		const response = this._initResponse();
+		const response = this._initResponse(correlationId);
 
-		const collectionScenarios = await this._getCollectionScenarios();
-		const collectionCharacters = await this._getCollectionCharacters();
+		const collectionScenarios = await this._getCollectionScenarios(correlationId);
+		const collectionCharacters = await this._getCollectionCharacters(correlationId);
 		const client = await this._getClient();
 		const session = await this._transactionInit(client);
 		try {
@@ -325,7 +325,7 @@ class CleanupMongoRepository extends AppMongoRepository {
 			return response;
 		}
 		catch (err) {
-			return this._transactionAbort(session, null, err);
+			return this._transactionAbort(correlationId, session, null, err);
 		}
 		finally {
 			await this._transactionEnd(session);
@@ -333,9 +333,9 @@ class CleanupMongoRepository extends AppMongoRepository {
 	}
 
 	async cleanupScenarios2(correlationId) {
-		const response = this._initResponse();
+		const response = this._initResponse(correlationId);
 
-		const collectionCharacters = await this._getCollectionCharacters();
+		const collectionCharacters = await this._getCollectionCharacters(correlationId);
 		const client = await this._getClient();
 		const session = await this._transactionInit(client);
 		try {
@@ -379,7 +379,7 @@ class CleanupMongoRepository extends AppMongoRepository {
 			return response;
 		}
 		catch (err) {
-			return this._transactionAbort(session, null, err);
+			return this._transactionAbort(correlationId, session, null, err);
 		}
 		finally {
 			await this._transactionEnd(session);

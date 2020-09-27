@@ -4,77 +4,77 @@ import SharedConstants from '../../common/constants';
 import Service from '@thzero/library_server/service/index';
 
 class UtilityGameSystemsService extends Service {
-	characterByGameSystemId(gameSystemId) {
-		const serviceResponse = this._getServiceByGameSystemId(gameSystemId);
+	characterByGameSystemId(correlationId, gameSystemId) {
+		const serviceResponse = this._getServiceByGameSystemId(correlationId, gameSystemId);
 		if (!serviceResponse.success)
 			return serviceResponse;
 
-		const determineResponse = serviceResponse.results.determineCharactersService()
+		const determineResponse = serviceResponse.results.determineCharactersService(correlationId);
 		if (!determineResponse.success)
-			return this._error('UtilityGameSystemsService', 'characterByGameSystemId', `Invalid character service for gamesystem '${gameSystemId}'.`);
+			return this._error('UtilityGameSystemsService', 'characterByGameSystemId', `Invalid character service for gamesystem '${gameSystemId}'.`, null, null, null, correlationId);
 
 		return determineResponse;
 	}
 
-	characterValidateByGameSystemId(gameSystemId, value, type, params) {
+	characterValidateByGameSystemId(correlationId, gameSystemId, value, type, params) {
 		if (!gameSystemId || !value || !type)
-			return this._error('UtilityGameSystemsService', 'characterValidateByGameSystemId', );
+			return this._error('UtilityGameSystemsService', 'characterValidateByGameSystemId', null, null, null, null, correlationId);
 
-		const serviceResponse = this._getServiceByGameSystemId(gameSystemId);
+		const serviceResponse = this._getServiceByGameSystemId(correlationId, gameSystemId);
 		if (!serviceResponse.success)
 			return serviceResponse;
 
-		const schema = serviceResponse.results.determineCharactersValidation(type)
+		const schema = serviceResponse.results.determineCharactersValidation(correlationId, type)
 		if (!schema)
-			return this._error('UtilityGameSystemsService', 'characterValidateByGameSystemId', `Invalid character validation for gamesystem '${gameSystemId}'.`);
+			return this._error('UtilityGameSystemsService', 'characterValidateByGameSystemId', `Invalid character validation for gamesystem '${gameSystemId}'.`, null, null, null, correlationId);
 
-		return this._serviceValidation.check(schema, value, params, 'characters');
+		return this._serviceValidation.check(correlationId, schema, value, params, 'characters');
 	}
 
-	scenarioByGameSystemId(gameSystemId) {
-		const serviceResponse = this._getServiceByGameSystemId(gameSystemId);
+	scenarioByGameSystemId(correlationId, gameSystemId) {
+		const serviceResponse = this._getServiceByGameSystemId(correlationId, gameSystemId);
 		if (!serviceResponse.success)
 			return serviceResponse;
 
-		const determineResponse = serviceResponse.results.determineScenariosService();
+		const determineResponse = serviceResponse.results.determineScenariosService(correlationId);
 		if (!determineResponse.success)
-			return this._error('UtilityGameSystemsService', 'scenarioByGameSystemId', `Invalid scenario service for gamesystem '${gameSystemId}'.`);
+			return this._error('UtilityGameSystemsService', 'scenarioByGameSystemId', `Invalid scenario service for gamesystem '${gameSystemId}'.`, null, null, null, correlationId);
 
 		return determineResponse;
 	}
 
-	scenarioValidateByGameSystemId(gameSystemId, value, type, params) {
+	scenarioValidateByGameSystemId(correlationId, gameSystemId, value, type, params) {
 		if (!gameSystemId || !value || !type)
-			return this._error('UtilityGameSystemsService', 'scenarioValidateByGameSystemId');
+			return this._error('UtilityGameSystemsService', 'scenarioValidateByGameSystemId', null, null, null, null, correlationId);
 
-		const serviceResponse = this._getServiceByGameSystemId(gameSystemId);
+		const serviceResponse = this._getServiceByGameSystemId(correlationId, gameSystemId);
 		if (!serviceResponse.success)
 			return serviceResponse;
 
-		const schema = serviceResponse.results.determineScenariosValidation(type);
+		const schema = serviceResponse.results.determineScenariosValidation(correlationId, type);
 		if (!schema)
-			return this._error('UtilityGameSystemsService', 'scenarioValidateByGameSystemId', `Invalid scenario validation for gamesystem '${gameSystemId}'.`);
+			return this._error('UtilityGameSystemsService', 'scenarioValidateByGameSystemId', `Invalid scenario validation for gamesystem '${gameSystemId}'.`, null, null, null, correlationId);
 
-		return this._serviceValidation.check(schema, value, params, 'scenarios');
+		return this._serviceValidation.check(correlationId, schema, value, params, 'scenarios');
 	}
 
-	validateByGameSystemId(gameSystemId, value, type, params) {
+	validateByGameSystemId(correlationId, gameSystemId, value, type, params) {
 		if (!gameSystemId || !value || !type)
-			return this._error('UtilityGameSystemsService', 'validateByGameSystemId');
+			return this._error('UtilityGameSystemsService', 'validateByGameSystemId', null, null, null, null, correlationId);
 
-		const serviceResponse = this._getServiceByGameSystemId(gameSystemId);
+		const serviceResponse = this._getServiceByGameSystemId(correlationId, gameSystemId);
 		if (!serviceResponse.success)
 			return serviceResponse;
 
-		const schema = serviceResponse.results.determineValidation(type)
+		const schema = serviceResponse.results.determineValidation(correlationId, type)
 		if (!schema)
-			return this._error('UtilityGameSystemsService', 'validateByGameSystemId', `Invalid validation for gamesystem '${gameSystemId}'.`);
+			return this._error('UtilityGameSystemsService', 'validateByGameSystemId', `Invalid validation for gamesystem '${gameSystemId}'.`, null, null, null, correlationId);
 
-		return this._serviceValidation.check(schema, value, params, 'characters');
+		return this._serviceValidation.check(correlationId, schema, value, params, 'characters');
 	}
 
-	_getServiceByGameSystemId(gameSystemId) {
-		const validationGameSystemIdResponse = this._validateId(gameSystemId, 'gameSystemId');
+	_getServiceByGameSystemId(correlationId, gameSystemId) {
+		const validationGameSystemIdResponse = this._validateId(correlationId, gameSystemId, 'gameSystemId');
 		if (!validationGameSystemIdResponse.success)
 			return validationGameSystemIdResponse;
 
@@ -89,7 +89,7 @@ class UtilityGameSystemsService extends Service {
 				break;
 		}
 
-		return service ? this._successResponse(service) : this._error(`Invalid service for gamesystem '${gameSystemId}'.`);
+		return service ? this._successResponse(service, correlationId) : this._error('UtilityGameSystemsService', '_getServiceByGameSystemId', `Invalid service for gamesystem '${gameSystemId}'.`, null, null, null, correlationId);
 	}
 }
 

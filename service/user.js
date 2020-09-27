@@ -26,7 +26,7 @@ class UserService extends BaseUserService {
 	}
 
 	async fetchFavoritesByGamerId(correlationId, requestedGamerId) {
-		const validationRequestedGamerIdResponse = this._serviceValidation.check(this._serviceValidation.gamerIdSchema, requestedGamerId);
+		const validationRequestedGamerIdResponse = this._serviceValidation.check(correlationId, this._serviceValidation.gamerIdSchema, requestedGamerId);
 		if (!validationRequestedGamerIdResponse.success)
 			return this._errorResponse(validationRequestedGamerIdResponse);
 
@@ -36,7 +36,7 @@ class UserService extends BaseUserService {
 
 		const user = respositoryResponse.results;
 		if (!user || !user.settings || !user.settings.favorites)
-			return this._error('UserService', 'fetchFavoritesByGamerId');
+			return this._error('UserService', 'fetchFavoritesByGamerId', null, null, null, null, correlationId);
 
 		const userIds = [];
 		for (const fav of user.settings.favorites)
@@ -46,7 +46,7 @@ class UserService extends BaseUserService {
 		if (!respositoryUsersResponse.success)
 			return this._errorResponse(respositoryUsersResponse);
 
-		const response = this._initResponse();
+		const response = this._initResponse(correlationId);
 		const users = respositoryUsersResponse.results.data;
 		let user2;
 		for (const fav of user.settings.favorites) {
@@ -70,7 +70,7 @@ class UserService extends BaseUserService {
 		return new UserData();
 	}
 
-	async _updateSettings(requestedSettings) {
+	async _updateSettings(correlationId, requestedSettings) {
 		if (requestedSettings.settings.gamerTag) {
 			requestedSettings.settings.gamerTag = requestedSettings.settings.gamerTag.trim();
 			requestedSettings.settings.gamerTagSearch = AppUtility.generateGamerTagSearch(requestedSettings.settings.gamerTag);
@@ -80,7 +80,7 @@ class UserService extends BaseUserService {
 			requestedSettings.settings.gamerTagSearch = null;
 		}
 
-		return this._success();
+		return this._success(correlationId);
 	}
 
 	async _updateSettingsValidation(correlationId, requestedSettings) {
@@ -88,7 +88,7 @@ class UserService extends BaseUserService {
 		if (!respositoryResponse.success)
 			return this._errorResponse(respositoryResponse);
 
-		const response = this._initResponse();
+		const response = this._initResponse(correlationId);
 		const nameExists = respositoryResponse.results;
 		if (nameExists) {
 			response.add('Name exists', SharedConstants.ErrorCodes.DuplicateGamerTag, SharedConstants.ErrorFields.GamerTag, { objectType: response.paramIl8n('gamerTag') });
@@ -99,23 +99,23 @@ class UserService extends BaseUserService {
 			let validationResponse = null;
 			const entries = Object.entries(requestedSettings.settings.scenarios.additional)
 			for (const [key, value] of entries) {
-				validationResponse = this._validateId(value.id);
+				validationResponse = this._validateId(correlationId, value.id);
 				if (!validationResponse.success)
 					return this._errorResponse(validationResponse);
-				validationResponse = this._validateByGameSystemId(value.id, value, Constants.ValidationSchemaTypes.UserSettingsSchema);
+				validationResponse = this._validateByGameSystemId(correlationId, value.id, value, Constants.ValidationSchemaTypes.UserSettingsSchema);
 				if (!validationResponse.success)
 					return this._errorResponse(validationResponse);
 			}
 		}
 
-		return this._success()
+		return this._success(correlationId);
 	}
 
-	_validateByGameSystemId(gameSystemId, value, type, params) {
+	_validateByGameSystemId(correlationId, gameSystemId, value, type, params) {
 		if (!this._serviceGameSystemsUtility)
-			return this._error('UserService', '_validateByGameSystemId');
+			return this._error('UserService', '_validateByGameSystemId', null, null, null, null, correlationId);
 
-		return this._serviceGameSystemsUtility.validateByGameSystemId(gameSystemId, value, type, params)
+		return this._serviceGameSystemsUtility.validateByGameSystemId(correlationId, gameSystemId, value, type, params)
 	}
 
 	get _repositoryUser() {

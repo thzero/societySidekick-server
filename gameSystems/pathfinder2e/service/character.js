@@ -8,12 +8,12 @@ import Pathfinder2eCharacterBoon from '../../../common/gameSystems/pathfinder2e/
 import Pathfinder2eCharacterScenario from '../../../common/gameSystems/pathfinder2e/data/characterScenario';
 
 class Pathfinder2eCharacterGameSystemsService extends CharacterGameSystemsService {
-	calculateScenario(character, scenario) {
-		this_serviceRules.calculateScenario(scenario);
-		scenario.level = this_serviceRules.calculateScenarioLevel(character, scenario);
+	calculateScenario(correlationId, character, scenario) {
+		this_serviceRules.calculateScenario(correlationId, scenario);
+		scenario.level = this_serviceRules.calculateScenarioLevel(correlationId, character, scenario);
 	}
 
-	deleteBoon(character, boonId) {
+	deleteBoon(correlationId, character, boonId) {
 		if (character.boonAdvancedId == boonId)
 			character.boonAdvancedId = null;
 		if (character.boonFactionId == boonId)
@@ -26,12 +26,12 @@ class Pathfinder2eCharacterGameSystemsService extends CharacterGameSystemsServic
 			character.boonGeneric3Id = null;
 	}
 
-	updateBoon(boon, character, requestedBoon) {
-		super.updateBoon(boon, character, requestedBoon);
+	updateBoon(correlationId, boon, character, requestedBoon) {
+		super.updateBoon(correlationId, boon, character, requestedBoon);
 	}
 
-	updateDetails(character, details) {
-		const response = super.updateDetails(character, details);
+	updateDetails(correlationId, character, details) {
+		const response = super.updateDetails(correlationId, character, details);
 		if (!response.success)
 			return response;
 
@@ -44,14 +44,14 @@ class Pathfinder2eCharacterGameSystemsService extends CharacterGameSystemsServic
 		character.classId = details.classId;
 		character.factionId = details.factionId;
 		character.number = details.number;
-		return this._success();
+		return this._success(correlationId);
 	}
 
-	updateScenario(scenario, character, requestedScenario) {
-		super.updateScenario(scenario, character, requestedScenario);
+	updateScenario(correlationId, scenario, character, requestedScenario) {
+		super.updateScenario(correlationId, scenario, character, requestedScenario);
 
-		this._updateScenarioBoons(character, requestedScenario.boon1Id, scenario.boon1Id);
-		this._updateScenarioBoons(character, requestedScenario.boon2Id, scenario.boon2Id);
+		this._updateScenarioBoons(correlationId, character, requestedScenario.boon1Id, scenario.boon1Id);
+		this._updateScenarioBoons(correlationId, character, requestedScenario.boon2Id, scenario.boon2Id);
 
 		scenario.achievementPointsEarned = requestedScenario.achievementPointsEarned;
 		scenario.achievementPointsSpent = requestedScenario.achievementPointsSpent;
@@ -92,7 +92,7 @@ class Pathfinder2eCharacterGameSystemsService extends CharacterGameSystemsServic
 		return this._injector.getService(Constants.InjectorKeys.SERVICE_GAMESYSTEMS_RULES_PATHFINDER_2E);
 	}
 
-	_updateScenarioBoons(character, requestedScenarioBoonId, scenarioBoonId) {
+	_updateScenarioBoons(correlationId, character, requestedScenarioBoonId, scenarioBoonId) {
 		if (requestedScenarioBoonId === scenarioBoonId)
 			return;
 

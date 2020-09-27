@@ -2,18 +2,18 @@ import AppMongoRepository from './app';
 
 class CharactersMongoRepository extends AppMongoRepository {
 	async create(correlationId, userId, character) {
-		const response = this._initResponse();
+		const response = this._initResponse(correlationId);
 
 		const client = await this._getClient();
 		const session = await client.startSession();
 		try {
 			session.startTransaction();
 
-			const collection = await this._getCollectionCharacters();
+			const collection = await this._getCollectionCharacters(correlationId);
 
 			const responseC = await this._create(collection, userId, character);
 			if (!responseC || !responseC.success)
-				return this._transactionAbort(session, 'Unable to insert the value');
+				return this._transactionAbort(correlationId, session, 'Unable to insert the value');
 
 			response.results = character;
 
@@ -22,7 +22,7 @@ class CharactersMongoRepository extends AppMongoRepository {
 		}
 		catch (err) {
 			await session.abortTransaction();
-			return this._error('CharactersMongoRepository', 'create', null, err);
+			return this._error('CharactersMongoRepository', 'create', null, err, null, null, correlationId);
 		}
 		finally {
 			session.endSession();
@@ -30,25 +30,25 @@ class CharactersMongoRepository extends AppMongoRepository {
 	}
 
 	async delete(correlationId, userId, characterId) {
-		const response = this._initResponse();
+		const response = this._initResponse(correlationId);
 
 		const client = await this._getClient();
 		const session = await client.startSession();
 		try {
 			session.startTransaction();
 
-			const collection = await this._getCollectionCharacters();
+			const collection = await this._getCollectionCharacters(correlationId);
 
 			const responseC = await this._delete(collection, { $and: [ { 'userId' : userId }, { 'id': characterId } ] });
 			if (!responseC || !responseC.success)
-				return this._transactionAbort(session, 'Unable to delete the value');
+				return this._transactionAbort(correlationId, session, 'Unable to delete the value');
 
 			await session.commitTransaction();
 			return response;
 		}
 		catch (err) {
 			await session.abortTransaction();
-			return this._error('CharactersMongoRepository', 'delete', null, err);
+			return this._error('CharactersMongoRepository', 'delete', null, err, null, null, correlationId);
 		}
 		finally {
 			session.endSession();
@@ -56,8 +56,8 @@ class CharactersMongoRepository extends AppMongoRepository {
 	}
 
 	async fetch(correlationId, userId, characterId) {
-		const collection = await this._getCollectionCharacters();
-		const response = this._initResponse();
+		const collection = await this._getCollectionCharacters(correlationId);
+		const response = this._initResponse(correlationId);
 
 		const query = [
 			{
@@ -77,8 +77,8 @@ class CharactersMongoRepository extends AppMongoRepository {
 	}
 
 	async fetchNumber(correlationId, userId, gameSystemId) {
-		const collection = await this._getCollectionCharacters();
-		const response = this._initResponse();
+		const collection = await this._getCollectionCharacters(correlationId);
+		const response = this._initResponse(correlationId);
 		const cursor = await this._find(collection, {
 			$and: [ { 'userId' : userId }, { 'gameSystemId': gameSystemId } ]
 		}, {
@@ -159,8 +159,8 @@ class CharactersMongoRepository extends AppMongoRepository {
 		try {
 			session.startTransaction();
 
-			const collection = await this._getCollectionCharacters();
-			const response = this._initResponse();
+			const collection = await this._getCollectionCharacters(correlationId);
+			const response = this._initResponse(correlationId);
 
 			character.userId = userId;
 			await this._update(collection, userId, character.id, character);
@@ -171,7 +171,7 @@ class CharactersMongoRepository extends AppMongoRepository {
 		}
 		catch (err) {
 			await session.abortTransaction();
-			return this._error('CharactersMongoRepository', 'update', null, err);
+			return this._error('CharactersMongoRepository', 'update', null, err, null, null, correlationId);
 		}
 		finally {
 			session.endSession();
@@ -179,8 +179,8 @@ class CharactersMongoRepository extends AppMongoRepository {
 	}
 
 	async valid(correlationId, userId, gameSystemId, characterId, name, number) {
-		const collection = await this._getCollectionCharacters();
-		const response = this._initResponse();
+		const collection = await this._getCollectionCharacters(correlationId);
+		const response = this._initResponse(correlationId);
 		const total = await collection.countDocuments({ $and: [ { 'userId' : userId }, { 'gameSystemId' : gameSystemId } ] });
 		const countName = await collection.countDocuments({ $and: [ { $text : { $search : name } }, { 'id': { $ne: characterId } }, { 'userId' : userId }, { 'gameSystemId' : gameSystemId } ] });
 		const countNumber = await collection.countDocuments({ $and: [ { 'number' : number }, { 'id': { $ne: characterId } }, { 'userId' : userId }, { 'gameSystemId' : gameSystemId } ] });
@@ -189,8 +189,8 @@ class CharactersMongoRepository extends AppMongoRepository {
 	}
 
 	async _listing(correlationId, queryF, queryA, sections) {
-		const collection = await this._getCollectionCharacters();
-		const response = this._initResponse();
+		const collection = await this._getCollectionCharacters(correlationId);
+		const response = this._initResponse(correlationId);
 
 		if (sections) {
 			let projection = null;
@@ -273,7 +273,7 @@ class CharactersMongoRepository extends AppMongoRepository {
 				queryA.push({ $project: projection });
 		}
 
-		response.results = await this._aggregateExtract(await this._find(collection, queryF), await this._aggregate(collection, queryA), this._initResponseExtract());
+		response.results = await this._aggregateExtract(await this._find(collection, queryF), await this._aggregate(collection, queryA), this._initResponseExtract(correlationId));
 		return response;
 	}
 }

@@ -2,9 +2,9 @@ import AppMongoRepository from './app';
 
 class GameSystemsMongoRepository extends AppMongoRepository {
 	async listing(correlationId) {
-		const collection = await this._getCollectionGameSystems();
-		const response = this._initResponse();
-		response.results = await this._fetchExtract(await this._find(collection, {}), this._initResponseExtract());
+		const collection = await this._getCollectionGameSystems(correlationId);
+		const response = this._initResponse(correlationId);
+		response.results = await this._fetchExtract(await this._find(collection, {}), this._initResponseExtract(correlationId));
 		return response;
 	}
 }
