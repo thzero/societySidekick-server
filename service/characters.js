@@ -31,17 +31,17 @@ class CharactersService extends Service {
 	async create(correlationId, user, requestedCharacter) {
 		const validationResponse = this._validateUser(correlationId, user);
 		if (!validationResponse.success)
-			return this._errorResponse(validationResponse);
+			return validationResponse;
 
 		this._logger.debug('CharactersService', 'create', 'character', requestedCharacter, null, correlationId);
 
 		const validationCheckCharacterNewResponse = this._serviceValidation.check(correlationId, this._serviceValidation.characterNewSchema, requestedCharacter, null, 'characters');
 		if (!validationCheckCharacterNewResponse.success)
-			return this._errorResponse(validationCheckCharacterNewResponse);
+			return validationCheckCharacterNewResponse;
 
 		const validResponse = await this.valid(correlationId, user, requestedCharacter.gameSystemId, null, requestedCharacter.name, requestedCharacter.number, true);
 		if (!validResponse.success)
-			return this._errorResponse(validResponse);
+			return validResponse;
 
 		const serviceResponse = this._characterServiceByGameSystemId(correlationId, requestedCharacter.gameSystemId);
 		if (!serviceResponse.success)
@@ -52,15 +52,15 @@ class CharactersService extends Service {
 
 		const calculateResponse = await this._calculate(correlationId, requestedCharacter.gameSystemId, character, user);
 		if (!calculateResponse.success)
-			return this._errorResponse(calculateResponse);
+			return calculateResponse;
 
 		const respositoryResponse = await this._repositoryCharacters.create(correlationId, user.id, character);
 		if (!respositoryResponse.success)
-			return this._errorResponse(respositoryResponse);
+			return respositoryResponse;
 
 		const userSettingsResponse = await this._updateSettings(correlationId, user, user.settings);
 		if (!userSettingsResponse.success)
-			return this._errorResponse(userSettingsResponse);
+			return userSettingsResponse;
 
 		return respositoryResponse;
 	}
@@ -72,11 +72,11 @@ class CharactersService extends Service {
 	async delete(correlationId, user, characterId) {
 		const validationResponse = this._validateUser(correlationId, user);
 		if (!validationResponse.success)
-			return this._errorResponse(validationResponse);
+			return validationResponse;
 
 		const validationCharacterIdResponse = this._validateId(correlationId, characterId, 'characters');
 		if (!validationCharacterIdResponse.success)
-			return this._errorResponse(validationCharacterIdResponse);
+			return validationCharacterIdResponse;
 
 		const respositoryFetchResponse = await this._repositoryCharacters.fetch(correlationId, user.id, characterId);
 		if (!respositoryFetchResponse.success)
@@ -84,24 +84,21 @@ class CharactersService extends Service {
 			return this._error('CharactersService', 'delete', null, null, null, null, correlationId).addGeneric('Invalid permissions', SharedConstants.ErrorCodes.InvalidPermissions);
 
 		const respositoryResponse = await this._repositoryCharacters.delete(correlationId, user.id, characterId);
-		if (!respositoryResponse.success)
-			return this._errorResponse(respositoryResponse);
-
 		return respositoryResponse;
 	}
 
 	async deleteBoon(correlationId, user, characterId, boonId) {
 		const validationResponse = this._validateUser(correlationId, user);
 		if (!validationResponse.success)
-			return this._errorResponse(validationResponse);
+			return validationResponse;
 
 		const validationCharacterIdResponse = this._validateId(correlationId, characterId, 'characters');
 		if (!validationCharacterIdResponse.success)
-			return this._errorResponse(validationCharacterIdResponse);
+			return validationCharacterIdResponse;
 
 		const validationBoonIdResponse = this._validateId(correlationId, boonId, 'characters');
 		if (!validationBoonIdResponse.success)
-			return this._errorResponse(validationBoonIdResponse);
+			return validationBoonIdResponse;
 
 		const respositoryFetchResponse = await this._repositoryCharacters.fetch(correlationId, user.id, characterId);
 		if (!respositoryFetchResponse.success)
@@ -124,31 +121,28 @@ class CharactersService extends Service {
 
 		const calculateResponse = await this._calculate(correlationId, character.gameSystemId, character, user);
 		if (!calculateResponse.success)
-			return this._errorResponse(calculateResponse);
+			return calculateResponse;
 
 		const respositoryResponse = await this._repositoryCharacters.update(correlationId, user.id, character);
 		if (!respositoryResponse.success)
-			return this._errorResponse(respositoryResponse);
+			return respositoryResponse;
 
 		const userSettingsResponse = await this._updateSettings(correlationId, user, user.settings);
-		if (!userSettingsResponse.success)
-			return this._errorResponse(userSettingsResponse);
-
 		return respositoryResponse;
 	}
 
 	async deleteInventory(correlationId, user, characterId, inventoryId) {
 		const validationResponse = this._validateUser(correlationId, user);
 		if (!validationResponse.success)
-			return this._errorResponse(validationResponse);
+			return validationResponse;
 
 		const validationCharacterIdResponse = this._validateId(correlationId, characterId, 'characters');
 		if (!validationCharacterIdResponse.success)
-			return this._errorResponse(validationCharacterIdResponse);
+			return validationCharacterIdResponse;
 
 		const validationInventoryIdResponse = this._validateId(correlationId, inventoryId, 'characters');
 		if (!validationInventoryIdResponse.success)
-			return this._errorResponse(validationInventoryIdResponse);
+			return validationInventoryIdResponse;
 
 		const respositoryFetchResponse = await this._repositoryCharacters.fetch(correlationId, user.id, characterId);
 		if (!respositoryFetchResponse.success)
@@ -166,31 +160,28 @@ class CharactersService extends Service {
 
 		const calculateResponse = await this._calculate(correlationId, character.gameSystemId, character, user);
 		if (!calculateResponse.success)
-			return this._errorResponse(calculateResponse);
+			return calculateResponse;
 
 		const respositoryResponse = await this._repositoryCharacters.update(correlationId, user.id, character);
 		if (!respositoryResponse.success)
-			return this._errorResponse(respositoryResponse);
+			return respositoryResponse;
 
 		const userSettingsResponse = await this._updateSettings(correlationId, user, user.settings);
-		if (!userSettingsResponse.success)
-			return this._errorResponse(userSettingsResponse);
-
 		return respositoryResponse;
 	}
 
 	async deleteScenario(correlationId, user, characterId, scenarioId) {
 		const validationResponse = this._validateUser(correlationId, user);
 		if (!validationResponse.success)
-			return this._errorResponse(validationResponse);
+			return validationResponse;
 
 		const validationCharacterIdResponse = this._validateId(correlationId, characterId, 'characters');
 		if (!validationCharacterIdResponse.success)
-			return this._errorResponse(validationCharacterIdResponse);
+			return validationCharacterIdResponse;
 
 		const validationScenarioIdResponse = this._validateId(correlationId, scenarioId, 'characters');
 		if (!validationScenarioIdResponse.success)
-			return this._errorResponse(validationScenarioIdResponse);
+			return validationScenarioIdResponse;
 
 		const respositoryFetchResponse = await this._repositoryCharacters.fetch(correlationId, user.id, characterId);
 		if (!respositoryFetchResponse.success)
@@ -208,16 +199,13 @@ class CharactersService extends Service {
 
 		const calculateResponse = await this._calculate(correlationId, character.gameSystemId, character, user);
 		if (!calculateResponse.success)
-			return this._errorResponse(calculateResponse);
+			return calculateResponse;
 
 		const respositoryResponse = await this._repositoryCharacters.update(correlationId, user.id, character);
 		if (!respositoryResponse.success)
-			return this._errorResponse(respositoryResponse);
+			return respositoryResponse;
 
 		const userSettingsResponse = await this._updateSettings(correlationId, user, user.settings);
-		if (!userSettingsResponse.success)
-			return this._errorResponse(userSettingsResponse);
-
 		return respositoryResponse;
 	}
 
@@ -225,33 +213,27 @@ class CharactersService extends Service {
 		if (user) {
 			const userValidationResponse = this._validateUser(correlationId, user);
 			if (!userValidationResponse.success)
-				return this._errorResponse(userValidationResponse);
+				return userValidationResponse;
 		}
 
 		const validationCharacterIdResponse = this._validateId(correlationId, characterId, 'characters');
 		if (!validationCharacterIdResponse.success)
-			return this._errorResponse(validationCharacterIdResponse);
+			return validationCharacterIdResponse;
 
 		const respositoryResponse = await this._repositoryCharacters.fetch(correlationId, user ? user.id : null, characterId);
-		if (!respositoryResponse.success)
-			return this._errorResponse(respositoryResponse);
-
 		return respositoryResponse;
 	}
 
 	async fetchNumber(correlationId, user, gameSystemId) {
 		const userValidationResponse = this._validateUser(correlationId, user);
 		if (!userValidationResponse.success)
-			return this._errorResponse(userValidationResponse);
+			return userValidationResponse;
 
 		const validationGameSystemIdResponse = this._validateId(correlationId, gameSystemId, 'gameSystemId');
 		if (!validationGameSystemIdResponse.success)
-			return this._errorResponse(validationGameSystemIdResponse);
+			return validationGameSystemIdResponse;
 
 		const respositoryResponse = await this._repositoryCharacters.fetchNumber(correlationId, user.id, gameSystemId);
-		if (!respositoryResponse.success)
-			return this._errorResponse(respositoryResponse);
-
 		return respositoryResponse;
 	}
 
@@ -262,7 +244,7 @@ class CharactersService extends Service {
 		if (user) {
 			const validationResponse = this._validateUser(correlationId, user);
 			if (!validationResponse.success)
-				return this._errorResponse(validationResponse);
+				return validationResponse;
 
 			if (!user.plan)
 				return this._error('CharactersService', 'initialize', 'Invalid user plan', null, null, null, correlationId);
@@ -270,34 +252,28 @@ class CharactersService extends Service {
 		}
 
 		const statusResponse = this._getStatus(correlationId);
-		if (!statusResponse.success)
-			this._errorResponse(statusResponse);
 		response.results.status = statusResponse.results;
-
 		return response;
 	}
 
 	async listing(correlationId, user, sections) {
 		const validationResponse = this._validateUser(correlationId, user);
 		if (!validationResponse.success)
-			return this._errorResponse(validationResponse);
+			return validationResponse;
 
 		const respositoryResponse = await this._repositoryCharacters.listing(correlationId, user.id, sections);
-		if (!respositoryResponse.success)
-			return this._errorResponse(respositoryResponse);
-
 		return respositoryResponse;
 	}
 
 	async listingByFavorites(correlationId, user) {
 		const validationResponse = this._validateUser(correlationId, user);
 		if (!validationResponse.success)
-			return this._errorResponse(validationResponse);
+			return validationResponse;
 
 		const favorites = user.settings.favorites;
 		const respositoryResponse = await this._repositoryCharacters.listingFavorites(correlationId, user.id, favorites);
 		if (!respositoryResponse.success)
-			return this._errorResponse(respositoryResponse);
+			return respositoryResponse;
 
 		const service = this._injector.getService(LibraryConstants.InjectorKeys.SERVICE_USERS);
 
@@ -316,79 +292,70 @@ class CharactersService extends Service {
 	async listingByGamerId(correlationId, user, requestedUserGamerId, requestedGameSystemId) {
 		const validationRequestedGamerIdResponse = this._serviceValidation.check(correlationId, this._serviceValidation.gamerIdSchema, requestedUserGamerId);
 		if (!validationRequestedGamerIdResponse.success)
-			return this._errorResponse(validationRequestedGamerIdResponse);
+			return validationRequestedGamerIdResponse;
 
 		const service = this._injector.getService(LibraryConstants.InjectorKeys.SERVICE_USERS);
 		const validationUserResponse = await service.fetchByGamerId(correlationId, requestedUserGamerId);
 		if (!validationUserResponse.success)
-			return this._errorResponse(validationUserResponse);
+			return validationUserResponse;
 
 		const userId = validationUserResponse.results.id;
 		const validationIdResponse = this._validateId(correlationId, userId);
 		if (!validationIdResponse.success)
-			return this._errorResponse(validationIdResponse);
+			return validationIdResponse;
 
 		const respositoryResponse = await this._repositoryCharacters.listingExternal(correlationId, userId, requestedGameSystemId);
-		if (!respositoryResponse.success)
-			return this._errorResponse(respositoryResponse);
-
 		return respositoryResponse;
 	}
 
 	async listingByGamerTag(correlationId, user, requestedUserGamerTag, requestedGameSystemId) {
 		const validationRequestedGamerTagResponse = this._serviceValidation.check(correlationId, this._serviceValidation.gamerTagSchema, requestedUserGamerTag);
 		if (!validationRequestedGamerTagResponse.success)
-			return this._errorResponse(validationRequestedGamerTagResponse);
+			return validationRequestedGamerTagResponse;
 
 		const service = this._injector.getService(LibraryConstants.InjectorKeys.SERVICE_USERS);
 		const validationUserResponse = await service.fetchByGamerTag(correlationId, requestedUserGamerTag);
 		if (!validationUserResponse.success)
-			return this._errorResponse(validationUserResponse);
+			return validationUserResponse;
 
 		const userId = validationUserResponse.results.id;
 		const validationIdResponse = this._validateId(correlationId, userId);
 		if (!validationIdResponse.success)
-			return this._errorResponse(validationIdResponse);
+			return validationIdResponse;
 
 		const respositoryResponse = await this._repositoryCharacters.listingExternal(correlationId, userId, requestedGameSystemId);
-		if (!respositoryResponse.success)
-			return this._errorResponse(respositoryResponse);
-
 		return respositoryResponse;
 	}
 
 	async listingByGameSystem(correlationId, user, gameSystetmId, sections) {
 		const validationResponse = this._validateUser(correlationId, user);
 		if (!validationResponse.success)
-			return this._errorResponse(validationResponse);
+			return validationResponse;
 
 		const validationGameSystemIdResponse = this._validateId(correlationId, gameSystetmId, 'gameSystetmId');
 		if (!validationGameSystemIdResponse.success)
-			return this._errorResponse(validationGameSystemIdResponse);
+			return validationGameSystemIdResponse;
 
 		const respositoryResponse = await this._repositoryCharacters.listing(correlationId, user.id, sections, gameSystetmId);
-		if (!respositoryResponse.success)
-			return this._errorResponse(respositoryResponse);
-
 		return respositoryResponse;
 	}
 
 	async loadInventory(correlationId, user, characterId, gearSetId) {
 		const validationResponse = this._validateUser(correlationId, user);
 		if (!validationResponse.success)
-			return this._errorResponse(validationResponse);
+			return validationResponse;
 
 		const validationCharacterIdResponse = this._validateId(correlationId, characterId, 'characters');
 		if (!validationCharacterIdResponse.success)
-			return this._errorResponse(validationCharacterIdResponse);
+			return validationCharacterIdResponse;
 
 		const validationGearsetIdResponse = this._validateId(correlationId, gearSetId, 'characters');
 		if (!validationGearsetIdResponse.success)
-			return this._errorResponse(validationGearsetIdResponse);
+			return validationGearsetIdResponse;
 
 		const fetchRespositoryResponse = await this._repositoryCharacters.fetch(correlationId, user.id, characterId);
 		if (!fetchRespositoryResponse.success)
-			return this._errorResponse(fetchRespositoryResponse);
+			return fetchRespositoryResponse;
 
 		const character = fetchRespositoryResponse.results;
 
@@ -412,27 +379,24 @@ class CharactersService extends Service {
 
 		const calculateResponse = await this._calculate(correlationId, character.gameSystemId, character, user);
 		if (!calculateResponse.success)
-			return this._errorResponse(calculateResponse);
+			return calculateResponse;
 
 		const respositoryResponse = await this._repositoryCharacters.update(correlationId, user.id, character);
 		if (!respositoryResponse.success)
-			return this._errorResponse(respositoryResponse);
+			return respositoryResponse;
 
 		const userSettingsResponse = await this._updateSettings(correlationId, user, user.settings);
-		if (!userSettingsResponse.success)
-			return this._errorResponse(userSettingsResponse);
-
 		return respositoryResponse;
 	}
 
 	async playedScenarios(correlationId, user, characterId) {
 		const validationResponse = this._validateUser(correlationId, user);
 		if (!validationResponse.success)
-			return this._errorResponse(validationResponse);
+			return validationResponse;
 
 		const validationCharacterIdResponse = this._validateId(correlationId, characterId, 'characters');
 		if (!validationCharacterIdResponse.success)
-			return this._errorResponse(validationCharacterIdResponse);
+			return validationCharacterIdResponse;
 
 		const respositoryFetchResponse = await this._repositoryCharacters.fetch(correlationId, user.id, characterId);
 		if (!respositoryFetchResponse.success)
@@ -443,12 +407,12 @@ class CharactersService extends Service {
 
 		const respositoryListingResponse = await this._repositoryCharacters.listing(correlationId, user.id);
 		if (!respositoryListingResponse.success)
-			return this._errorResponse(respositoryListingResponse);
+			return respositoryListingResponse;
 
 		const service = this._injector.getService(Constants.InjectorKeys.SERVICE_SCENARIOS);
 		const respositoryScenarioListingResponse = await service.listing(correlationId, character.gameSystemId);
 		if (!respositoryScenarioListingResponse.success)
-			return this._errorResponse(respositoryScenarioListingResponse);
+			return respositoryScenarioListingResponse;
 
 		const scenarios = respositoryScenarioListingResponse.results;
 
@@ -481,11 +445,11 @@ class CharactersService extends Service {
 	async updateBoon(correlationId, user, characterId, requestedBoon) {
 		const validationResponse = this._validateUser(correlationId, user);
 		if (!validationResponse.success)
-			return this._errorResponse(validationResponse);
+			return validationResponse;
 
 		const validationCharacterIdResponse = this._validateId(correlationId, characterId, 'characters');
 		if (!validationCharacterIdResponse.success)
-			return this._errorResponse(validationCharacterIdResponse);
+			return validationCharacterIdResponse;
 
 		if (!requestedBoon)
 			return this._error('CharactersService', 'updateBoon', null, null, null, null, correlationId);
@@ -494,11 +458,11 @@ class CharactersService extends Service {
 
 		const validationGameSystemIdResponse = this._characterValidateByGameSystemId(correlationId, requestedBoon.gameSystemId, requestedBoon, isNew ? Constants.ValidationSchemaTypes.CharacterBoonCreate : Constants.ValidationSchemaTypes.CharacterBoonUpdate);
 		if (!validationGameSystemIdResponse.success)
-			return this._errorResponse(validationGameSystemIdResponse);
+			return validationGameSystemIdResponse;
 
 		const fetchRespositoryResponse = await this._repositoryCharacters.fetch(correlationId, user.id, characterId);
 		if (!fetchRespositoryResponse.success)
-			return this._errorResponse(fetchRespositoryResponse);
+			return fetchRespositoryResponse;
 
 		const character = fetchRespositoryResponse.results;
 
@@ -508,38 +472,35 @@ class CharactersService extends Service {
 
 		const updateResponse = this._updateBoon(correlationId, requestedBoon.gameSystemId, character, requestedBoon);
 		if (!updateResponse.success)
-			return this._errorResponse(updateResponse);
+			return updateResponse;
 
 		const respositoryResponse = await this._repositoryCharacters.update(correlationId, user.id, character);
-		if (!respositoryResponse.success)
-			return this._errorResponse(respositoryResponse);
-
 		return respositoryResponse;
 	}
 
 	async updateDetails(correlationId, user, characterId, details) {
 		const validationResponse = this._validateUser(correlationId, user);
 		if (!validationResponse.success)
-			return this._errorResponse(validationResponse);
+			return validationResponse;
 
 		const validationCharacterIdResponse = this._validateId(correlationId, characterId, 'characters');
 		if (!validationCharacterIdResponse.success)
-			return this._errorResponse(validationCharacterIdResponse);
+			return validationCharacterIdResponse;
 
 		if (!details)
 			return this._error('CharactersService', 'updateDetails', null, null, null, null, correlationId);
 
 		const validationGameSystemIdResponse = this._characterValidateByGameSystemId(correlationId, details.gameSystemId, details, Constants.ValidationSchemaTypes.CharacterDetailsUpdate);
 		if (!validationGameSystemIdResponse.success)
-			return this._errorResponse(validationResponse);
+			return validationGameSystemIdResponse;
 
 		const validResponse = await this.valid(correlationId, user, details.gameSystemId, details.id, details.name, details.number, false);
 		if (!validResponse.success)
-			return this._errorResponse(validResponse);
+			return validResponse;
 
 		const fetchRespositoryResponse = await this._repositoryCharacters.fetch(correlationId, user.id, characterId);
 		if (!fetchRespositoryResponse.success)
-			return this._errorResponse(fetchRespositoryResponse);
+			return fetchRespositoryResponse;
 
 		const character = fetchRespositoryResponse.results;
 		const validTimestampResponse = this._checkUpdatedTimestamp(correlationId, character, details, 'characters');
@@ -562,27 +523,24 @@ class CharactersService extends Service {
 
 		const calculateResponse = await this._calculate(correlationId, character.gameSystemId, character, user);
 		if (!calculateResponse.success)
-			return this._errorResponse(calculateResponse);
+			return calculateResponse;
 
 		const respositoryResponse = await this._repositoryCharacters.update(correlationId, user.id, character);
 		if (!respositoryResponse.success)
-			return this._errorResponse(respositoryResponse);
+			return respositoryResponse;
 
 		const userSettingsResponse = await this._updateSettings(correlationId, user, user.settings);
-		if (!userSettingsResponse.success)
-			return this._errorResponse(userSettingsResponse);
-
 		return respositoryResponse;
 	}
 
 	async updateInventory(correlationId, user, characterId, requestedInventory) {
 		const validationResponse = this._validateUser(correlationId, user);
 		if (!validationResponse.success)
-			return this._errorResponse(validationResponse);
+			return validationResponse;
 
 		const validationCharacterIdResponse = this._validateId(correlationId, characterId, 'characters');
 		if (!validationCharacterIdResponse.success)
-			return this._errorResponse(validationCharacterIdResponse);
+			return validationCharacterIdResponse;
 
 		if (!requestedInventory)
 			return this._error('CharactersService', 'updateInventory', null, null, null, null, correlationId);
@@ -591,11 +549,11 @@ class CharactersService extends Service {
 
 		const validationGameSystemIdResponse = this._characterValidateByGameSystemId(correlationId, requestedInventory.gameSystemId, requestedInventory, isNew ? Constants.ValidationSchemaTypes.CharacterInventoryCreate : Constants.ValidationSchemaTypes.CharacterInventoryUpdate);
 		if (!validationGameSystemIdResponse.success)
-			return this._errorResponse(validationGameSystemIdResponse);
+			return validationGameSystemIdResponse;
 
 		const fetchRespositoryResponse = await this._repositoryCharacters.fetch(correlationId, user.id, characterId);
 		if (!fetchRespositoryResponse.success)
-			return this._errorResponse(fetchRespositoryResponse);
+			return fetchRespositoryResponse;
 
 		const character = fetchRespositoryResponse.results;
 
@@ -605,31 +563,28 @@ class CharactersService extends Service {
 
 		const updateResponse = this._updateInventory(correlationId, requestedInventory.gameSystemId, character, requestedInventory);
 		if (!updateResponse.success)
-			return this._errorResponse(updateResponse);
+			return updateResponse;
 
 		const calculateResponse = await this._calculate(correlationId, character.gameSystemId, character, user);
 		if (!calculateResponse.success)
-			return this._errorResponse(calculateResponse);
+			return calculateResponse;
 
 		const respositoryResponse = await this._repositoryCharacters.update(correlationId, user.id, character);
 		if (!respositoryResponse.success)
-			return this._errorResponse(respositoryResponse);
+			return respositoryResponse;
 
 		const userSettingsResponse = await this._updateSettings(correlationId, user, user.settings);
-		if (!userSettingsResponse.success)
-			return this._errorResponse(userSettingsResponse);
-
 		return respositoryResponse;
 	}
 
 	async updateScenario(correlationId, user, characterId, requestedScenario) {
 		const validationResponse = this._validateUser(correlationId, user);
 		if (!validationResponse.success)
-			return this._errorResponse(validationResponse);
+			return validationResponse;
 
 		const validationCharacterIdResponse = this._validateId(correlationId, characterId, 'characters');
 		if (!validationCharacterIdResponse.success)
-			return this._errorResponse(validationCharacterIdResponse);
+			return validationCharacterIdResponse;
 
 		if (!requestedScenario)
 			return this._error('CharactersService', 'updateScenario', null, null, null, null, correlationId);
@@ -638,11 +593,11 @@ class CharactersService extends Service {
 
 		const validationGameSystemIdResponse = this._characterValidateByGameSystemId(correlationId, requestedScenario.gameSystemId, requestedScenario, isNew ? Constants.ValidationSchemaTypes.CharacterScenarioCreate : Constants.ValidationSchemaTypes.CharacterScenarioUpdate);
 		if (!validationGameSystemIdResponse.success)
-			return this._errorResponse(validationGameSystemIdResponse);
+			return validationGameSystemIdResponse;
 
 		const fetchRespositoryResponse = await this._repositoryCharacters.fetch(correlationId, user.id, characterId);
 		if (!fetchRespositoryResponse.success)
-			return this._errorResponse(fetchRespositoryResponse);
+			return fetchRespositoryResponse;
 
 		const character = fetchRespositoryResponse.results;
 
@@ -662,27 +617,24 @@ class CharactersService extends Service {
 
 		const updateResponse = this._updateScenario(correlationId, requestedScenario.gameSystemId, character, requestedScenario);
 		if (!updateResponse.success)
-			return this._errorResponse(updateResponse);
+			return updateResponse;
 
 		const calculateResponse = await this._calculate(correlationId, character.gameSystemId, character, user);
 		if (!calculateResponse.success)
-			return this._errorResponse(calculateResponse);
+			return calculateResponse;
 
 		const respositoryResponse = await this._repositoryCharacters.update(correlationId, user.id, character);
 		if (!respositoryResponse.success)
-			return this._errorResponse(respositoryResponse);
+			return respositoryResponse;
 
 		const userSettingsResponse = await this._updateSettings(correlationId, user, user.settings);
-		if (!userSettingsResponse.success)
-			return this._errorResponse(userSettingsResponse);
-
 		return respositoryResponse;
 	}
 
 	async valid(correlationId, user, gameSystemId, characterId, name, number, quotaCheck) {
 		const validationResponse = this._validateUser(correlationId, user);
 		if (!validationResponse.success)
-			return this._errorResponse(validationResponse);
+			return validationResponse;
 
 		this._logger.debug('CharactersService', 'valid', 'name', name, null, correlationId);
 		if (String.isNullOrEmpty(name))
@@ -693,11 +645,11 @@ class CharactersService extends Service {
 
 		const validationCheckNameResponse = this._serviceValidation.check(correlationId, this._serviceValidation.nameSchema, name, null, 'characters');
 		if (!validationCheckNameResponse.success)
-			return this._errorResponse(validationCheckNameResponse);
+			return validationCheckNameResponse;
 
 		const respositoryResponse = await this._repositoryCharacters.valid(correlationId, user.id, gameSystemId, characterId, name, number);
 		if (!respositoryResponse.success)
-			return this._errorResponse(respositoryResponse);
+			return respositoryResponse;
 
 		this._logger.debug('CharactersService', 'valid', 'count', respositoryResponse.results.count, null, correlationId);
 		this._logger.debug('CharactersService', 'valid', 'total', respositoryResponse.results.total, null, correlationId);

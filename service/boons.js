@@ -17,9 +17,6 @@ class BoonsService extends Service {
 
 	async listing(correlationId, gameSystemId) {
 		const respositoryResponse = await this._repositoryBoons.listing(correlationId, gameSystemId);
-		if (!respositoryResponse.success)
-			return this._errorResponse(respositoryResponse);
-
 		return respositoryResponse;
 	}
 }

@@ -20,9 +20,6 @@ class EquipmentService extends Service {
 			return validationGameSystemIdResponse;
 
 		const respositoryResponse = await this._repositoryEquipment.search(correlationId, gameSystemId, search);
-		if (!respositoryResponse.success)
-			return this._errorResponse(respositoryResponse);
-
 		return respositoryResponse;
 	}
 }

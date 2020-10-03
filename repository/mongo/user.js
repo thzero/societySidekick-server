@@ -9,12 +9,12 @@ class UserMongoRepository extends BaseUserMongoRepository {
 		const response = this._initResponse(correlationId);
 
 		const collectionUsers = await this._getCollectionUsers(correlationId);
-		response.results = await this._findOne(collectionUsers, { 'external.id': userId });
+		response.results = await this._findOne(correlationId, collectionUsers, { 'external.id': userId });
 		response.success = response.results !== null;
 
 		if (!excludePlan && response && response.success && response.results) {
 			const collectionPlan = await this._getCollectionPlans(correlationId);
-			response.results.plan = await this._findOne(collectionPlan, { 'id': response.results.planId }, {
+			response.results.plan = await this._findOne(correlationId, collectionPlan, { 'id': response.results.planId }, {
 				'roles': 0
 			});
 		}
@@ -30,7 +30,7 @@ class UserMongoRepository extends BaseUserMongoRepository {
 			projection = this._byGamerProjection();
 
 		const collectionUsers = await this._getCollectionUsers(correlationId);
-		response.results = await this._findOne(collectionUsers, { 'id': gamerId }, projection);
+		response.results = await this._findOne(correlationId, collectionUsers, { 'id': gamerId }, projection);
 		response.success = response.results !== null;
 
 		return response;
@@ -40,7 +40,7 @@ class UserMongoRepository extends BaseUserMongoRepository {
 		const response = this._initResponse(correlationId);
 
 		const collectionUsers = await this._getCollectionUsers(correlationId);
-		response.results = await this._fetchExtract(await this._find(collectionUsers,
+		response.results = await this._fetchExtract(correlationId, await this._find(correlationId, collectionUsers,
 			{ 'id': { $in: gamerIds } },
 			this._byGamerProjection()),
 			this._initResponseExtract(correlationId));
@@ -52,7 +52,7 @@ class UserMongoRepository extends BaseUserMongoRepository {
 		const response = this._initResponse(correlationId);
 
 		const collectionUsers = await this._getCollectionUsers(correlationId);
-		response.results = await this._findOne(collectionUsers,
+		response.results = await this._findOne(correlationId, collectionUsers,
 			{ 'settings.gamerTagSearch': gamerTag ? gamerTag.toLowerCase() : null },
 			this._byGamerProjection());
 		response.success = response.results !== null;

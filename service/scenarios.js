@@ -28,20 +28,17 @@ class ScenariosService extends Service {
 			return validationGameSystemIdResponse;
 
 		const respositoryResponse = await this._repositoryScenarios.listing(correlationId, gameSystemId);
-		if (!respositoryResponse.success)
-			return this._errorResponse(respositoryResponse);
-
 		return respositoryResponse;
 	}
 
 	async playedScenarios(correlationId, user, characterId) {
 		const validationResponse = this._validateUser(correlationId, user);
 		if (!validationResponse.success)
-			return this._errorResponse(validationResponse);
+			return validationResponse;
 
 		const validationCharacterIdResponse = this._validateId(correlationId, characterId, 'characters');
 		if (!validationCharacterIdResponse.success)
-			return this._errorResponse(validationCharacterIdResponse);
+			return validationCharacterIdResponse;
 
 		const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
 		const respositoryFetchResponse = await service.fetch(correlationId, user, characterId);
@@ -53,11 +50,11 @@ class ScenariosService extends Service {
 
 		const respositoryScenarioListingResponse = await service.listing(correlationId, user);
 		if (!respositoryScenarioListingResponse.success)
-			return this._errorResponse(respositoryScenarioListingResponse);
+			return respositoryScenarioListingResponse;
 
 		const respositoryCharacterListingResponse = await this.listing(correlationId, character.gameSystemId);
 		if (!respositoryCharacterListingResponse.success)
-			return this._errorResponse(respositoryCharacterListingResponse);
+			return respositoryCharacterListingResponse;
 
 		const scenarios = respositoryCharacterListingResponse.results.data;
 		const characters = respositoryScenarioListingResponse.results.data;

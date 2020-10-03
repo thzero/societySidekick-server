@@ -21,9 +21,6 @@ class ClassesService extends Service {
 			return validationGameSystemIdResponse;
 
 		const respositoryResponse = await this._repositoryClasses.listing(correlationId, gameSystemId);
-		if (!respositoryResponse.success)
-			return this._errorResponse(respositoryResponse);
-
 		return respositoryResponse;
 	}
 }

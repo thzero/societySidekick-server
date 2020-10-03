@@ -21,9 +21,6 @@ class FactionsService extends Service {
 			return validationGameSystemIdResponse;
 
 		const respositoryResponse = await this._repositoryFactions.listing(correlationId, gameSystemId);
-		if (!respositoryResponse.success)
-			return this._errorResponse(respositoryResponse);
-
 		return respositoryResponse;
 	}
 }

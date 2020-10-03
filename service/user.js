@@ -28,11 +28,11 @@ class UserService extends BaseUserService {
 	async fetchFavoritesByGamerId(correlationId, requestedGamerId) {
 		const validationRequestedGamerIdResponse = this._serviceValidation.check(correlationId, this._serviceValidation.gamerIdSchema, requestedGamerId);
 		if (!validationRequestedGamerIdResponse.success)
-			return this._errorResponse(validationRequestedGamerIdResponse);
+			return validationRequestedGamerIdResponse;
 
 		const respositoryResponse = await this._repositoryUser.fetchByGamerId(correlationId, requestedGamerId, true);
 		if (!respositoryResponse.success)
-			return this._errorResponse(respositoryResponse);
+			return respositoryResponse;
 
 		const user = respositoryResponse.results;
 		if (!user || !user.settings || !user.settings.favorites)
@@ -44,7 +44,7 @@ class UserService extends BaseUserService {
 
 		const respositoryUsersResponse = await this._repositoryUser.fetchByGamerIds(correlationId, userIds);
 		if (!respositoryUsersResponse.success)
-			return this._errorResponse(respositoryUsersResponse);
+			return respositoryUsersResponse;
 
 		const response = this._initResponse(correlationId);
 		const users = respositoryUsersResponse.results.data;
@@ -86,7 +86,7 @@ class UserService extends BaseUserService {
 	async _updateSettingsValidation(correlationId, requestedSettings) {
 		const respositoryResponse = await this._repositoryUser.valid(correlationId, requestedSettings.userId, requestedSettings.settings.gamerTag);
 		if (!respositoryResponse.success)
-			return this._errorResponse(respositoryResponse);
+			return respositoryResponse;
 
 		const response = this._initResponse(correlationId);
 		const nameExists = respositoryResponse.results;
@@ -101,10 +101,10 @@ class UserService extends BaseUserService {
 			for (const [key, value] of entries) {
 				validationResponse = this._validateId(correlationId, value.id);
 				if (!validationResponse.success)
-					return this._errorResponse(validationResponse);
+					return validationResponse;
 				validationResponse = this._validateByGameSystemId(correlationId, value.id, value, Constants.ValidationSchemaTypes.UserSettingsSchema);
 				if (!validationResponse.success)
-					return this._errorResponse(validationResponse);
+					return validationResponse;
 			}
 		}
 
