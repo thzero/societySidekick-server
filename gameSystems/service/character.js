@@ -13,12 +13,12 @@ class CharacterGameSystemsService extends Service {
 		this._serviceRules = this._initializeRules();
 	}
 
-	async calculate(character, user) {
-		await this._serviceRules.calculateCharacter(character, user);
-		return this._success();
+	async calculate(correlationId, character, user) {
+		await this._serviceRules.calculateCharacter(correlationId, character, user);
+		return this._success(correlationId);
 	}
 
-	calculateScenario(scenario) {
+	calculateScenario(correlationId, scenario) {
 	}
 
 	initializeBoon(boon, requestedBoon) {
@@ -52,7 +52,7 @@ class CharacterGameSystemsService extends Service {
 		return scenario;
 	}
 
-	updateBoon(boon, character, requestedBoon) {
+	updateBoon(correlationId, boon, character, requestedBoon) {
 		boon.boonId = requestedBoon.boonId;
 		boon.gameSystemId = requestedBoon.gameSystemId;
 		boon.locationId = requestedBoon.locationId;
@@ -60,17 +60,17 @@ class CharacterGameSystemsService extends Service {
 		boon.used = requestedBoon.used;
 	}
 
-	updateDetails(character, details) {
+	updateDetails(correlationId, character, details) {
 		character.name = details.name.trim();
 		if (!details.name)
-			return this._error('CharacterGameSystemsService', 'updateDetails', 'Empty name after trim.');
+			return this._error('CharacterGameSystemsService', 'updateDetails', 'Empty name after trim.', null, null, null, correlationId);
 
 		character.tagLine = details && details.tagLine ? details.tagLine.trim() : null;
 		character.status = details.status;
-		return this._success();
+		return this._success(correlationId);
 	}
 
-	updateInventory(inventory, requestedInventory) {
+	updateInventory(correlationId, inventory, requestedInventory) {
 		inventory.boughtScenarioId = requestedInventory.boughtScenarioId;
 		inventory.item = requestedInventory.item;
 		inventory.itemId = requestedInventory.itemId;
@@ -82,7 +82,7 @@ class CharacterGameSystemsService extends Service {
 		inventory.value = requestedInventory.value;
 	}
 
-	updateScenario(scenario, character, requestedScenario) {
+	updateScenario(correlationId, scenario, character, requestedScenario) {
 		scenario.currencyBought = requestedScenario.currencyBought;
 		scenario.currencyEarned = requestedScenario.currencyEarned;
 		scenario.currencyIncomeEarned = requestedScenario.currencyIncomeEarned;

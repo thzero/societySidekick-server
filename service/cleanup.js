@@ -17,10 +17,7 @@ class CleanupService extends Service {
 
 	async cleanup(correlationId) {
 		const respositoryResponse = await this._repositoryClasses.cleanup(correlationId);
-		if (!respositoryResponse.success)
-			return this._errorResponse(respositoryResponse);
-
-		return this._initResponse(respositoryResponse);
+		return respositoryResponse;
 	}
 }
 

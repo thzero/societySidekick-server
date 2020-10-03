@@ -8,17 +8,17 @@ import Stafinder1eCharacterBoon from '../../../common/gameSystems/starfinder1e/d
 import Stafinder1eCharacterScenario from '../../../common/gameSystems/starfinder1e/data/characterScenario'
 
 class Starfinder1eCharacterGameSystemsService extends CharacterGameSystemsService {
-	calculateScenario(character, scenario) {
-		this._serviceRules.calculateScenario(scenario);
-		scenario.level = this_serviceRules.calculateScenarioLevel(character, scenario);
+	calculateScenario(correlationId, character, scenario) {
+		this._serviceRules.calculateScenario(correlationId, scenario);
+		scenario.level = this_serviceRules.calculateScenarioLevel(correlationId, character, scenario);
 	}
 
-	updateBoon(boon, character, requestedBoon) {
+	updateBoon(correlationId, boon, character, requestedBoon) {
 		super.updateBoon(boon, character, requestedBoon);
 	}
 
-	updateDetails(character, details) {
-		const response = super.updateDetails(character, details);
+	updateDetails(correlationId, character, details) {
+		const response = super.updateDetails(correlationId, character, details);
 		if (!response.success)
 			return response;
 
@@ -31,14 +31,14 @@ class Starfinder1eCharacterGameSystemsService extends CharacterGameSystemsServic
 		character.factionId = details.factionId;
 		character.number = details.number;
 		character.themeId = details.themeId;
-		return this._success();
+		return this._success(correlationId);
 	}
 
-	updateScenario(scenario, character, requestedScenario) {
-		super.updateScenario(scenario, character, requestedScenario);
+	updateScenario(correlationId, scenario, character, requestedScenario) {
+		super.updateScenario(correlationId, scenario, character, requestedScenario);
 
-		this._updateScenarioBoons(character, requestedScenario.boon1Id, scenario.boon1Id);
-		this._updateScenarioBoons(character, requestedScenario.boon2Id, scenario.boon2Id);
+		this._updateScenarioBoons(correlationId, character, requestedScenario.boon1Id, scenario.boon1Id);
+		this._updateScenarioBoons(correlationId, character, requestedScenario.boon2Id, scenario.boon2Id);
 
 		scenario.boon1Id = requestedScenario.boon1Id;
 		scenario.boon2Id = requestedScenario.boon2Id;
@@ -73,7 +73,7 @@ class Starfinder1eCharacterGameSystemsService extends CharacterGameSystemsServic
 		return this._injector.getService(Constants.InjectorKeys.SERVICE_GAMESYSTEMS_RULES_STARFINDER_1E);
 	}
 
-	_updateScenarioBoons(character, requestedScenarioBoonId, scenarioBoonId) {
+	_updateScenarioBoons(correlationId, character, requestedScenarioBoonId, scenarioBoonId) {
 		if (requestedScenarioBoonId === scenarioBoonId)
 			return;
 

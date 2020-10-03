@@ -15,15 +15,12 @@ class EquipmentService extends Service {
 	}
 
 	async search(correlationId, gameSystemId, search) {
-		const validationGameSystemIdResponse = this._validateId(gameSystemId, 'gameSystemId');
+		const validationGameSystemIdResponse = this._validateId(correlationId, gameSystemId, 'gameSystemId');
 		if (!validationGameSystemIdResponse.success)
 			return validationGameSystemIdResponse;
 
 		const respositoryResponse = await this._repositoryEquipment.search(correlationId, gameSystemId, search);
-		if (!respositoryResponse.success)
-			return this._errorResponse(respositoryResponse);
-
-		return this._initResponse(respositoryResponse);
+		return respositoryResponse;
 	}
 }
 

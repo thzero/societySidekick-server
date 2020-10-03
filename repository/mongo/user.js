@@ -6,15 +6,15 @@ import BaseUserMongoRepository from '@thzero/library_server_repository_mongo/bas
 
 class UserMongoRepository extends BaseUserMongoRepository {
 	async fetchByExternalId(correlationId, userId, excludePlan) {
-		const response = this._initResponse();
+		const response = this._initResponse(correlationId);
 
-		const collectionUsers = await this._getCollectionUsers();
-		response.results = await this._findOne(collectionUsers, { 'external.id': userId });
+		const collectionUsers = await this._getCollectionUsers(correlationId);
+		response.results = await this._findOne(correlationId, collectionUsers, { 'external.id': userId });
 		response.success = response.results !== null;
 
 		if (!excludePlan && response && response.success && response.results) {
-			const collectionPlan = await this._getCollectionPlans();
-			response.results.plan = await this._findOne(collectionPlan, { 'id': response.results.planId }, {
+			const collectionPlan = await this._getCollectionPlans(correlationId);
+			response.results.plan = await this._findOne(correlationId, collectionPlan, { 'id': response.results.planId }, {
 				'roles': 0
 			});
 		}
@@ -23,36 +23,36 @@ class UserMongoRepository extends BaseUserMongoRepository {
 	}
 
 	async fetchByGamerId(correlationId, gamerId, ignoreProjection) {
-		const response = this._initResponse();
+		const response = this._initResponse(correlationId);
 
 		let projection = null
 		if (!ignoreProjection)
 			projection = this._byGamerProjection();
 
-		const collectionUsers = await this._getCollectionUsers();
-		response.results = await this._findOne(collectionUsers, { 'id': gamerId }, projection);
+		const collectionUsers = await this._getCollectionUsers(correlationId);
+		response.results = await this._findOne(correlationId, collectionUsers, { 'id': gamerId }, projection);
 		response.success = response.results !== null;
 
 		return response;
 	}
 
 	async fetchByGamerIds(correlationId, gamerIds) {
-		const response = this._initResponse();
+		const response = this._initResponse(correlationId);
 
-		const collectionUsers = await this._getCollectionUsers();
-		response.results = await this._fetchExtract(await this._find(collectionUsers,
+		const collectionUsers = await this._getCollectionUsers(correlationId);
+		response.results = await this._fetchExtract(correlationId, await this._find(correlationId, collectionUsers,
 			{ 'id': { $in: gamerIds } },
 			this._byGamerProjection()),
-			this._initResponseExtract());
+			this._initResponseExtract(correlationId));
 
 		return response;
 	}
 
 	async fetchByGamerTag(correlationId, gamerTag) {
-		const response = this._initResponse();
+		const response = this._initResponse(correlationId);
 
-		const collectionUsers = await this._getCollectionUsers();
-		response.results = await this._findOne(collectionUsers,
+		const collectionUsers = await this._getCollectionUsers(correlationId);
+		response.results = await this._findOne(correlationId, collectionUsers,
 			{ 'settings.gamerTagSearch': gamerTag ? gamerTag.toLowerCase() : null },
 			this._byGamerProjection());
 		response.success = response.results !== null;
@@ -61,8 +61,8 @@ class UserMongoRepository extends BaseUserMongoRepository {
 	}
 
 	async valid(correlationId, userId, gamerTag) {
-		const collection = await this._getCollectionUsers();
-		const response = this._initResponse();
+		const collection = await this._getCollectionUsers(correlationId);
+		const response = this._initResponse(correlationId);
 		let countName = 0;
 		let countNameNoSpaces = 0;
 		if (gamerTag) {

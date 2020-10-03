@@ -23,49 +23,46 @@ class ScenariosService extends Service {
 	}
 
 	async listing(correlationId, gameSystemId) {
-		const validationGameSystemIdResponse = this._validateId(gameSystemId, 'gameSystemId');
+		const validationGameSystemIdResponse = this._validateId(correlationId, gameSystemId, 'gameSystemId');
 		if (!validationGameSystemIdResponse.success)
 			return validationGameSystemIdResponse;
 
 		const respositoryResponse = await this._repositoryScenarios.listing(correlationId, gameSystemId);
-		if (!respositoryResponse.success)
-			return this._errorResponse(respositoryResponse);
-
-		return this._initResponse(respositoryResponse);
+		return respositoryResponse;
 	}
 
 	async playedScenarios(correlationId, user, characterId) {
-		const validationResponse = this._validateUser(user);
+		const validationResponse = this._validateUser(correlationId, user);
 		if (!validationResponse.success)
-			return this._errorResponse(validationResponse);
+			return validationResponse;
 
-		const validationCharacterIdResponse = this._validateId(characterId, 'characters');
+		const validationCharacterIdResponse = this._validateId(correlationId, characterId, 'characters');
 		if (!validationCharacterIdResponse.success)
-			return this._errorResponse(validationCharacterIdResponse);
+			return validationCharacterIdResponse;
 
 		const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
 		const respositoryFetchResponse = await service.fetch(correlationId, user, characterId);
 		if (!respositoryFetchResponse.success)
 			// TODO: Security - Needs a real security check
-			return this._error().addGeneric('Invalid permissions', SharedConstants.ErrorCodes.InvalidPermissions);
+			return this._error('ScenariosService', 'playedScenarios', null, null, null, null, correlationId).addGeneric('Invalid permissions', SharedConstants.ErrorCodes.InvalidPermissions);
 
 		const character = respositoryFetchResponse.results;
 
 		const respositoryScenarioListingResponse = await service.listing(correlationId, user);
 		if (!respositoryScenarioListingResponse.success)
-			return this._errorResponse(respositoryScenarioListingResponse);
+			return respositoryScenarioListingResponse;
 
 		const respositoryCharacterListingResponse = await this.listing(correlationId, character.gameSystemId);
 		if (!respositoryCharacterListingResponse.success)
-			return this._errorResponse(respositoryCharacterListingResponse);
+			return respositoryCharacterListingResponse;
 
 		const scenarios = respositoryCharacterListingResponse.results.data;
 		const characters = respositoryScenarioListingResponse.results.data;
 
-		const response = this._initResponse();
+		const response = this._initResponse(correlationId);
 		response.results = [];
 
-		const serviceGameSystemResponse = this._scenarioServiceByGameSystemId(character.gameSystemId);
+		const serviceGameSystemResponse = this._scenarioServiceByGameSystemId(correlationId, character.gameSystemId);
 		if (!serviceGameSystemResponse.success)
 			return serviceGameSystemResponse;
 		const serviceGameSystem = serviceGameSystemResponse.results;
@@ -94,11 +91,11 @@ class ScenariosService extends Service {
 		return response;
 	}
 
-	_scenarioServiceByGameSystemId(gameSystemId) {
+	_scenarioServiceByGameSystemId(correlationId, gameSystemId) {
 		if (!gameSystemId || !this._serviceGameSystemsUtility)
-			return this._error('ScenariosService', '_scenarioServiceByGameSystemId');
+			return this._error('ScenariosService', '_scenarioServiceByGameSystemId', null, null, null, null, correlationId);
 
-		return this._serviceGameSystemsUtility.scenarioByGameSystemId(gameSystemId);
+		return this._serviceGameSystemsUtility.scenarioByGameSystemId(correlationId, gameSystemId);
 	}
 
 	_initValidScenarioResponse() {

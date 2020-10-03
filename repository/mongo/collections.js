@@ -5,56 +5,56 @@ class AppCollectionsService extends ApiCollectionsService {
 		return AppCollectionsService.Client;
 	}
 
-	getCollectionBoons() {
-		return this._getCollection(AppCollectionsService.Client, AppCollectionsService.Database, AppCollectionsService.CollectionBoons);
+	getCollectionBoons(correlationId) {
+		return this._getCollection(correlationId, AppCollectionsService.Client, AppCollectionsService.Database, AppCollectionsService.CollectionBoons);
 	}
 
-	getCollectionClasses() {
-		return this._getCollection(AppCollectionsService.Client, AppCollectionsService.Database, AppCollectionsService.CollectionClasses);
+	getCollectionClasses(correlationId) {
+		return this._getCollection(correlationId, AppCollectionsService.Client, AppCollectionsService.Database, AppCollectionsService.CollectionClasses);
 	}
 
-	getCollectionCharacters() {
-		return this._getCollection(AppCollectionsService.Client, AppCollectionsService.Database, AppCollectionsService.CollectionCharacters);
+	getCollectionCharacters(correlationId) {
+		return this._getCollection(correlationId, AppCollectionsService.Client, AppCollectionsService.Database, AppCollectionsService.CollectionCharacters);
 	}
 
-	getCollectionEquipment() {
-		return this._getCollection(AppCollectionsService.Client, AppCollectionsService.Database, AppCollectionsService.CollectionEquipment);
+	getCollectionEquipment(correlationId) {
+		return this._getCollection(correlationId, AppCollectionsService.Client, AppCollectionsService.Database, AppCollectionsService.CollectionEquipment);
 	}
 
-	getCollectionFactions() {
-		return this._getCollection(AppCollectionsService.Client, AppCollectionsService.Database, AppCollectionsService.CollectionFactions);
+	getCollectionFactions(correlationId) {
+		return this._getCollection(correlationId, AppCollectionsService.Client, AppCollectionsService.Database, AppCollectionsService.CollectionFactions);
 	}
 
-	getCollectionGameSystems() {
-		return this._getCollection(AppCollectionsService.Client, AppCollectionsService.Database, AppCollectionsService.CollectionGameSystems);
+	getCollectionGameSystems(correlationId) {
+		return this._getCollection(correlationId, AppCollectionsService.Client, AppCollectionsService.Database, AppCollectionsService.CollectionGameSystems);
 	}
 
-	getCollectionModules() {
-		return this._getCollection(AppCollectionsService.Client, AppCollectionsService.Database, AppCollectionsService.CollectionModules);
+	getCollectionModules(correlationId) {
+		return this._getCollection(correlationId, AppCollectionsService.Client, AppCollectionsService.Database, AppCollectionsService.CollectionModules);
 	}
 
-	getCollectionNews() {
-		return this._getCollection(AppCollectionsService.Client, AppCollectionsService.Database, AppCollectionsService.CollectionNews);
+	getCollectionNews(correlationId) {
+		return this._getCollection(correlationId, AppCollectionsService.Client, AppCollectionsService.Database, AppCollectionsService.CollectionNews);
 	}
 
-	getCollectionPlans() {
-		return this._getCollection(AppCollectionsService.Client, AppCollectionsService.Database, AppCollectionsService.CollectionPlans);
+	getCollectionPlans(correlationId) {
+		return this._getCollection(correlationId, AppCollectionsService.Client, AppCollectionsService.Database, AppCollectionsService.CollectionPlans);
 	}
 
-	getCollectionScenarios() {
-		return this._getCollection(AppCollectionsService.Client, AppCollectionsService.Database, AppCollectionsService.CollectionScenarios);
+	getCollectionScenarios(correlationId) {
+		return this._getCollection(correlationId, AppCollectionsService.Client, AppCollectionsService.Database, AppCollectionsService.CollectionScenarios);
 	}
 
-	getCollectionSite() {
-		return this._getCollection(AppCollectionsService.Client, AppCollectionsService.Database, AppCollectionsService.CollectionSite);
+	getCollectionSite(correlationId) {
+		return this._getCollection(correlationId, AppCollectionsService.Client, AppCollectionsService.Database, AppCollectionsService.CollectionSite);
 	}
 
-	getCollectionUsageMetrics() {
-		return this._getCollection(AppCollectionsService.Client, AppCollectionsService.Database, AppCollectionsService.CollectionUsageMetrics);
+	getCollectionUsageMetrics(correlationId) {
+		return this._getCollection(correlationId, AppCollectionsService.Client, AppCollectionsService.Database, AppCollectionsService.CollectionUsageMetrics);
 	}
 
-	getCollectionUsers() {
-		return this._getCollection(AppCollectionsService.Client, AppCollectionsService.Database, AppCollectionsService.CollectionUsers);
+	getCollectionUsers(correlationId) {
+		return this._getCollection(correlationId, AppCollectionsService.Client, AppCollectionsService.Database, AppCollectionsService.CollectionUsers);
 	}
 
 	static Client = 'atlas';

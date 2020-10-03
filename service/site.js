@@ -17,10 +17,7 @@ class SiteService extends Service {
 
 	async fetch(correlationId) {
 		const respositoryResponse = await this._repositorySite.fetch(correlationId);
-		if (!respositoryResponse.success)
-			return this._errorResponse(respositoryResponse);
-
-		return this._initResponse(respositoryResponse);
+		return respositoryResponse;
 	}
 }
 

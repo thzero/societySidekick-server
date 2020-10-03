@@ -3,23 +3,23 @@ import BaseGameSystemsService from './index';
 import NotImplementedError from '@thzero/library_common/errors/notImplemented';
 
 class BaseGameSystemGameSystemsService extends BaseGameSystemsService {
-	determineCharactersService() {
+	determineCharactersService(correlationId) {
 		return null;
 	}
 
-	determineCharactersValidation(type) {
+	determineCharactersValidation(correlationId, type) {
 		throw new NotImplementedError();
 	}
 
-	determineScenariosService() {
+	determineScenariosService(correlationId) {
 		throw new NotImplementedError();
 	}
 
-	determineScenariosValidation(type) {
+	determineScenariosValidation(correlationId, type) {
 		throw new NotImplementedError();
 	}
 
-	determineValidation(type) {
+	determineValidation(correlationId, type) {
 		throw new NotImplementedError();
 	}
 }

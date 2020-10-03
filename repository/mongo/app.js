@@ -1,48 +1,48 @@
 import MongoRepository from '@thzero/library_server_repository_mongo';
 
 class AppMongoRepository extends MongoRepository {
-	async _getCollectionBoons() {
-		return await this._getCollectionFromConfig(this._collectionsConfig.getCollectionBoons());
+	async _getCollectionBoons(correlationId) {
+		return await this._getCollectionFromConfig(correlationId, this._collectionsConfig.getCollectionBoons());
 	}
 
-	async _getCollectionClasses() {
-		return await this._getCollectionFromConfig(this._collectionsConfig.getCollectionClasses());
+	async _getCollectionClasses(correlationId) {
+		return await this._getCollectionFromConfig(correlationId, this._collectionsConfig.getCollectionClasses());
 	}
 
-	async _getCollectionCharacters() {
-		return await this._getCollectionFromConfig(this._collectionsConfig.getCollectionCharacters());
+	async _getCollectionCharacters(correlationId) {
+		return await this._getCollectionFromConfig(correlationId, this._collectionsConfig.getCollectionCharacters());
 	}
 
-	async _getCollectionEquipment() {
-		return await this._getCollectionFromConfig(this._collectionsConfig.getCollectionEquipment());
+	async _getCollectionEquipment(correlationId) {
+		return await this._getCollectionFromConfig(correlationId, this._collectionsConfig.getCollectionEquipment());
 	}
 
-	async _getCollectionFactions() {
-		return await this._getCollectionFromConfig(this._collectionsConfig.getCollectionFactions());
+	async _getCollectionFactions(correlationId) {
+		return await this._getCollectionFromConfig(correlationId, this._collectionsConfig.getCollectionFactions());
 	}
 
-	async _getCollectionGameSystems() {
-		return await this._getCollectionFromConfig(this._collectionsConfig.getCollectionGameSystems());
+	async _getCollectionGameSystems(correlationId) {
+		return await this._getCollectionFromConfig(correlationId, this._collectionsConfig.getCollectionGameSystems());
 	}
 
-	async _getCollectionModules() {
-		return await this._getCollectionFromConfig(this._collectionsConfig.getCollectionModules());
+	async _getCollectionModules(correlationId) {
+		return await this._getCollectionFromConfig(correlationId, this._collectionsConfig.getCollectionModules());
 	}
 
-	async _getCollectionPlans() {
-		return await this._getCollectionFromConfig(this._collectionsConfig.getCollectionPlans());
+	async _getCollectionPlans(correlationId) {
+		return await this._getCollectionFromConfig(correlationId, this._collectionsConfig.getCollectionPlans());
 	}
 
-	async _getCollectionScenarios() {
-		return await this._getCollectionFromConfig(this._collectionsConfig.getCollectionScenarios());
+	async _getCollectionScenarios(correlationId) {
+		return await this._getCollectionFromConfig(correlationId, this._collectionsConfig.getCollectionScenarios());
 	}
 
-	async _getCollectionSite() {
-		return await this._getCollectionFromConfig(this._collectionsConfig.getCollectionSite());
+	async _getCollectionSite(correlationId) {
+		return await this._getCollectionFromConfig(correlationId, this._collectionsConfig.getCollectionSite());
 	}
 
-	async _getCollectionUsers() {
-		return await this._getCollectionFromConfig(this._collectionsConfig.getCollectionUsers());
+	async _getCollectionUsers(correlationId) {
+		return await this._getCollectionFromConfig(correlationId, this._collectionsConfig.getCollectionUsers());
 	}
 }
 

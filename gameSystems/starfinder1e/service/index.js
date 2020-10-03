@@ -23,15 +23,15 @@ class Starfinder1eGameSystemGameSystemsService extends BaseGameSystemGameSystems
 		this._serviceValidation = this._injector.getService(Constants.InjectorKeys.SERVICE_GAMESYSTEMS_VALIDATION_STARFINDER_1E);
 	}
 
-	determineCharactersService() {
-		return this._successResponse(this._serviceCharacters);
+	determineCharactersService(correlationId) {
+		return this._successResponse(this._serviceCharacters, correlationId);
 	}
 
-	determineScenariosService() {
-		return this._successResponse(this._serviceScenarios);
+	determineScenariosService(correlationId) {
+		return this._successResponse(this._serviceScenarios, correlationId);
 	}
 
-	determineCharactersValidation(type) {
+	determineCharactersValidation(correlationId, type) {
 		switch (type) {
 			case Constants.ValidationSchemaTypes.CharacterDetailsUpdate:
 				return this._serviceCharactersValidation.characterDetailUpdateSchema();
@@ -47,7 +47,7 @@ class Starfinder1eGameSystemGameSystemsService extends BaseGameSystemGameSystems
 		return null;
 	}
 
-	determineScenariosValidation(type) {
+	determineScenariosValidation(correlationId, type) {
 		switch (type) {
 			case Constants.ValidationSchemaTypes.ScenarioCreate:
 				return this._serviceScenariosValidation.scenarioCreateSchema();
@@ -59,7 +59,7 @@ class Starfinder1eGameSystemGameSystemsService extends BaseGameSystemGameSystems
 		return null;
 	}
 
-	determineValidation(type) {
+	determineValidation(correlationId, type) {
 		switch (type) {
 			case Constants.ValidationSchemaTypes.BoonCreate:
 				return this._serviceValidation.boonCreatechema();

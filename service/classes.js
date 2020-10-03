@@ -16,15 +16,12 @@ class ClassesService extends Service {
 	}
 
 	async listing(correlationId, gameSystemId) {
-		const validationGameSystemIdResponse = this._validateId(gameSystemId, 'gameSystemId');
+		const validationGameSystemIdResponse = this._validateId(correlationId, gameSystemId, 'gameSystemId');
 		if (!validationGameSystemIdResponse.success)
 			return validationGameSystemIdResponse;
 
 		const respositoryResponse = await this._repositoryClasses.listing(correlationId, gameSystemId);
-		if (!respositoryResponse.success)
-			return this._errorResponse(respositoryResponse);
-
-		return this._initResponse(respositoryResponse);
+		return respositoryResponse;
 	}
 }
 
