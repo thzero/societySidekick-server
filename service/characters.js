@@ -2,7 +2,7 @@ import Constants from '../constants';
 import LibraryConstants from '@thzero/library_server/constants';
 import SharedConstants from '../common/constants';
 
-import Utility from '@thzero/library_common/utility';
+import LibraryUtility from '@thzero/library_common/utility';
 
 import Service from '@thzero/library_server/service/index';
 
@@ -372,7 +372,7 @@ class CharactersService extends Service {
 			return this._error('CharactersService', 'loadInventory', null, null, null, null, correlationId);
 
 		character.inventory = gearSet.inventory.map(l => {
-			l.id = Utility.generateId();
+			l.id = LibraryUtility.generateId();
 			l.boughtScenarioId = initialScenario.id;
 			return l
 		});
@@ -703,7 +703,7 @@ class CharactersService extends Service {
 		if (!serviceResponse.success)
 			return serviceResponse;
 
-		requestedBoon.id = requestedBoon.id ? requestedBoon.id : Utility.generateId();
+		requestedBoon.id = requestedBoon.id ? requestedBoon.id : LibraryUtility.generateId();
 
 		let boon = null
 		if (!character.boons)
@@ -731,7 +731,7 @@ class CharactersService extends Service {
 		if (!serviceResponse.success)
 			return serviceResponse;
 
-		requestedInventory.id = requestedInventory.id ? requestedInventory.id : Utility.generateId();
+		requestedInventory.id = requestedInventory.id ? requestedInventory.id : LibraryUtility.generateId();
 
 		let inventory = null
 		if (!character.inventory)
@@ -759,7 +759,7 @@ class CharactersService extends Service {
 		if (!serviceResponse.success)
 			return serviceResponse;
 
-		requestedScenario.id = requestedScenario.id ? requestedScenario.id : Utility.generateId();
+		requestedScenario.id = requestedScenario.id ? requestedScenario.id : LibraryUtility.generateId();
 
 		let scenario = null
 		if (!character.scenarios)

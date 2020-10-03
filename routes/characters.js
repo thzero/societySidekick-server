@@ -2,7 +2,7 @@ import koaBody from 'koa-body';
 
 import Constants from '../constants';
 
-import Utility from '@thzero/library_common/utility';
+import LibraryUtility from '@thzero/library_common/utility';
 
 import BaseRoute from '@thzero/library_server/routes/index';
 
@@ -25,7 +25,7 @@ class CharactersRoute extends BaseRoute {
 			async (ctx, next) => {
 				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
 				const response = (await service.delete(ctx.correlationId, ctx.state.user, ctx.params.characterId)).check(ctx);
-				ctx.body = Utility.stringify(response);
+				ctx.body = LibraryUtility.stringify(response);
 			}
 		);
 

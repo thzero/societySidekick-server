@@ -1,6 +1,6 @@
 import Constants from '../constants';
 
-import Utility from '@thzero/library_common/utility';
+import LibraryUtility from '@thzero/library_common/utility';
 
 import BaseRoute from '@thzero/library_server/routes/index';
 
@@ -15,7 +15,7 @@ class CleanupRoute extends BaseRoute {
 			async (ctx, next) => {
 				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CLEANUP);
 				const response = (await service.cleanup(ctx.correlationId)).check(ctx);
-				ctx.body = Utility.stringify(response);
+				ctx.body = LibraryUtility.stringify(response);
 			}
 		);
 	}

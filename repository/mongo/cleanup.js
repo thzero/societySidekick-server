@@ -1,6 +1,6 @@
 import AppMongoRepository from './app';
 
-import Utility from '@thzero/library_common/utility';
+import LibraryUtility from '@thzero/library_common/utility';
 
 class CleanupMongoRepository extends AppMongoRepository {
 	async cleanup(correlationId) {
@@ -18,7 +18,7 @@ class CleanupMongoRepository extends AppMongoRepository {
 			let previousId;
 			for (let item of results.data) {
 				for (let item2 of item.scenarios) {
-					id = Utility.generateShortId();
+					id = LibraryUtility.generateShortId();
 					previousId = item2.id;
 					item2.id = id;
 
@@ -38,7 +38,7 @@ class CleanupMongoRepository extends AppMongoRepository {
 
 				if (item.inventory) {
 					for (let item3 of item.inventory) {
-						item3.id = Utility.generateShortId();
+						item3.id = LibraryUtility.generateShortId();
 					}
 				}
 
@@ -73,7 +73,7 @@ class CleanupMongoRepository extends AppMongoRepository {
 			let previousId;
 			let results2;
 			for (let item of results.data) {
-				id = Utility.generateShortId();
+				id = LibraryUtility.generateShortId();
 				previousId = item.id;
 				item.id = id;
 
@@ -162,7 +162,7 @@ class CleanupMongoRepository extends AppMongoRepository {
 			let previousId;
 			let results2;
 			for (let item of results.data) {
-				id = Utility.generateShortId();
+				id = LibraryUtility.generateShortId();
 				previousId = item.id;
 				item.id = id;
 
@@ -216,7 +216,7 @@ class CleanupMongoRepository extends AppMongoRepository {
 			let previousId;
 			let results2;
 			for (let item of results.data) {
-				id = Utility.generateShortId();
+				id = LibraryUtility.generateShortId();
 				previousId = item.id;
 				item.id = id;
 
@@ -300,7 +300,7 @@ class CleanupMongoRepository extends AppMongoRepository {
 			let previousId;
 			let results2;
 			for (let item of results.data) {
-				id = Utility.generateShortId();
+				id = LibraryUtility.generateShortId();
 				previousId = item.id;
 				item.id = id;
 
@@ -347,7 +347,7 @@ class CleanupMongoRepository extends AppMongoRepository {
 			let previousId;
 			for (let item of results.data) {
 				for (let item2 of item.scenarios) {
-					id = Utility.generateShortId();
+					id = LibraryUtility.generateShortId();
 					previousId = item2.id;
 					item2.id = id;
 
@@ -367,7 +367,7 @@ class CleanupMongoRepository extends AppMongoRepository {
 
 				if (item.inventory) {
 					for (let item3 of item.inventory) {
-						item3.id = Utility.generateShortId();
+						item3.id = LibraryUtility.generateShortId();
 					}
 				}
 

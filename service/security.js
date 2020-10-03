@@ -1,4 +1,4 @@
-import Utility from '@thzero/library_common/utility';
+import LibraryUtility from '@thzero/library_common/utility';
 
 import BaseSecurityService from '@thzero/library_server/service/baseSecurity';
 
@@ -13,7 +13,7 @@ class SecurityService extends BaseSecurityService {
 	}
 
 	_initModel() {
-		return Utility.merge2(securityUser.options, securityAdmin.options);
+		return LibraryUtility.merge2(securityUser.options, securityAdmin.options);
 	}
 }
 
