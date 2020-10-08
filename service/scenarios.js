@@ -1,7 +1,7 @@
 import Constants from '../constants';
 import SharedConstants from '../common/constants';
 
-import Utility from '@thzero/library_common/utility';
+import LibraryUtility from '@thzero/library_common/utility';
 
 import Service from '@thzero/library_server/service/index';
 
@@ -87,7 +87,7 @@ class ScenariosService extends Service {
 			}
 		}
 
-		response.results = Utility.sortByTimestamp(response.results, true);
+		response.results = LibraryUtility.sortByTimestamp(response.results, true);
 		return response;
 	}
 

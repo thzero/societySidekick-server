@@ -2,7 +2,7 @@ import koaBody from 'koa-body';
 
 import LibraryConstants from '@thzero/library_server/constants';
 
-import Utility from '@thzero/library_common/utility';
+import LibraryUtility from '@thzero/library_common/utility';
 
 import authentication from '@thzero/library_server/middleware/authentication';
 import authorization from '@thzero/library_server/middleware/authorization';
@@ -23,7 +23,7 @@ class UsersRoute extends BaseUsersRoute {
 			async (ctx, next) => {
 				const service = this._injector.getService(LibraryConstants.InjectorKeys.SERVICE_USERS);
 				const response = (await service.fetchFavoritesByGamerId(ctx.correlationId, ctx.params.gamerId)).check(ctx);
-				ctx.body = Utility.stringify(response);
+				ctx.body = LibraryUtility.stringify(response);
 			}
 		);
 	}

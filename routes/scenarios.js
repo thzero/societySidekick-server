@@ -1,6 +1,6 @@
 import Constants from '../constants';
 
-import Utility from '@thzero/library_common/utility';
+import LibraryUtility from '@thzero/library_common/utility';
 
 import BaseRoute from '@thzero/library_server/routes/index';
 
@@ -18,7 +18,7 @@ class ScenariosRoute extends BaseRoute {
 			async (ctx, next) => {
 				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_SCENARIOS);
 				const response = (await service.listing(ctx.correlationId, ctx.params.gameSystemId)).check(ctx);
-				ctx.body = Utility.stringify(response);
+				ctx.body = LibraryUtility.stringify(response);
 			}
 		);
 
@@ -29,7 +29,7 @@ class ScenariosRoute extends BaseRoute {
 			async (ctx, next) => {
 				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_SCENARIOS);
 				const response = (await service.playedScenarios(ctx.correlationId, ctx.state.user, ctx.params.characterId)).check(ctx);
-				ctx.body = Utility.stringify(response);
+				ctx.body = LibraryUtility.stringify(response);
 			}
 		);
 	}

@@ -78,7 +78,7 @@ class CharacterGameSystemsService extends Service {
 		inventory.soldScenarioId = requestedInventory.soldScenarioId;
 		inventory.used = requestedInventory.used;
 		inventory.usedScenarioId = requestedInventory.usedScenarioId;
-		inventory.total = this._serviceRules.calculateItemTotal(inventory.quantity, inventory.value);
+		inventory.total = this._serviceRules.calculateItemTotal(correlationId, inventory.quantity, inventory.value);
 		inventory.value = requestedInventory.value;
 	}
 
