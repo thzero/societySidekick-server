@@ -692,7 +692,7 @@ class CharactersService extends Service {
 		if (!serviceResponse.success)
 			return serviceResponse;
 
-		return await serviceResponse.results.calculate(character, user);
+		return await serviceResponse.results.calculate(correlationId, character, user);
 	}
 
 	_updateBoon(cgameSystemId, character, requestedBoon) {
@@ -774,7 +774,7 @@ class CharactersService extends Service {
 			character.scenarios.push(scenario);
 		}
 
-		serviceResponse.results.updateScenario(scenario, character, requestedScenario);
+		serviceResponse.results.updateScenario(correlationId, scenario, character, requestedScenario);
 
 		return this._success(correlationId);
 	}

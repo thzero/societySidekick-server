@@ -14,8 +14,7 @@ class CharacterGameSystemsService extends Service {
 	}
 
 	async calculate(correlationId, character, user) {
-		await this._serviceRules.calculateCharacter(correlationId, character, user);
-		return this._success(correlationId);
+		return await this._serviceRules.calculateCharacter(correlationId, character, user);
 	}
 
 	calculateScenario(correlationId, scenario) {
