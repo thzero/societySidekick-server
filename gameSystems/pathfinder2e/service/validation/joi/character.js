@@ -33,7 +33,7 @@ class Pathfinder2eCharacterValidationService extends CharacterValidationService 
 	characterDetailUpdateSchema() {
 		const validation = super.characterDetailUpdateSchema();
 		return validation.concat(Joi.object({
-			archetypeId: this._id.allow(null),
+			archetypeIds: Joi.array().items(this._id).allow(null),
 			boonAdvancedId: this._id.allow(null),
 			boonFactionId: this._id.allow(null),
 			boonGeneric1Id: this._id.allow(null),
