@@ -11,7 +11,7 @@ class CharactersMongoRepository extends AppMongoRepository {
 
 			const collection = await this._getCollectionCharacters(correlationId);
 
-			const responseC = await this._create(collection, userId, character);
+			const responseC = await this._create(correlationId, collection, userId, character);
 			if (!responseC || !responseC.success)
 				return await this._transactionAbort(correlationId, session, 'Unable to insert the value');
 
