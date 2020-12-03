@@ -746,7 +746,7 @@ class CharactersService extends Service {
 			character.inventory.push(inventory);
 		}
 
-		serviceResponse.results.updateInventory(inventory, requestedInventory);
+		serviceResponse.results.updateInventory(correlationId, inventory, requestedInventory);
 
 		return this._success(correlationId);
 	}
