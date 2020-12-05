@@ -49,7 +49,6 @@ class Starfinder1eCharacterGameSystemsService extends CharacterGameSystemsServic
 		scenario.fameSpent = requestedScenario.fameSpent;
 		scenario.reputationEarned = requestedScenario.reputationEarned;
 		scenario.scenarioAdvancementSpeed = requestedScenario.scenarioAdvancementSpeed;
-		scenario.scenarioAdventure = requestedScenario.scenarioAdventure;
 		scenario.scenarioEvent = requestedScenario.scenarioEvent;
 	}
 

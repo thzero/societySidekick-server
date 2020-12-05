@@ -62,7 +62,6 @@ class Pathfinder2eCharacterValidationService extends CharacterValidationService 
 			reputationAdditionalFactionId: this._id.allow(null),
 			reputationAdditionalEarned: this._number.min(0).max(12).allow(null),
 			scenarioAdvancementSpeed: this._serviceScenariosValidation.scenarioAdvancementSpeedsSchema().required(),
-			scenarioAdventure: this._serviceScenariosValidation.scenarioAdventuresSchema().required(),
 			scenarioEvent: this._serviceScenariosValidation.scenarioEventsSchema().required()
 		}));
 	}
@@ -85,7 +84,6 @@ class Pathfinder2eCharacterValidationService extends CharacterValidationService 
 			reputationAdditionalFactionId: this._id.allow(null),
 			reputationAdditionalEarned: this._number.min(0).max(12).allow(null),
 			scenarioAdvancementSpeed: this._serviceScenariosValidation.scenarioAdvancementSpeedsSchema().required(),
-			scenarioAdventure: this._serviceScenariosValidation.scenarioAdventuresSchema().required(),
 			scenarioEvent: this._serviceScenariosValidation.scenarioEventsSchema().required()
 		}));
 	}
