@@ -55,8 +55,7 @@ class Starfinder1eCharacterValidationService extends CharacterValidationService 
 			fameEarned: this._number.min(0).max(5).allow(null),
 			fameSpent: this._number.min(0).max(99).allow(null),
 			reputationEarned: this._number.min(0).max(5).allow(null),
-			scenarioAdvancementSpeed: this._serviceScenariosValidation.scenarioAdvancementSpeedsSchema().required(),
-			scenarioAdventure: this._serviceScenariosValidation.scenarioAdventuresSchema().required()
+			scenarioAdvancementSpeed: this._serviceScenariosValidation.scenarioAdvancementSpeedsSchema().required()
 		}));
 	}
 
@@ -71,8 +70,7 @@ class Starfinder1eCharacterValidationService extends CharacterValidationService 
 			fameEarned: this._number.min(0).max(5).allow(null),
 			fameSpent: this._number.min(0).max(99).allow(null),
 			reputationEarned: this._number.min(0).max(5).allow(null),
-			scenarioAdvancementSpeed: this._serviceScenariosValidation.scenarioAdvancementSpeedsSchema().required(),
-			scenarioAdventure: this._serviceScenariosValidation.scenarioAdventuresSchema().required()
+			scenarioAdvancementSpeed: this._serviceScenariosValidation.scenarioAdvancementSpeedsSchema().required()
 		}));
 	}
 }

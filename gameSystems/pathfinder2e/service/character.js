@@ -68,7 +68,6 @@ class Pathfinder2eCharacterGameSystemsService extends CharacterGameSystemsServic
 		scenario.reputationAdditionalFactionId = requestedScenario.reputationAdditionalFactionId;
 		scenario.reputationAdditionalEarned = requestedScenario.reputationAdditionalEarned;
 		scenario.scenarioAdvancementSpeed = requestedScenario.scenarioAdvancementSpeed;
-		scenario.scenarioAdventure = requestedScenario.scenarioAdventure;
 		scenario.scenarioEvent = requestedScenario.scenarioEvent;
 	}
 
