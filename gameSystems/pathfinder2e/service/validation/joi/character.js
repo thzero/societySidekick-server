@@ -47,7 +47,7 @@ class Pathfinder2eCharacterValidationService extends CharacterValidationService 
 	characterScenarioCreateSchema() {
 		const validation = super.characterScenarioCreateSchema()
 		return validation.concat(Joi.object({
-			achievementPointsEarned: this._number.min(0).max(12).required(),
+			achievementPointsEarned: this._number.min(0).max(36).required(),
 			achievementPointsSpent: this._number.min(0).max(99).allow(null),
 			boon1Id: this._id.allow(null),
 			boon2Id: this._id.allow(null),
@@ -69,7 +69,7 @@ class Pathfinder2eCharacterValidationService extends CharacterValidationService 
 	characterScenarioUpdateSchema() {
 		const validation = super.characterScenarioUpdateSchema()
 		return validation.concat(Joi.object({
-			achievementPointsEarned: this._number.min(0).max(12).required(),
+			achievementPointsEarned: this._number.min(0).max(36).required(),
 			achievementPointsSpent: this._number.min(0).max(99).allow(null),
 			boon1Id: this._id.allow(null),
 			boon2Id: this._id.allow(null),
