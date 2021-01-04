@@ -4,7 +4,7 @@
 		{
 			"type": "node",
 			"request": "launch",
-			"name": "Node: Nodemon",
+			"name": "Nodemon",
 			"runtimeExecutable": "nodemon",
 			"runtimeArgs":["-r","esm"],
 			"program": "${workspaceFolder}/index.js",
