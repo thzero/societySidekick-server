@@ -16,6 +16,10 @@
 				"name": "ALTAS_DB_NAME"
 			}
 		},
+		"logging": {
+			"level": "LOGGING_LEVEL",
+			"prettify": "LOGGING_PRETTIFY"
+		},
 		"port": "PORT"
 	}
 }
