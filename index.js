@@ -8,7 +8,7 @@ import ApiPlugin from './boot/plugins/api';
 import NewsApiPlugin from './boot/plugins/news';
 import UsersApiPlugin from './boot/plugins/users';
 
-import BootMain from '@thzero/library_server/boot/main';
+import BootMain from '@thzero/library_server/boot/koa';
 
 import usageMetricsRepository from '@thzero/library_server_repository_mongo/usageMetrics';
 
