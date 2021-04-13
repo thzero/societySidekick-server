@@ -15,6 +15,9 @@ class BaseGameSystemValidationService extends JoiValidationService {
 		id: Joi.number().min(1).max(99).required(),
 		description: this._description.required()
 	});
+	_scenarioSuccessResultsSeparator = Joi.string()
+		.regex(/^[ ,/-]*$/)
+		.allow(null).allow('');
 }
 
 export default BaseGameSystemValidationService;
