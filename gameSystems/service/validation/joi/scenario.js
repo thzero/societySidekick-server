@@ -1,7 +1,5 @@
 import Joi from '@hapi/joi';
 
-import SharedConstants from '../../../../common/constants';
-
 import BaseGameSystemValidationService from './base';
 
 class ScenarioGameSystemValidationService extends BaseGameSystemValidationService {
@@ -19,6 +17,7 @@ class ScenarioGameSystemValidationService extends BaseGameSystemValidationServic
 		repeatable: Joi.boolean(),
 		scenario: this._scenarioNumber.allow(null).allow(''),
 		season: this._number.allow(null).allow(''),
+		successResults: Joi.array().items(this._scenarioSuccessResults).allow(null),
 		url: this._url.allow(null).allow('')
 	});
 
@@ -34,6 +33,7 @@ class ScenarioGameSystemValidationService extends BaseGameSystemValidationServic
 		repeatable: Joi.boolean(),
 		scenario: this._scenarioNumber.allow(null).allow(''),
 		season: this._number.allow(null).allow(''),
+		successResults: Joi.array().items(this._scenarioSuccessResults).allow(null),
 		updatedTimestamp: this._timestamp.required(),
 		url: this._url.allow(null).allow('')
 	});

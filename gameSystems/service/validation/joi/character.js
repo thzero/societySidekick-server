@@ -27,6 +27,11 @@ class CharacterGameSystemValidationService extends BaseGameSystemValidationServi
 	_characterNumber = Joi.number().min(1).max(99);
 	_characterStatus = Joi.string().trim().valid(...Object.values(SharedConstants.CharactersStatus));
 
+	_characterScenarioSuccessResults = Joi.object({
+		id: Joi.number().min(1).max(99).required(),
+		checked: Joi.boolean()
+	});
+
 	_characterBoonCreateSchema = Joi.object({
 		gameSystemId: this._id.required(),
 		boonId: this._id.required(),
@@ -98,6 +103,7 @@ class CharacterGameSystemValidationService extends BaseGameSystemValidationServi
 		order: this._number.required(),
 		scenarioParticipant: this._scenarioParticipant.required(),
 		scenarioStatus: this._scenarioStatus.required(),
+		scenarioSuccessResults: Joi.array().items(this._characterScenarioSuccessResults).allow(null),
 		status: this._characterStatus.required(),
 		timestamp: this._timestamp.required(),
 		updatedTimestamp: this._timestamp.required()
@@ -117,6 +123,7 @@ class CharacterGameSystemValidationService extends BaseGameSystemValidationServi
 		order: this._number.required(),
 		scenarioParticipant: this._scenarioParticipant.required(),
 		scenarioStatus: this._scenarioStatus.required(),
+		scenarioSuccessResults: Joi.array().items(this._characterScenarioSuccessResults).allow(null),
 		status: this._characterStatus.required(),
 		timestamp: this._timestamp.required(),
 		updatedTimestamp: this._timestamp.required()

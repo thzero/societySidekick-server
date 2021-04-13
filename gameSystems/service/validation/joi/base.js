@@ -11,6 +11,10 @@ class BaseGameSystemValidationService extends JoiValidationService {
 		.max(2);
 	_scenarioParticipant = Joi.string().trim().valid(...Object.values(SharedConstants.ScenarioParticipants));
 	_scenarioStatus = Joi.string().trim().valid(...Object.values(SharedConstants.ScenarioStatus));
+	_scenarioSuccessResults = Joi.object({
+		id: Joi.number().min(1).max(99).required(),
+		description: this._description.required()
+	});
 }
 
 export default BaseGameSystemValidationService;

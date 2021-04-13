@@ -530,6 +530,9 @@ class CharactersService extends Service {
 			return respositoryResponse;
 
 		const userSettingsResponse = await this._updateSettings(correlationId, user, user.settings);
+		if (!userSettingsResponse.success)
+			return userSettingsResponse;
+
 		return respositoryResponse;
 	}
 
