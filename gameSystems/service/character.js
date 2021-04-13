@@ -93,6 +93,7 @@ class CharacterGameSystemsService extends Service {
 		scenario.scenarioId = requestedScenario.scenarioId;
 		scenario.scenarioParticipant = requestedScenario.scenarioParticipant;
 		scenario.scenarioStatus = requestedScenario.scenarioStatus;
+		scenario.scenarioSuccessResults = requestedScenario.scenarioSuccessResults;
 		scenario.timestamp = requestedScenario.timestamp;
 	}
 
