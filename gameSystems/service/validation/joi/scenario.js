@@ -18,6 +18,7 @@ class ScenarioGameSystemValidationService extends BaseGameSystemValidationServic
 		scenario: this._scenarioNumber.allow(null).allow(''),
 		season: this._number.allow(null).allow(''),
 		successResults: Joi.array().items(this._scenarioSuccessResults).allow(null),
+		successResultsSeparator: this._scenarioSuccessResultsSeparator,
 		url: this._url.allow(null).allow('')
 	});
 
@@ -34,6 +35,7 @@ class ScenarioGameSystemValidationService extends BaseGameSystemValidationServic
 		scenario: this._scenarioNumber.allow(null).allow(''),
 		season: this._number.allow(null).allow(''),
 		successResults: Joi.array().items(this._scenarioSuccessResults).allow(null),
+		successResultsSeparator: this._scenarioSuccessResultsSeparator,
 		updatedTimestamp: this._timestamp.required(),
 		url: this._url.allow(null).allow('')
 	});
