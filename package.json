@@ -1,10 +1,10 @@
 {
   "name": "skick_server",
-  "version": "0.13.33",
+  "version": "0.13.34",
   "version_major": 0,
   "version_minor": 13,
-  "version_patch": 33,
-  "version_date": "06/07/2021",
+  "version_patch": 34,
+  "version_date": "06/13/2021",
   "description": "An API layer to manage society play characters.",
   "author": "thZero",
   "license": "MIT",
@@ -29,8 +29,8 @@
     "start": "node -r esm --trace-uncaught index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "./node_modules/.bin/eslint .",
-    "cli-id": "./node_modules/.bin/library-cli --generate",
-    "cli-update": "./node_modules/.bin/library-cli --updateversion --pi"
+    "cli-id": ".\\node_modules\\.bin\\library-cli --generate",
+    "cli-update": ".\\node_modules\\.bin\\library-cli --updateversion --pi"
   },
   "dependencies": {
     "@thzero/library_common": "^0.13.14",
