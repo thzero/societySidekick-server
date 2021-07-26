@@ -110,6 +110,14 @@ Other global dependencies required
 npm -g i nodemon
 ```
 
+#### Submodules
+
+Install the submodule dependencies for the client.
+
+```
+git submodule add https://github.com/thzero/toAdventure-common "common"
+```
+
 ### Compiles and hot-reloads for development
 
 #### NPM CLI
