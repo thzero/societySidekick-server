@@ -1,10 +1,10 @@
 {
   "name": "skick_server",
-  "version": "0.14.1",
+  "version": "0.14.2",
   "version_major": 0,
   "version_minor": 14,
-  "version_patch": 1,
-  "version_date": "07/26/2021",
+  "version_patch": 2,
+  "version_date": "07/29/2021",
   "description": "An API layer to manage society play characters.",
   "author": "thZero",
   "license": "MIT",
@@ -41,6 +41,7 @@
     "@thzero/library_server_repository_mongo": "^0.13.14",
     "@thzero/library_server_validation_joi": "^0.13.6",
     "decimal.js-light": "^2.5.1",
+    "nodemon": "^2.0.12",
     "pino-pretty": "^5.1.2"
   },
   "devDependencies": {
