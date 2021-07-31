@@ -10,6 +10,7 @@ import classesRepository from '../../repository/mongo/classes';
 import equipmentRepository from '../../repository/mongo/equipment';
 import factionsRepository from '../../repository/mongo/factions';
 import gameSystemsRepository from '../../repository/mongo/gameSystems';
+import organizedPlayRepository from '../../repository/mongo/organizedPlay';
 import scenariosRepository from '../../repository/mongo/scenarios';
 import siteRepository from '../../repository/mongo/site';
 
@@ -22,6 +23,7 @@ import equipmentRoute from '../../routes/equipment';
 import factionsRoute from '../../routes/factions';
 import scenariosRoute from '../../routes/scenarios';
 
+import apiService from '../../service/api';
 import boonsService from '../../service/boons';
 import charactersService from '../../service/characters';
 import classesService from '../../service/classes';
@@ -50,6 +52,7 @@ import gameSystemsScenarioValidationStarfinder1eService from '../../gameSystems/
 import gameSystemsValidationStarfinder1eService from '../../gameSystems/starfinder1e/service/validation/joi';
 
 import repositoryCollectionsService from '../../repository/mongo/collections';
+import organizedPlayService from '../../service/organizedPlay';
 import scenariosService from '../../service/scenarios';
 import securityService from '../../service/security';
 import siteService from '../../service/site';
@@ -67,6 +70,7 @@ class AppApiBootPlugin extends FrontApiBootPlugin {
 		this._injectRepository(Constants.InjectorKeys.REPOSITORY_EQUIPMENT, new equipmentRepository());
 		this._injectRepository(Constants.InjectorKeys.REPOSITORY_FACTIONS, new factionsRepository());
 		this._injectRepository(Constants.InjectorKeys.REPOSITORY_GAMESYSTEMS, new gameSystemsRepository());
+		this._injectRepository(Constants.InjectorKeys.REPOSITORY_ORGANIZEDPLAY, new organizedPlayRepository());
 		this._injectRepository(Constants.InjectorKeys.REPOSITORY_SCENARIOS, new scenariosRepository());
 		this._injectRepository(Constants.InjectorKeys.REPOSITORY_SITE, new siteRepository());
 	}
@@ -89,6 +93,7 @@ class AppApiBootPlugin extends FrontApiBootPlugin {
 
 		this._injectService(RepositoryConstants.InjectorKeys.SERVICE_REPOSITORY_COLLECTIONS, new repositoryCollectionsService());
 
+		this._injectService(Constants.InjectorKeys.SERVICE_API, new apiService());
 		this._injectService(Constants.InjectorKeys.SERVICE_BOONS, new boonsService());
 		this._injectService(Constants.InjectorKeys.SERVICE_CHARACTERS, new charactersService());
 		this._injectService(Constants.InjectorKeys.SERVICE_CLASSES, new classesService());
@@ -116,6 +121,7 @@ class AppApiBootPlugin extends FrontApiBootPlugin {
 		this._injectService(Constants.InjectorKeys.SERVICE_GAMESYSTEMS_STARFINDER_1E, new gameSystemsStarfinder1eService());
 		this._injectService(Constants.InjectorKeys.SERVICE_GAMESYSTEMS_VALIDATION_STARFINDER_1E, new gameSystemsValidationStarfinder1eService());
 
+		this._injectService(Constants.InjectorKeys.SERVICE_ORGANIZEDPLAY, new organizedPlayService());
 		this._injectService(Constants.InjectorKeys.SERVICE_SCENARIOS, new scenariosService());
 		this._injectService(Constants.InjectorKeys.SERVICE_SITE, new siteService());
 		this._injectService(Constants.InjectorKeys.SERVICE_VALIDATION, new validationService());

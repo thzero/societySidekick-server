@@ -25,6 +25,7 @@ const Constants = {
 		REPOSITORY_EQUIPMENT: 'repositoryEquipment',
 		REPOSITORY_FACTIONS: 'repositoryFactions',
 		REPOSITORY_GAMESYSTEMS: 'repositoryGameSystems',
+		REPOSITORY_ORGANIZEDPLAY: 'repositoryOrganizedPlay',
 		REPOSITORY_SCENARIOS: 'repositoryScenarios',
 		REPOSITORY_SITE: 'repositorySite',
 		REPOSITORY_CLEANUP: 'repositoryCleanup',
@@ -35,6 +36,8 @@ const Constants = {
 		SERVICE_ADMIN_EQUIPMENT: 'serviceAdminEquipment',
 		SERVICE_ADMIN_FACTIONS: 'serviceAdminFactions',
 		SERVICE_ADMIN_SCENARIOS: 'serviceAdminScenarios',
+
+		SERVICE_API: 'serviceApi',
 		SERVICE_BOONS: 'serviceBoons',
 		SERVICE_CLASSES: 'serviceClasses',
 		SERVICE_CHARACTERS: 'serviceCharacters',
@@ -63,6 +66,7 @@ const Constants = {
 		SERVICE_GAMESYSTEMS_UTILITY: 'serviceGameSystemsUtility',
 
 		SERVICE_LOGGER_PINO: 'serviceLoggerPino',
+		SERVICE_ORGANIZEDPLAY: 'serviceOrganizedPlay',
 		SERVICE_SCENARIOS: 'serviceScenarios',
 		SERVICE_SITE: 'serviceSite',
 		SERVICE_VALIDATION: 'serviceValidation',
