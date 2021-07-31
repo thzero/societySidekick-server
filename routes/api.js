@@ -22,18 +22,8 @@ class ApiRoute extends BaseRoute {
 		router.get('/initialize',
 			// eslint-disable-next-line
 			async (ctx, next) => {
-				// const serviceGameSystems = this._injector.getService(Constants.InjectorKeys.SERVICE_GAMESYSTEMS);
-				// const response = (await serviceGameSystems.listing(ctx.correlationId)).check(ctx);
-				// response.results = { gameSystems: response.results };
-				// const servicePlans = this._injector.getService(LibraryConstants.InjectorKeys.SERVICE_PLANS);
-				// const responsePlans = (await servicePlans.listing(ctx.correlationId)).check(ctx);
-				// response.results.plans = responsePlans.results;
-				// const serviceVersion = this._injector.getService(LibraryConstants.InjectorKeys.SERVICE_VERSION);
-				// const responseVersion = (await serviceVersion.version(ctx.correlationId)).check(ctx);
-				// response.results.version = responseVersion.results;
-				// ctx.body = LibraryUtility.stringify(response);
-				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_UTILITY);
-				const response = (await service.listing(ctx.correlationId)).check(ctx);
+				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_API);
+				const response = (await service.initialize(ctx.correlationId)).check(ctx);
 				ctx.body = LibraryUtility.stringify(response);
 			}
 		);

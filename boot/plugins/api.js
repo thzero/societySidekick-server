@@ -23,6 +23,7 @@ import equipmentRoute from '../../routes/equipment';
 import factionsRoute from '../../routes/factions';
 import scenariosRoute from '../../routes/scenarios';
 
+import apiService from '../../service/api';
 import boonsService from '../../service/boons';
 import charactersService from '../../service/characters';
 import classesService from '../../service/classes';
@@ -56,7 +57,6 @@ import scenariosService from '../../service/scenarios';
 import securityService from '../../service/security';
 import siteService from '../../service/site';
 import validationService from '../../service/validation/joi';
-import utilityService from '../../service/utility';
 import versionService from '../../service/version';
 
 class AppApiBootPlugin extends FrontApiBootPlugin {
@@ -93,6 +93,7 @@ class AppApiBootPlugin extends FrontApiBootPlugin {
 
 		this._injectService(RepositoryConstants.InjectorKeys.SERVICE_REPOSITORY_COLLECTIONS, new repositoryCollectionsService());
 
+		this._injectService(Constants.InjectorKeys.SERVICE_API, new apiService());
 		this._injectService(Constants.InjectorKeys.SERVICE_BOONS, new boonsService());
 		this._injectService(Constants.InjectorKeys.SERVICE_CHARACTERS, new charactersService());
 		this._injectService(Constants.InjectorKeys.SERVICE_CLASSES, new classesService());
@@ -123,7 +124,6 @@ class AppApiBootPlugin extends FrontApiBootPlugin {
 		this._injectService(Constants.InjectorKeys.SERVICE_ORGANIZEDPLAY, new organizedPlayService());
 		this._injectService(Constants.InjectorKeys.SERVICE_SCENARIOS, new scenariosService());
 		this._injectService(Constants.InjectorKeys.SERVICE_SITE, new siteService());
-		this._injectService(Constants.InjectorKeys.SERVICE_UTILITY, new utilityService());
 		this._injectService(Constants.InjectorKeys.SERVICE_VALIDATION, new validationService());
 	}
 

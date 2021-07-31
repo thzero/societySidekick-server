@@ -36,6 +36,8 @@ const Constants = {
 		SERVICE_ADMIN_EQUIPMENT: 'serviceAdminEquipment',
 		SERVICE_ADMIN_FACTIONS: 'serviceAdminFactions',
 		SERVICE_ADMIN_SCENARIOS: 'serviceAdminScenarios',
+
+		SERVICE_API: 'serviceApi',
 		SERVICE_BOONS: 'serviceBoons',
 		SERVICE_CLASSES: 'serviceClasses',
 		SERVICE_CHARACTERS: 'serviceCharacters',
@@ -68,7 +70,6 @@ const Constants = {
 		SERVICE_SCENARIOS: 'serviceScenarios',
 		SERVICE_SITE: 'serviceSite',
 		SERVICE_VALIDATION: 'serviceValidation',
-		SERVICE_UTILITY: 'serviceUtility',
 		SERVICE_CLEANUP: 'serviceCleanup'
 	},
 	Plans: {
