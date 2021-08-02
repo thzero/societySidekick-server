@@ -133,7 +133,7 @@ class CharacterGameSystemValidationService extends BaseGameSystemValidationServi
 		return this._characterBoonCreateSchema;
 	}
 
-	characterInventoryUpdateSchema() {
+	characterBoonUpdateSchema() {
 		return this._characterBoonUpdateSchema;
 	}
 
