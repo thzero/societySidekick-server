@@ -22,14 +22,14 @@ class JoiValidationService extends GamerJoiValidationService {
 	_settingsSortByScenarios = Joi.string().trim().valid(...Object.values(SharedConstants.SortBy.Scenarios));
 
 	_settingBoonsSchema = Joi.object({
-		listingSytleFilter: this._settingsListingStyles.allow(null),
+		listingStyleFilter: this._settingsListingStyles.allow(null),
 		seasonFilter: this._number.allow(null),
 		sortBy: this._settingsSortByBoons.allow(null),
 		sortDirection: Joi.boolean().allow(null)
 	});
 
 	_settingCharactersSchema = Joi.object({
-		listingSytleFilter: this._settingsListingStyles.allow(null),
+		listingStyleFilter: this._settingsListingStyles.allow(null),
 		sortBy: this._settingsSortByCharacters.allow(null),
 		sortDirection: Joi.boolean().allow(null)
 	});
@@ -82,7 +82,7 @@ class JoiValidationService extends GamerJoiValidationService {
 
 	_settingScenariosSchema = Joi.object({
 		additional: Joi.array().allow(null),
-		listingSytleFilter: this._settingsListingStyles.allow(null),
+		listingStyleFilter: this._settingsListingStyles.allow(null),
 		seasonFilter: this._number.allow(null),
 		sortBy: this._settingsSortByScenarios.allow(null),
 		sortDirection: Joi.boolean().allow(null)
