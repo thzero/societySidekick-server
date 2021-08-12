@@ -85,6 +85,7 @@ class UserMongoRepository extends BaseUserMongoRepository {
 			'external': 0,
 			'planId': 0,
 			'roles': 0,
+			'settings.boons': 0,
 			'settings.characters': 0,
 			'settings.favorites': 0,
 			'settings.gameSystems.gearSets': 0,

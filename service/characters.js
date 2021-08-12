@@ -65,10 +65,6 @@ class CharactersService extends Service {
 		return respositoryResponse;
 	}
 
-	async _updateSettings(correlationId, user, requestedSettings) {
-		return await this._serviceUsers.updateSettings(correlationId, { userId: user.id, settings: requestedSettings });
-	}
-
 	async delete(correlationId, user, characterId) {
 		const validationResponse = this._validateUser(correlationId, user);
 		if (!validationResponse.success)
@@ -698,6 +694,20 @@ class CharactersService extends Service {
 		return await serviceResponse.results.calculate(correlationId, character, user);
 	}
 
+	_characterServiceByGameSystemId(correlationId, gameSystemId) {
+		if (!gameSystemId || !this._serviceGameSystemsUtility)
+			return this._error('CharactersService', '_characterServiceByGameSystemId', null, null, null, null, correlationId);
+
+		return this._serviceGameSystemsUtility.characterByGameSystemId(correlationId, gameSystemId);
+	}
+
+	_characterValidateByGameSystemId(correlationId, gameSystemId, value, type, params) {
+		if (!this._serviceGameSystemsUtility)
+			return this._error('CharactersService', '_characterValidateByGameSystemId', null, null, null, null, correlationId);
+
+		return this._serviceGameSystemsUtility.characterValidateByGameSystemId(correlationId, gameSystemId, value, type, params)
+	}
+
 	_updateBoon(cgameSystemId, character, requestedBoon) {
 		if (!character || !requestedBoon)
 			return this._error('CharactersService', '_updateBoon', null, null, null, null, correlationId);
@@ -782,18 +792,8 @@ class CharactersService extends Service {
 		return this._success(correlationId);
 	}
 
-	_characterServiceByGameSystemId(correlationId, gameSystemId) {
-		if (!gameSystemId || !this._serviceGameSystemsUtility)
-			return this._error('CharactersService', '_characterServiceByGameSystemId', null, null, null, null, correlationId);
-
-		return this._serviceGameSystemsUtility.characterByGameSystemId(correlationId, gameSystemId);
-	}
-
-	_characterValidateByGameSystemId(correlationId, gameSystemId, value, type, params) {
-		if (!this._serviceGameSystemsUtility)
-			return this._error('CharactersService', '_characterValidateByGameSystemId', null, null, null, null, correlationId);
-
-		return this._serviceGameSystemsUtility.characterValidateByGameSystemId(correlationId, gameSystemId, value, type, params)
+	async _updateSettings(correlationId, user, requestedSettings) {
+		return await this._serviceUsers.updateSettings(correlationId, { userId: user.id, settings: requestedSettings });
 	}
 }
 
