@@ -35,7 +35,7 @@ class Pathfinder2eCharacterGameSystemsService extends CharacterGameSystemsServic
 		if (!response.success)
 			return response;
 
-		character.archetypeId = details.archetypeId;
+		character.archetypeIds = details.archetypeIds;
 		character.boonAdvancedId = details.boonAdvancedId,
 		character.boonFactionId = details.boonFactionId,
 		character.boonGeneric1Id = details.boonGeneric1Id,
