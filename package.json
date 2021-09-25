@@ -41,7 +41,6 @@
     "@thzero/library_server_repository_mongo": "^0.13.19",
     "@thzero/library_server_validation_joi": "^0.13.8",
     "decimal.js-light": "^2.5.1",
-    "nodemon": "^2.0.12",
     "pino-pretty": "^7.0.1"
   },
   "devDependencies": {
