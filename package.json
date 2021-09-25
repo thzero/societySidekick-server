@@ -1,10 +1,10 @@
 {
   "name": "skick_server",
-  "version": "0.14.13",
+  "version": "0.14.14",
   "version_major": 0,
   "version_minor": 14,
-  "version_patch": 13,
-  "version_date": "09/17/2021",
+  "version_patch": 14,
+  "version_date": "09/25/2021",
   "description": "An API layer to manage society play characters.",
   "author": "thZero",
   "license": "MIT",
@@ -51,7 +51,7 @@
     "babel-loader": "^8.2.2",
     "eslint": "^7.32.0",
     "eslint-plugin-node": "^11.1.0",
-    "webpack": "^5.53.0",
+    "webpack": "^5.54.0",
     "webpack-cli": "^4.8.0"
   }
 }
