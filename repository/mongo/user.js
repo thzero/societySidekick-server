@@ -12,7 +12,7 @@ class UserMongoRepository extends BaseUserMongoRepository {
 		response.results = await this._findOne(correlationId, collectionUsers, { 'external.id': userId });
 		response.success = response.results !== null;
 
-		if (!excludePlan && response && response.success && response.results) {
+		if (!excludePlan && this._hasSucceeded(response) && response.results) {
 			const collectionPlan = await this._getCollectionPlans(correlationId);
 			response.results.plan = await this._findOne(correlationId, collectionPlan, { 'id': response.results.planId }, {
 				'roles': 0

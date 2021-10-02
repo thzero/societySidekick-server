@@ -24,7 +24,7 @@ class ScenariosService extends Service {
 
 	async listing(correlationId, gameSystemId) {
 		const validationGameSystemIdResponse = this._validateId(correlationId, gameSystemId, 'gameSystemId');
-		if (!validationGameSystemIdResponse.success)
+		if (this._hasFailed(validationGameSystemIdResponse))
 			return validationGameSystemIdResponse;
 
 		const respositoryResponse = await this._repositoryScenarios.listing(correlationId, gameSystemId);
@@ -33,27 +33,27 @@ class ScenariosService extends Service {
 
 	async playedScenarios(correlationId, user, characterId) {
 		const validationResponse = this._validateUser(correlationId, user);
-		if (!validationResponse.success)
+		if (this._hasFailed(validationResponse))
 			return validationResponse;
 
 		const validationCharacterIdResponse = this._validateId(correlationId, characterId, 'characters');
-		if (!validationCharacterIdResponse.success)
+		if (this._hasFailed(validationCharacterIdResponse))
 			return validationCharacterIdResponse;
 
 		const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
 		const respositoryFetchResponse = await service.fetch(correlationId, user, characterId);
-		if (!respositoryFetchResponse.success)
+		if (this._hasFailed(respositoryFetchResponse))
 			// TODO: Security - Needs a real security check
 			return this._error('ScenariosService', 'playedScenarios', null, null, null, null, correlationId).addGeneric('Invalid permissions', SharedConstants.ErrorCodes.InvalidPermissions);
 
 		const character = respositoryFetchResponse.results;
 
 		const respositoryScenarioListingResponse = await service.listing(correlationId, user);
-		if (!respositoryScenarioListingResponse.success)
+		if (this._hasFailed(respositoryScenarioListingResponse))
 			return respositoryScenarioListingResponse;
 
 		const respositoryCharacterListingResponse = await this.listing(correlationId, character.gameSystemId);
-		if (!respositoryCharacterListingResponse.success)
+		if (this._hasFailed(respositoryCharacterListingResponse))
 			return respositoryCharacterListingResponse;
 
 		const scenarios = respositoryCharacterListingResponse.results.data;
@@ -63,7 +63,7 @@ class ScenariosService extends Service {
 		response.results = [];
 
 		const serviceGameSystemResponse = this._scenarioServiceByGameSystemId(correlationId, character.gameSystemId);
-		if (!serviceGameSystemResponse.success)
+		if (this._hasFailed(serviceGameSystemResponse))
 			return serviceGameSystemResponse;
 		const serviceGameSystem = serviceGameSystemResponse.results;
 

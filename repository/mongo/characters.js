@@ -12,7 +12,7 @@ class CharactersMongoRepository extends AppMongoRepository {
 			const collection = await this._getCollectionCharacters(correlationId);
 
 			const responseC = await this._create(correlationId, collection, userId, character);
-			if (!responseC || !responseC.success)
+			if (this._hasFailed(responseC))
 				return await this._transactionAbort(correlationId, session, 'Unable to insert the value');
 
 			response.results = character;
@@ -40,7 +40,7 @@ class CharactersMongoRepository extends AppMongoRepository {
 			const collection = await this._getCollectionCharacters(correlationId);
 
 			const responseC = await this._delete(correlationId, collection, { $and: [ { 'userId' : userId }, { 'id': characterId } ] });
-			if (!responseC || !responseC.success)
+			if (this._hasFailed(responseC))
 				return await this._transactionAbort(correlationId, session, 'Unable to delete the value');
 
 			await this._transactionCommit(correlationId, session);

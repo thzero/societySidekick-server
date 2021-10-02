@@ -17,7 +17,7 @@ class FactionsService extends Service {
 
 	async listing(correlationId, gameSystemId) {
 		const validationGameSystemIdResponse = this._validateId(correlationId, gameSystemId, 'gameSystemId');
-		if (!validationGameSystemIdResponse.success)
+		if (this._hasFailed(validationGameSystemIdResponse))
 			return validationGameSystemIdResponse;
 
 		const respositoryResponse = await this._repositoryFactions.listing(correlationId, gameSystemId);

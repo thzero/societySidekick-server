@@ -6,11 +6,11 @@ import Service from '@thzero/library_server/service/index';
 class UtilityGameSystemsService extends Service {
 	characterByGameSystemId(correlationId, gameSystemId) {
 		const serviceResponse = this._getServiceByGameSystemId(correlationId, gameSystemId);
-		if (!serviceResponse.success)
+		if (this._hasFailed(serviceResponse))
 			return serviceResponse;
 
 		const determineResponse = serviceResponse.results.determineCharactersService(correlationId);
-		if (!determineResponse.success)
+		if (this._hasFailed(determineResponse))
 			return this._error('UtilityGameSystemsService', 'characterByGameSystemId', `Invalid character service for gamesystem '${gameSystemId}'.`, null, null, null, correlationId);
 
 		return determineResponse;
@@ -21,7 +21,7 @@ class UtilityGameSystemsService extends Service {
 			return this._error('UtilityGameSystemsService', 'characterValidateByGameSystemId', null, null, null, null, correlationId);
 
 		const serviceResponse = this._getServiceByGameSystemId(correlationId, gameSystemId);
-		if (!serviceResponse.success)
+		if (this._hasFailed(serviceResponse))
 			return serviceResponse;
 
 		const schema = serviceResponse.results.determineCharactersValidation(correlationId, type)
@@ -33,11 +33,11 @@ class UtilityGameSystemsService extends Service {
 
 	scenarioByGameSystemId(correlationId, gameSystemId) {
 		const serviceResponse = this._getServiceByGameSystemId(correlationId, gameSystemId);
-		if (!serviceResponse.success)
+		if (this._hasFailed(serviceResponse))
 			return serviceResponse;
 
 		const determineResponse = serviceResponse.results.determineScenariosService(correlationId);
-		if (!determineResponse.success)
+		if (this._hasFailed(determineResponse))
 			return this._error('UtilityGameSystemsService', 'scenarioByGameSystemId', `Invalid scenario service for gamesystem '${gameSystemId}'.`, null, null, null, correlationId);
 
 		return determineResponse;
@@ -48,7 +48,7 @@ class UtilityGameSystemsService extends Service {
 			return this._error('UtilityGameSystemsService', 'scenarioValidateByGameSystemId', null, null, null, null, correlationId);
 
 		const serviceResponse = this._getServiceByGameSystemId(correlationId, gameSystemId);
-		if (!serviceResponse.success)
+		if (this._hasFailed(serviceResponse))
 			return serviceResponse;
 
 		const schema = serviceResponse.results.determineScenariosValidation(correlationId, type);
@@ -63,7 +63,7 @@ class UtilityGameSystemsService extends Service {
 			return this._error('UtilityGameSystemsService', 'validateByGameSystemId', null, null, null, null, correlationId);
 
 		const serviceResponse = this._getServiceByGameSystemId(correlationId, gameSystemId);
-		if (!serviceResponse.success)
+		if (this._hasFailed(serviceResponse))
 			return serviceResponse;
 
 		const schema = serviceResponse.results.determineValidation(correlationId, type)
@@ -75,7 +75,7 @@ class UtilityGameSystemsService extends Service {
 
 	_getServiceByGameSystemId(correlationId, gameSystemId) {
 		const validationGameSystemIdResponse = this._validateId(correlationId, gameSystemId, 'gameSystemId');
-		if (!validationGameSystemIdResponse.success)
+		if (this._hasFailed(validationGameSystemIdResponse))
 			return validationGameSystemIdResponse;
 
 		// GameSystems Update
