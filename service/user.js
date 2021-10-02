@@ -27,11 +27,11 @@ class UserService extends BaseUserService {
 
 	async fetchFavoritesByGamerId(correlationId, requestedGamerId) {
 		const validationRequestedGamerIdResponse = this._serviceValidation.check(correlationId, this._serviceValidation.gamerIdSchema, requestedGamerId);
-		if (!validationRequestedGamerIdResponse.success)
+		if (this._hasFailed(validationRequestedGamerIdResponse))
 			return validationRequestedGamerIdResponse;
 
 		const respositoryResponse = await this._repositoryUser.fetchByGamerId(correlationId, requestedGamerId, true);
-		if (!respositoryResponse.success)
+		if (this._hasFailed(respositoryResponse))
 			return respositoryResponse;
 
 		const user = respositoryResponse.results;
@@ -43,7 +43,7 @@ class UserService extends BaseUserService {
 			userIds.push(fav.id);
 
 		const respositoryUsersResponse = await this._repositoryUser.fetchByGamerIds(correlationId, userIds);
-		if (!respositoryUsersResponse.success)
+		if (this._hasFailed(respositoryUsersResponse))
 			return respositoryUsersResponse;
 
 		const response = this._initResponse(correlationId);
@@ -85,7 +85,7 @@ class UserService extends BaseUserService {
 
 	async _updateSettingsValidation(correlationId, requestedSettings) {
 		const respositoryResponse = await this._repositoryUser.valid(correlationId, requestedSettings.userId, requestedSettings.settings.gamerTag);
-		if (!respositoryResponse.success)
+		if (this._hasFailed(respositoryResponse))
 			return respositoryResponse;
 
 		const response = this._initResponse(correlationId);
@@ -100,10 +100,10 @@ class UserService extends BaseUserService {
 			const entries = Object.entries(requestedSettings.settings.scenarios.additional)
 			for (const [key, value] of entries) {
 				validationResponse = this._validateId(correlationId, value.id);
-				if (!validationResponse.success)
+				if (this._hasFailed(validationResponse))
 					return validationResponse;
 				validationResponse = this._validateByGameSystemId(correlationId, value.id, value, Constants.ValidationSchemaTypes.UserSettingsSchema);
-				if (!validationResponse.success)
+				if (this._hasFailed(validationResponse))
 					return validationResponse;
 			}
 		}

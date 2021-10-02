@@ -16,7 +16,7 @@ class EquipmentService extends Service {
 
 	async search(correlationId, gameSystemId, search) {
 		const validationGameSystemIdResponse = this._validateId(correlationId, gameSystemId, 'gameSystemId');
-		if (!validationGameSystemIdResponse.success)
+		if (this._hasFailed(validationGameSystemIdResponse))
 			return validationGameSystemIdResponse;
 
 		const respositoryResponse = await this._repositoryEquipment.search(correlationId, gameSystemId, search);

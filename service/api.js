@@ -19,25 +19,25 @@ class ApiService extends Service {
 
 	async initialize(correlationId) {
 		const response = await this._serviceGameSystems.listing(correlationId);
-		if (!response.success)
+		if (this._hasFailed(response))
 			return response;
 
 		response.results = { gameSystems: response.results };
 
 		const responseOrganizedPlay = await this._serviceOrganizedPlay.listing(correlationId);
-		if (!responseOrganizedPlay.success)
+		if (this._hasFailed(responseOrganizedPlay))
 			return responseOrganizedPlay;
 
 		response.results.organizedPlay = responseOrganizedPlay.results;
 
 		const responsePlans = await this._servicePlans.listing(correlationId);
-		if (!responsePlans.success)
+		if (this._hasFailed(responsePlans))
 			return responsePlans;
 
 		response.results.plans = responsePlans.results;
 
 		const responseVersion = await this._serviceVersion.version(correlationId);
-		if (!responseVersion.success)
+		if (this._hasFailed(responseVersion))
 			return responseVersion;
 
 		response.results.version = responseVersion.results;

@@ -32,7 +32,7 @@ class Pathfinder2eCharacterGameSystemsService extends CharacterGameSystemsServic
 
 	updateDetails(correlationId, character, details) {
 		const response = super.updateDetails(correlationId, character, details);
-		if (!response.success)
+		if (this._hasFailed(response))
 			return response;
 
 		character.archetypeIds = details.archetypeIds;
