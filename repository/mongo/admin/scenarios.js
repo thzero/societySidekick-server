@@ -1,4 +1,4 @@
-import BaseAdminMongoRepository from '@thzero/library_server_repository_mongo/admin/index';
+import BaseAdminMongoRepository from '@thzero/library_server_repository_mongo/admin';
 
 class ScenariosMongoRepository extends BaseAdminMongoRepository {
 	async _getCollectionAdmin(correlationId) {
