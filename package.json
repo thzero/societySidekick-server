@@ -1,5 +1,6 @@
 {
   "name": "skick_server",
+  "type": "module",
   "version": "0.14.22",
   "version_major": 0,
   "version_minor": 14,
@@ -20,9 +21,8 @@
     "node": ">=12.8.3"
   },
   "main": "index.js",
-  "type": "module",
   "scripts": {
-    "debug": "set NODE_ENV=dev && SET LOG_LEVEL=debug && nodemon --experimental-specifier-resolution node --nolazy --inspect-brk=9229 index.js",
+    "debug": "set NODE_ENV=dev && SET LOG_LEVEL=debug && nodemon --experimental-specifier-resolution=node --nolazy --inspect-brk=9229 index.js",
     "docker-build": "docker build -t thzero/societysidekick:latest .",
     "docker-run": "docker run -p 7984:8081 --env PORT=9091 thzero/societysidekick:latest",
     "gcloud-build": "gcloud config set project societysidekick && gcloud builds submit --tag gcr.io/societysidekick/api",
