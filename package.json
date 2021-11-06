@@ -1,11 +1,11 @@
 {
   "name": "skick_server",
   "type": "module",
-  "version": "0.14.24",
+  "version": "0.14.25",
   "version_major": 0,
   "version_minor": 14,
-  "version_patch": 24,
-  "version_date": "11/03/2021",
+  "version_patch": 25,
+  "version_date": "11/06/2021",
   "description": "An API layer to manage society play characters.",
   "author": "thZero",
   "license": "MIT",
@@ -42,7 +42,7 @@
     "@thzero/library_server_repository_mongo": "^0.15.3",
     "@thzero/library_server_validation_joi": "^0.15.2",
     "decimal.js-light": "^2.5.1",
-    "pino-pretty": "^7.1.0"
+    "pino-pretty": "^7.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
@@ -50,9 +50,9 @@
     "@babel/preset-env": "^7.16.0",
     "@thzero/library_cli": "^0.13.21",
     "babel-loader": "^8.2.3",
-    "eslint": "^8.1.0",
+    "eslint": "^8.2.0",
     "eslint-plugin-node": "^11.1.0",
-    "webpack": "^5.61.0",
+    "webpack": "^5.62.1",
     "webpack-cli": "^4.9.1"
   }
 }
