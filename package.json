@@ -35,24 +35,24 @@
   },
   "dependencies": {
     "@thzero/library_common": "^0.15.1",
-    "@thzero/library_common_service": "^0.15.2",
+    "@thzero/library_common_service": "^0.15.5",
     "@thzero/library_server": "^0.15.3",
     "@thzero/library_server_firebase": "^0.15.2",
     "@thzero/library_server_logger_pino": "^0.15.4",
     "@thzero/library_server_repository_mongo": "^0.15.3",
     "@thzero/library_server_validation_joi": "^0.15.2",
     "decimal.js-light": "^2.5.1",
-    "pino-pretty": "^7.2.0"
+    "pino-pretty": "^7.3.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.16.0",
-    "@babel/plugin-proposal-class-properties": "^7.16.0",
-    "@babel/preset-env": "^7.16.0",
+    "@babel/core": "^7.16.5",
+    "@babel/plugin-proposal-class-properties": "^7.16.5",
+    "@babel/preset-env": "^7.16.5",
     "@thzero/library_cli": "^0.13.21",
     "babel-loader": "^8.2.3",
-    "eslint": "^8.2.0",
+    "eslint": "^8.4.1",
     "eslint-plugin-node": "^11.1.0",
-    "webpack": "^5.62.1",
+    "webpack": "^5.65.0",
     "webpack-cli": "^4.9.1"
   }
 }
