@@ -1,11 +1,11 @@
 {
   "name": "skick_server",
   "type": "module",
-  "version": "0.14.28",
+  "version": "0.14.29",
   "version_major": 0,
   "version_minor": 14,
-  "version_patch": 28,
-  "version_date": "02/05/2022",
+  "version_patch": 29,
+  "version_date": "02/20/2022",
   "description": "An API layer to manage society play characters.",
   "author": "thZero",
   "license": "MIT",
@@ -35,25 +35,25 @@
     "cli-update-w": ".\\node_modules\\.bin\\library-cli --updateversion --pi"
   },
   "dependencies": {
-    "@thzero/library_common": "^0.15.4",
-    "@thzero/library_common_service": "^0.15.8",
-    "@thzero/library_server": "^0.15.7",
-    "@thzero/library_server_firebase": "^0.15.6",
-    "@thzero/library_server_logger_pino": "^0.15.8",
-    "@thzero/library_server_repository_mongo": "^0.15.7",
-    "@thzero/library_server_validation_joi": "^0.15.5",
+    "@thzero/library_common": "^0.15.7",
+    "@thzero/library_common_service": "^0.15.11",
+    "@thzero/library_server": "^0.15.8",
+    "@thzero/library_server_firebase": "^0.15.7",
+    "@thzero/library_server_logger_pino": "^0.15.9",
+    "@thzero/library_server_repository_mongo": "^0.15.8",
+    "@thzero/library_server_validation_joi": "^0.15.7",
     "decimal.js-light": "^2.5.1",
     "pino-pretty": "^7.5.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.0",
+    "@babel/core": "^7.17.5",
     "@babel/plugin-proposal-class-properties": "^7.16.7",
     "@babel/preset-env": "^7.16.11",
-    "@thzero/library_cli": "^0.15.3",
+    "@thzero/library_cli": "^0.15.7",
     "babel-loader": "^8.2.3",
-    "eslint": "^8.8.0",
+    "eslint": "^8.9.0",
     "eslint-plugin-node": "^11.1.0",
-    "webpack": "^5.68.0",
+    "webpack": "^5.69.1",
     "webpack-cli": "^4.9.2"
   }
 }
