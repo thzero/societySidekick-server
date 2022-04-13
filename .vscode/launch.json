@@ -4,7 +4,7 @@
 		{
 			"type": "node",
 			"request": "launch",
-			"name": "Nodemon",
+			"name": "Node: Nodemon",
 			"runtimeExecutable": "nodemon",
 			"runtimeArgs":["--experimental-specifier-resolution","node"],
 			"program": "${workspaceFolder}/index.js",
@@ -16,7 +16,7 @@
 		{
 			"type": "node",
 			"request": "launch",
-			"name": "Nodemon2",
+			"name": "Node: Nodemon2",
 			"runtimeExecutable": "nodemon",
 			"runtimeArgs":["-r","esm"],
 			"program": "${workspaceFolder}/index.js",
