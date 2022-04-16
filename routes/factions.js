@@ -6,7 +6,11 @@ import BaseRoute from '@thzero/library_server/routes/index';
 
 class FactionRoute extends BaseRoute {
 	constructor(prefix) {
-		super(prefix ? prefix : '/api/factions');
+		super(prefix ? prefix : '/factions');
+	}
+
+	get id() {
+		return 'factions';
 	}
 
 	_initializeRoutes(router) {

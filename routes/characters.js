@@ -11,7 +11,11 @@ import authorization from '@thzero/library_server/middleware/authorization';
 
 class CharactersRoute extends BaseRoute {
 	constructor() {
-		super('/api/characters');
+		super('/characters');
+	}
+
+	get id() {
+		return 'characters';
 	}
 
 	_initializeRoutes(router) {

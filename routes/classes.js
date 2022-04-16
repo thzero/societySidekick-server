@@ -6,7 +6,11 @@ import BaseRoute from '@thzero/library_server/routes/index';
 
 class ClassesRoute extends BaseRoute {
 	constructor(prefix) {
-		super(prefix ? prefix : '/api/classes');
+		super(prefix ? prefix : '/classes');
+	}
+
+	get id() {
+		return 'classes';
 	}
 
 	_initializeRoutes(router) {

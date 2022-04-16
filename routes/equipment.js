@@ -8,7 +8,11 @@ import BaseRoute from '@thzero/library_server/routes/index';
 
 class EquipmentRoute extends BaseRoute {
 	constructor(prefix) {
-		super(prefix ? prefix : '/api/equipment');
+		super(prefix ? prefix : '/equipment');
+	}
+
+	get id() {
+		return 'equipment';
 	}
 
 	_initializeRoutes(router) {
