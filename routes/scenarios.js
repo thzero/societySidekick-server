@@ -22,7 +22,7 @@ class ScenariosRoute extends BaseRoute {
 			async (ctx, next) => {
 				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_SCENARIOS);
 				const response = (await service.listing(ctx.correlationId, ctx.params.gameSystemId)).check(ctx);
-				ctx.body = LibraryUtility.stringify(response);
+				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
 

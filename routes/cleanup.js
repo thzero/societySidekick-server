@@ -19,7 +19,7 @@ class CleanupRoute extends BaseRoute {
 			async (ctx, next) => {
 				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CLEANUP);
 				const response = (await service.cleanup(ctx.correlationId)).check(ctx);
-				ctx.body = LibraryUtility.stringify(response);
+				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
 	}
