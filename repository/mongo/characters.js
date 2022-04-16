@@ -273,7 +273,7 @@ class CharactersMongoRepository extends AppMongoRepository {
 				queryA.push({ $project: projection });
 		}
 
-		response.results = await this._aggregateExtract(correlationId, await this._find(correlationId, collection, queryF), await this._aggregate(correlationId, collection, queryA), this._initResponseExtract(correlationId));
+		response.results = await this._aggregateExtract(correlationId, await this._count(correlationId, collection, queryF), await this._aggregate(correlationId, collection, queryA), this._initResponseExtract(correlationId));
 		return response;
 	}
 }

@@ -6,7 +6,11 @@ import BaseRoute from '@thzero/library_server/routes/index';
 
 class BoonRoute extends BaseRoute {
 	constructor(prefix) {
-		super(prefix ? prefix : '/api/boons');
+		super(prefix ? prefix : '/boons');
+	}
+
+	get id() {
+		return 'boons';
 	}
 
 	_initializeRoutes(router) {

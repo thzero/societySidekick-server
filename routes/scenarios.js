@@ -9,7 +9,11 @@ import authorization from '@thzero/library_server/middleware/authorization';
 
 class ScenariosRoute extends BaseRoute {
 	constructor(prefix) {
-		super(prefix ? prefix : '/api/scenarios');
+		super(prefix ? prefix : '/scenarios');
+	}
+
+	get id() {
+		return 'scenarios';
 	}
 
 	_initializeRoutes(router) {
