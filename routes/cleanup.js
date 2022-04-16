@@ -9,6 +9,11 @@ class CleanupRoute extends BaseRoute {
 		super(prefix ? prefix : '');
 	}
 
+	async init(injector, config) {
+		const router = await super.init(injector, config);
+		router.serviceCleanup = injector.getService(Constants.InjectorKeys.SERVICE_CLEANUP);
+	}
+
 	get id() {
 		return 'app';
 	}
@@ -17,8 +22,8 @@ class CleanupRoute extends BaseRoute {
 		router.get('/cleanup',
 			// eslint-disable-next-line
 			async (ctx, next) => {
-				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CLEANUP);
-				const response = (await service.cleanup(ctx.correlationId)).check(ctx);
+				// const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CLEANUP);
+				const response = (await ctx.router.serviceCleanup.cleanup(ctx.correlationId)).check(ctx);
 				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);

@@ -21,8 +21,8 @@ class UsersRoute extends BaseUsersRoute {
 			}),
 			// eslint-disable-next-line
 			async (ctx, next) => {
-				const service = this._injector.getService(LibraryConstants.InjectorKeys.SERVICE_USERS);
-				const response = (await service.fetchFavoritesByGamerId(ctx.correlationId, ctx.params.gamerId)).check(ctx);
+				// const service = this._injector.getService(LibraryConstants.InjectorKeys.SERVICE_USERS);
+				const response = (await ctx.router.serviceUsers.fetchFavoritesByGamerId(ctx.correlationId, ctx.params.gamerId)).check(ctx);
 				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);

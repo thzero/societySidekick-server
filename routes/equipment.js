@@ -11,6 +11,11 @@ class EquipmentRoute extends BaseRoute {
 		super(prefix ? prefix : '/equipment');
 	}
 
+	async init(injector, config) {
+		const router = await super.init(injector, config);
+		router.serviceEquipment = injector.getService(Constants.InjectorKeys.SERVICE_EQUIPMENT);
+	}
+
 	get id() {
 		return 'equipment';
 	}
@@ -23,8 +28,8 @@ class EquipmentRoute extends BaseRoute {
 			}),
 			// eslint-disable-next-line
 			async (ctx, next) => {
-				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_EQUIPMENT);
-				const response = (await service.search(ctx.correlationId, ctx.params.gameSystemId, ctx.request.body)).check(ctx);
+				// const service = this._injector.getService(Constants.InjectorKeys.SERVICE_EQUIPMENT);
+				const response = (await ctx.router.serviceEquipment.search(ctx.correlationId, ctx.params.gameSystemId, ctx.request.body)).check(ctx);
 				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);

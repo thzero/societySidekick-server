@@ -9,6 +9,11 @@ class BoonRoute extends BaseRoute {
 		super(prefix ? prefix : '/boons');
 	}
 
+	async init(injector, config) {
+		const router = await super.init(injector, config);
+		router.serviceBoons = injector.getService(Constants.InjectorKeys.SERVICE_BOONS);
+	}
+
 	get id() {
 		return 'boons';
 	}
@@ -17,8 +22,8 @@ class BoonRoute extends BaseRoute {
 		router.get('/listing/:gameSystemId',
 			// eslint-disable-next-line
 			async (ctx, next) => {
-				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_BOONS);
-				const response = (await service.listing(ctx.correlationId, ctx.params.gameSystemId)).check(ctx);
+				// const service = this._injector.getService(Constants.InjectorKeys.SERVICE_BOONS);
+				const response = (await ctx.router.serviceBoons.listing(ctx.correlationId, ctx.params.gameSystemId)).check(ctx);
 				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
