@@ -29,7 +29,7 @@ class CharactersRoute extends BaseRoute {
 			async (ctx, next) => {
 				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
 				const response = (await service.delete(ctx.correlationId, ctx.state.user, ctx.params.characterId)).check(ctx);
-				ctx.body = LibraryUtility.stringify(response);
+				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
 
@@ -43,7 +43,7 @@ class CharactersRoute extends BaseRoute {
 			async (ctx, next) => {
 				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
 				const response = (await service.deleteBoon(ctx.correlationId, ctx.state.user, ctx.params.characterId, ctx.params.boonId)).check(ctx);
-				ctx.body = LibraryUtility.stringify(response);
+				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
 
@@ -57,7 +57,7 @@ class CharactersRoute extends BaseRoute {
 			async (ctx, next) => {
 				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
 				const response = (await service.deleteInventory(ctx.correlationId, ctx.state.user, ctx.params.characterId, ctx.params.inventoryId)).check(ctx);
-				ctx.body = LibraryUtility.stringify(response);
+				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
 
@@ -71,7 +71,7 @@ class CharactersRoute extends BaseRoute {
 			async (ctx, next) => {
 				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
 				const response = (await service.deleteScenario(ctx.correlationId, ctx.state.user, ctx.params.characterId, ctx.params.scenarioId)).check(ctx);
-				ctx.body = LibraryUtility.stringify(response);
+				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
 
@@ -83,7 +83,7 @@ class CharactersRoute extends BaseRoute {
 				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
 				const response = (await service.initialize(ctx.correlationId, ctx.state.user)).check(ctx);
 				response.results = { lookups: response.results };
-				ctx.body = LibraryUtility.stringify(response);
+				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
 
@@ -94,7 +94,7 @@ class CharactersRoute extends BaseRoute {
 			async (ctx, next) => {
 				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
 				const response = (await service.listingByFavorites(ctx.correlationId, ctx.state.user)).check(ctx);
-				ctx.body = LibraryUtility.stringify(response);
+				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
 
@@ -105,7 +105,7 @@ class CharactersRoute extends BaseRoute {
 			async (ctx, next) => {
 				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
 				const response = (await service.listingByGamerId(ctx.correlationId, ctx.state.user, ctx.params.gamerId, ctx.params.gameSystemId)).check(ctx);
-				ctx.body = LibraryUtility.stringify(response);
+				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
 
@@ -116,7 +116,7 @@ class CharactersRoute extends BaseRoute {
 			async (ctx, next) => {
 				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
 				const response = (await service.listingByGamerTag(ctx.correlationId, ctx.state.user, ctx.params.gamerTag, ctx.params.gameSystemId)).check(ctx);
-				ctx.body = LibraryUtility.stringify(response);
+				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
 
@@ -130,7 +130,7 @@ class CharactersRoute extends BaseRoute {
 			async (ctx, next) => {
 				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
 				const response = (await service.listing(ctx.correlationId, ctx.state.user, ctx.request.body)).check(ctx);
-				ctx.body = LibraryUtility.stringify(response);
+				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
 
@@ -141,7 +141,7 @@ class CharactersRoute extends BaseRoute {
 			async (ctx, next) => {
 				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
 				const response = (await service.getLookups(ctx.correlationId, ctx.state.user)).check(ctx);
-				ctx.body = LibraryUtility.stringify(response);
+				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
 
@@ -152,7 +152,7 @@ class CharactersRoute extends BaseRoute {
 			async (ctx, next) => {
 				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
 				const response = (await service.playedScenarios(ctx.correlationId, ctx.state.user, ctx.params.characterId)).check(ctx);
-				ctx.body = LibraryUtility.stringify(response);
+				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
 
@@ -163,7 +163,7 @@ class CharactersRoute extends BaseRoute {
 			async (ctx, next) => {
 				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
 				const response = (await service.fetchNumber(ctx.correlationId, ctx.state.user, ctx.params.gameSystemId)).check(ctx);
-				ctx.body = LibraryUtility.stringify(response);
+				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
 
@@ -174,7 +174,7 @@ class CharactersRoute extends BaseRoute {
 			async (ctx, next) => {
 				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
 				const response = (await service.fetch(ctx.correlationId, ctx.state.user, ctx.params.characterId)).check(ctx);
-				ctx.body = LibraryUtility.stringify(response);
+				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
 
@@ -188,7 +188,7 @@ class CharactersRoute extends BaseRoute {
 			async (ctx, next) => {
 				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
 				const response = (await service.updateDetails(ctx.correlationId, ctx.state.user, ctx.params.characterId, ctx.request.body)).check(ctx);
-				ctx.body = LibraryUtility.stringify(response);
+				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
 
@@ -202,7 +202,7 @@ class CharactersRoute extends BaseRoute {
 			async (ctx, next) => {
 				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
 				const response = (await service.loadInventory(ctx.correlationId, ctx.state.user, ctx.params.characterId, ctx.params.gearSetId)).check(ctx);
-				ctx.body = LibraryUtility.stringify(response);
+				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
 
@@ -216,7 +216,7 @@ class CharactersRoute extends BaseRoute {
 			async (ctx, next) => {
 				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
 				const response = (await service.updateBoon(ctx.correlationId, ctx.state.user, ctx.params.characterId, ctx.request.body)).check(ctx);
-				ctx.body = LibraryUtility.stringify(response);
+				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
 
@@ -230,7 +230,7 @@ class CharactersRoute extends BaseRoute {
 			async (ctx, next) => {
 				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
 				const response = (await service.updateInventory(ctx.correlationId, ctx.state.user, ctx.params.characterId, ctx.request.body)).check(ctx);
-				ctx.body = LibraryUtility.stringify(response);
+				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
 
@@ -244,7 +244,7 @@ class CharactersRoute extends BaseRoute {
 			async (ctx, next) => {
 				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
 				const response = (await service.updateScenario(ctx.correlationId, ctx.state.user, ctx.params.characterId, ctx.request.body)).check(ctx);
-				ctx.body = LibraryUtility.stringify(response);
+				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
 
@@ -258,7 +258,7 @@ class CharactersRoute extends BaseRoute {
 			async (ctx, next) => {
 				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
 				const response = (await service.create(ctx.correlationId, ctx.state.user, ctx.request.body)).check(ctx);
-				ctx.body = LibraryUtility.stringify(response);
+				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
 	}

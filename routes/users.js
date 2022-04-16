@@ -23,7 +23,7 @@ class UsersRoute extends BaseUsersRoute {
 			async (ctx, next) => {
 				const service = this._injector.getService(LibraryConstants.InjectorKeys.SERVICE_USERS);
 				const response = (await service.fetchFavoritesByGamerId(ctx.correlationId, ctx.params.gamerId)).check(ctx);
-				ctx.body = LibraryUtility.stringify(response);
+				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
 	}

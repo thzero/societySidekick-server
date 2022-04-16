@@ -25,7 +25,7 @@ class EquipmentRoute extends BaseRoute {
 			async (ctx, next) => {
 				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_EQUIPMENT);
 				const response = (await service.search(ctx.correlationId, ctx.params.gameSystemId, ctx.request.body)).check(ctx);
-				ctx.body = LibraryUtility.stringify(response);
+				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
 	}
