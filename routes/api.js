@@ -9,6 +9,13 @@ class ApiRoute extends BaseRoute {
 		super(prefix ? prefix : '');
 	}
 
+	async init(injector, config) {
+		const router = await super.init(injector, config);
+		router.serviceApi = injector.getService(Constants.InjectorKeys.SERVICE_API);
+		router.serviceGameSystems = injector.getService(Constants.InjectorKeys.SERVICE_GAMESYSTEMS);
+		router.serviceOrganizedPlay = injector.getService(Constants.InjectorKeys.SERVICE_ORGANIZEDPLAY);
+	}
+
 	get id() {
 		return 'app';
 	}
@@ -17,8 +24,8 @@ class ApiRoute extends BaseRoute {
 		router.get('/gameSystems',
 			// eslint-disable-next-line
 			async (ctx, next) => {
-				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_GAMESYSTEMS);
-				const response = (await service.listing(ctx.correlationId)).check(ctx);
+				// const service = this._injector.getService(Constants.InjectorKeys.SERVICE_GAMESYSTEMS);
+				const response = (await ctx.router.serviceGameSystems.listing(ctx.correlationId)).check(ctx);
 				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
@@ -26,8 +33,8 @@ class ApiRoute extends BaseRoute {
 		router.get('/initialize',
 			// eslint-disable-next-line
 			async (ctx, next) => {
-				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_API);
-				const response = (await service.initialize(ctx.correlationId)).check(ctx);
+				// const service = this._injector.getService(Constants.InjectorKeys.SERVICE_API);
+				const response = (await ctx.router.serviceApi.initialize(ctx.correlationId)).check(ctx);
 				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
@@ -35,8 +42,8 @@ class ApiRoute extends BaseRoute {
 		router.get('/organizedPlay',
 			// eslint-disable-next-line
 			async (ctx, next) => {
-				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_ORGANIZEDPLAY);
-				const response = (await service.listing(ctx.correlationId)).check(ctx);
+				// const service = this._injector.getService(Constants.InjectorKeys.SERVICE_ORGANIZEDPLAY);
+				const response = (await ctx.router.serviceOrganizedPlay.listing(ctx.correlationId)).check(ctx);
 				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);

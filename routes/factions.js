@@ -9,6 +9,11 @@ class FactionRoute extends BaseRoute {
 		super(prefix ? prefix : '/factions');
 	}
 
+	async init(injector, config) {
+		const router = await super.init(injector, config);
+		router.serviceFactions = injector.getService(Constants.InjectorKeys.SERVICE_FACTIONS);
+	}
+
 	get id() {
 		return 'factions';
 	}
@@ -17,8 +22,8 @@ class FactionRoute extends BaseRoute {
 		router.get('/listing/:gameSystemId',
 			// eslint-disable-next-line
 			async (ctx, next) => {
-				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_FACTIONS);
-				const response = (await service.listing(ctx.correlationId, ctx.params.gameSystemId)).check(ctx);
+				// const service = this._injector.getService(Constants.InjectorKeys.SERVICE_FACTIONS);
+				const response = (await ctx.router.serviceFactions.listing(ctx.correlationId, ctx.params.gameSystemId)).check(ctx);
 				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);

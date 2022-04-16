@@ -9,6 +9,11 @@ class ClassesRoute extends BaseRoute {
 		super(prefix ? prefix : '/classes');
 	}
 
+	async init(injector, config) {
+		const router = await super.init(injector, config);
+		router.serviceClasses = injector.getService(Constants.InjectorKeys.SERVICE_CLASSES);
+	}
+
 	get id() {
 		return 'classes';
 	}
@@ -17,8 +22,8 @@ class ClassesRoute extends BaseRoute {
 		router.get('/listing/:gameSystemId',
 			// eslint-disable-next-line
 			async (ctx, next) => {
-				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CLASSES);
-				const response = (await service.listing(ctx.correlationId, ctx.params.gameSystemId)).check(ctx);
+				// const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CLASSES);
+				const response = (await ctx.router.serviceClasses.listing(ctx.correlationId, ctx.params.gameSystemId)).check(ctx);
 				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
