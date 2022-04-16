@@ -14,6 +14,11 @@ class CharactersRoute extends BaseRoute {
 		super('/characters');
 	}
 
+	async init(injector, config) {
+		const router = await super.init(injector, config);
+		router.serviceCharacters = injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
+	}
+
 	get id() {
 		return 'characters';
 	}
@@ -27,8 +32,9 @@ class CharactersRoute extends BaseRoute {
 			}),
 			// eslint-disable-next-line
 			async (ctx, next) => {
-				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
-				const response = (await service.delete(ctx.correlationId, ctx.state.user, ctx.params.characterId)).check(ctx);
+				// const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
+				// const response = (await service.delete(ctx.correlationId, ctx.state.user, ctx.params.characterId)).check(ctx);
+				const response = (await ctx.router.serviceCharacters.delete(ctx.correlationId, ctx.state.user, ctx.params.characterId)).check(ctx);
 				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
@@ -41,8 +47,9 @@ class CharactersRoute extends BaseRoute {
 			}),
 			// eslint-disable-next-line
 			async (ctx, next) => {
-				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
-				const response = (await service.deleteBoon(ctx.correlationId, ctx.state.user, ctx.params.characterId, ctx.params.boonId)).check(ctx);
+				// const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
+				// const response = (await service.deleteBoon(ctx.correlationId, ctx.state.user, ctx.params.characterId, ctx.params.boonId)).check(ctx);
+				const response = (await ctx.router.serviceCharacters.deleteBoon(ctx.correlationId, ctx.state.user, ctx.params.characterId, ctx.params.boonId)).check(ctx);
 				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
@@ -55,8 +62,9 @@ class CharactersRoute extends BaseRoute {
 			}),
 			// eslint-disable-next-line
 			async (ctx, next) => {
-				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
-				const response = (await service.deleteInventory(ctx.correlationId, ctx.state.user, ctx.params.characterId, ctx.params.inventoryId)).check(ctx);
+				// const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
+				// const response = (await service.deleteInventory(ctx.correlationId, ctx.state.user, ctx.params.characterId, ctx.params.inventoryId)).check(ctx);
+				const response = (await ctx.router.serviceCharacters.deleteInventory(ctx.correlationId, ctx.state.user, ctx.params.characterId, ctx.params.inventoryId)).check(ctx);
 				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
@@ -69,8 +77,9 @@ class CharactersRoute extends BaseRoute {
 			}),
 			// eslint-disable-next-line
 			async (ctx, next) => {
-				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
-				const response = (await service.deleteScenario(ctx.correlationId, ctx.state.user, ctx.params.characterId, ctx.params.scenarioId)).check(ctx);
+				// const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
+				// const response = (await service.deleteScenario(ctx.correlationId, ctx.state.user, ctx.params.characterId, ctx.params.scenarioId)).check(ctx);
+				const response = (await ctx.router.serviceCharacters.deleteScenario(ctx.correlationId, ctx.state.user, ctx.params.characterId, ctx.params.scenarioId)).check(ctx);
 				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
@@ -80,8 +89,9 @@ class CharactersRoute extends BaseRoute {
 			// authorization('character'),
 			// eslint-disable-next-line
 			async (ctx, next) => {
-				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
-				const response = (await service.initialize(ctx.correlationId, ctx.state.user)).check(ctx);
+				// const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
+				// const response = (await service.initialize(ctx.correlationId, ctx.state.user)).check(ctx);
+				const response = (await ctx.router.serviceCharacters.initialize(ctx.correlationId, ctx.state.user)).check(ctx);
 				response.results = { lookups: response.results };
 				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
@@ -92,8 +102,9 @@ class CharactersRoute extends BaseRoute {
 			authorization('character'),
 			// eslint-disable-next-line,
 			async (ctx, next) => {
-				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
-				const response = (await service.listingByFavorites(ctx.correlationId, ctx.state.user)).check(ctx);
+				// const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
+				// const response = (await service.listingByFavorites(ctx.correlationId, ctx.state.user)).check(ctx);
+				const response = (await ctx.router.serviceCharacters.listingByFavorites(ctx.correlationId, ctx.state.user)).check(ctx);
 				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
@@ -103,8 +114,9 @@ class CharactersRoute extends BaseRoute {
 			// authorization('character'),
 			// eslint-disable-next-line
 			async (ctx, next) => {
-				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
-				const response = (await service.listingByGamerId(ctx.correlationId, ctx.state.user, ctx.params.gamerId, ctx.params.gameSystemId)).check(ctx);
+				// const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
+				// const response = (await service.listingByGamerId(ctx.correlationId, ctx.state.user, ctx.params.gamerId, ctx.params.gameSystemId)).check(ctx);
+				const response = (await ctx.router.serviceCharacters.listingByGamerId(ctx.correlationId, ctx.state.user, ctx.params.gamerId, ctx.params.gameSystemId)).check(ctx);
 				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
@@ -114,8 +126,9 @@ class CharactersRoute extends BaseRoute {
 			// authorization('character'),
 			// eslint-disable-next-line,
 			async (ctx, next) => {
-				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
-				const response = (await service.listingByGamerTag(ctx.correlationId, ctx.state.user, ctx.params.gamerTag, ctx.params.gameSystemId)).check(ctx);
+				// const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
+				// const response = (await service.listingByGamerTag(ctx.correlationId, ctx.state.user, ctx.params.gamerTag, ctx.params.gameSystemId)).check(ctx);
+				const response = (await ctx.router.serviceCharacters.listingByGamerTag(ctx.correlationId, ctx.state.user, ctx.params.gamerTag, ctx.params.gameSystemId)).check(ctx);
 				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
@@ -128,8 +141,9 @@ class CharactersRoute extends BaseRoute {
 				text: false,
 			}),
 			async (ctx, next) => {
-				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
-				const response = (await service.listing(ctx.correlationId, ctx.state.user, ctx.request.body)).check(ctx);
+				// const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
+				// const response = (await service.listing(ctx.correlationId, ctx.state.user, ctx.request.body)).check(ctx);
+				const response = (await ctx.router.serviceCharacters.listing(ctx.correlationId, ctx.state.user, ctx.request.body)).check(ctx);
 				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
@@ -139,8 +153,9 @@ class CharactersRoute extends BaseRoute {
 			// authorization('character'),
 			// eslint-disable-next-line
 			async (ctx, next) => {
-				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
-				const response = (await service.getLookups(ctx.correlationId, ctx.state.user)).check(ctx);
+				// const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
+				// const response = (await service.getLookups(ctx.correlationId, ctx.state.user)).check(ctx);
+				const response = (await ctx.router.serviceCharacters.getLookups(ctx.correlationId, ctx.state.user)).check(ctx);
 				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
@@ -150,8 +165,9 @@ class CharactersRoute extends BaseRoute {
 			authorization('character'),
 			// eslint-disable-next-line
 			async (ctx, next) => {
-				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
-				const response = (await service.playedScenarios(ctx.correlationId, ctx.state.user, ctx.params.characterId)).check(ctx);
+				// const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
+				// const response = (await service.playedScenarios(ctx.correlationId, ctx.state.user, ctx.params.characterId)).check(ctx);
+				const response = (await ctx.router.serviceCharacters.playedScenarios(ctx.correlationId, ctx.state.user, ctx.params.characterId)).check(ctx);
 				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
@@ -161,8 +177,9 @@ class CharactersRoute extends BaseRoute {
 			authorization('character'),
 			// eslint-disable-next-line
 			async (ctx, next) => {
-				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
-				const response = (await service.fetchNumber(ctx.correlationId, ctx.state.user, ctx.params.gameSystemId)).check(ctx);
+				// const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
+				// const response = (await service.fetchNumber(ctx.correlationId, ctx.state.user, ctx.params.gameSystemId)).check(ctx);
+				const response = (await ctx.router.serviceCharacters.fetchNumber(ctx.correlationId, ctx.state.user, ctx.params.gameSystemId)).check(ctx);
 				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
@@ -172,8 +189,9 @@ class CharactersRoute extends BaseRoute {
 			authorization('character'),
 			// eslint-disable-next-line
 			async (ctx, next) => {
-				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
-				const response = (await service.fetch(ctx.correlationId, ctx.state.user, ctx.params.characterId)).check(ctx);
+				// const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
+				// const response = (await service.fetch(ctx.correlationId, ctx.state.user, ctx.params.characterId)).check(ctx);
+				const response = (await ctx.router.serviceCharacters.fetch(ctx.correlationId, ctx.state.user, ctx.params.characterId)).check(ctx);
 				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
@@ -186,8 +204,9 @@ class CharactersRoute extends BaseRoute {
 			}),
 			// eslint-disable-next-line
 			async (ctx, next) => {
-				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
-				const response = (await service.updateDetails(ctx.correlationId, ctx.state.user, ctx.params.characterId, ctx.request.body)).check(ctx);
+				// const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
+				// const response = (await service.updateDetails(ctx.correlationId, ctx.state.user, ctx.params.characterId, ctx.request.body)).check(ctx);
+				const response = (await ctx.router.serviceCharacters.updateDetails(ctx.correlationId, ctx.state.user, ctx.params.characterId, ctx.request.body)).check(ctx);
 				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
@@ -200,8 +219,9 @@ class CharactersRoute extends BaseRoute {
 			}),
 			// eslint-disable-next-line
 			async (ctx, next) => {
-				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
-				const response = (await service.loadInventory(ctx.correlationId, ctx.state.user, ctx.params.characterId, ctx.params.gearSetId)).check(ctx);
+				// const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
+				// const response = (await service.loadInventory(ctx.correlationId, ctx.state.user, ctx.params.characterId, ctx.params.gearSetId)).check(ctx);
+				const response = (await ctx.router.serviceCharacters.loadInventory(ctx.correlationId, ctx.state.user, ctx.params.characterId, ctx.params.gearSetId)).check(ctx);
 				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
@@ -214,8 +234,9 @@ class CharactersRoute extends BaseRoute {
 			}),
 			// eslint-disable-next-line
 			async (ctx, next) => {
-				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
-				const response = (await service.updateBoon(ctx.correlationId, ctx.state.user, ctx.params.characterId, ctx.request.body)).check(ctx);
+				// const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
+				// const response = (await service.updateBoon(ctx.correlationId, ctx.state.user, ctx.params.characterId, ctx.request.body)).check(ctx);
+				const response = (await ctx.router.serviceCharacters.updateBoon(ctx.correlationId, ctx.state.user, ctx.params.characterId, ctx.request.body)).check(ctx);
 				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
@@ -228,8 +249,9 @@ class CharactersRoute extends BaseRoute {
 			}),
 			// eslint-disable-next-line
 			async (ctx, next) => {
-				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
-				const response = (await service.updateInventory(ctx.correlationId, ctx.state.user, ctx.params.characterId, ctx.request.body)).check(ctx);
+				// const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
+				// const response = (await service.updateInventory(ctx.correlationId, ctx.state.user, ctx.params.characterId, ctx.request.body)).check(ctx);
+				const response = (await ctx.router.serviceCharacters.updateInventory(ctx.correlationId, ctx.state.user, ctx.params.characterId, ctx.request.body)).check(ctx);
 				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
@@ -242,8 +264,9 @@ class CharactersRoute extends BaseRoute {
 			}),
 			// eslint-disable-next-line
 			async (ctx, next) => {
-				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
-				const response = (await service.updateScenario(ctx.correlationId, ctx.state.user, ctx.params.characterId, ctx.request.body)).check(ctx);
+				// const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
+				// const response = (await service.updateScenario(ctx.correlationId, ctx.state.user, ctx.params.characterId, ctx.request.body)).check(ctx);
+				const response = (await ctx.router.serviceCharacters.updateScenario(ctx.correlationId, ctx.state.user, ctx.params.characterId, ctx.request.body)).check(ctx);
 				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
@@ -256,8 +279,9 @@ class CharactersRoute extends BaseRoute {
 			}),
 			// eslint-disable-next-line
 			async (ctx, next) => {
-				const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
-				const response = (await service.create(ctx.correlationId, ctx.state.user, ctx.request.body)).check(ctx);
+				// const service = this._injector.getService(Constants.InjectorKeys.SERVICE_CHARACTERS);
+				// const response = (await service.create(ctx.correlationId, ctx.state.user, ctx.request.body)).check(ctx);
+				const response = (await ctx.router.serviceCharacters.create(ctx.correlationId, ctx.state.user, ctx.request.body)).check(ctx);
 				this._jsonResponse(ctx, LibraryUtility.stringify(response));
 			}
 		);
