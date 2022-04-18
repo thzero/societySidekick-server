@@ -1,4 +1,4 @@
-import Joi from '@hapi/joi';
+import Joi from 'joi';
 
 import Starfinder1eShared2eConstants from '../../../../../common/gameSystems/starfinder1e/constants';
 
