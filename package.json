@@ -1,10 +1,10 @@
 {
   "name": "skick_server",
   "type": "module",
-  "version": "0.14.37",
+  "version": "0.14.38",
   "version_major": 0,
   "version_minor": 14,
-  "version_patch": 37,
+  "version_patch": 38,
   "version_date": "04/18/2022",
   "description": "An API layer to manage society play characters.",
   "author": "thZero",
@@ -35,8 +35,8 @@
     "cli-update-w": ".\\node_modules\\.bin\\library-cli --updateversion --pi"
   },
   "dependencies": {
-    "@thzero/library_common": "^0.15.8",
-    "@thzero/library_common_service": "^0.15.11",
+    "@thzero/library_common": "^0.15.9",
+    "@thzero/library_common_service": "^0.15.13",
     "@thzero/library_server": "^0.15.30",
     "@thzero/library_server_firebase": "^0.15.7",
     "@thzero/library_server_logger_pino": "^0.15.10",
@@ -50,7 +50,7 @@
     "@babel/core": "^7.17.9",
     "@babel/plugin-proposal-class-properties": "^7.16.7",
     "@babel/preset-env": "^7.16.11",
-    "@thzero/library_cli": "^0.15.8",
+    "@thzero/library_cli": "^0.15.11",
     "babel-loader": "^8.2.4",
     "eslint": "^8.13.0",
     "eslint-plugin-node": "^11.1.0",
