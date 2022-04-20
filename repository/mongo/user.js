@@ -40,9 +40,12 @@ class UserMongoRepository extends BaseUserMongoRepository {
 		const response = this._initResponse(correlationId);
 
 		const collectionUsers = await this._getCollectionUsers(correlationId);
-		response.results = await this._fetchExtract(correlationId, await this._find(correlationId, collectionUsers,
-			{ 'id': { $in: gamerIds } },
-			this._byGamerProjection()),
+		response.results = await this._fetchExtract2(correlationId, 
+			await this._count(correlationId, collectionUsers, { 'id': { $in: gamerIds } }),
+			await this._find(correlationId, collectionUsers,
+				{ 'id': { $in: gamerIds } },
+				this._byGamerProjection()
+			),
 			this._initResponseExtract(correlationId));
 
 		return response;

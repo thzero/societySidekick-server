@@ -12,7 +12,7 @@ class CleanupMongoRepository extends AppMongoRepository {
 		try {
 			await this._transactionStart(correlationId, session);
 
-			let results = await this._fetchExtract(correlationId, await this._find(correlationId, collectionCharacters, { }), response);
+			let results = await this._fetchExtract(correlationId, collectionCharacters, {}, response);
 
 			let id;
 			let previousId;
@@ -67,7 +67,7 @@ class CleanupMongoRepository extends AppMongoRepository {
 			await this._transactionStart(correlationId, session);
 
 			let collectionCharacters = await this._getCollectionCharacters(correlationId);
-			let results = await this._fetchExtract(correlationId, await this._find(correlationId, collectionBoons, { }), response);
+			let results = await this._fetchExtract(correlationId, collectionBoons, {}, response);
 
 			let id;
 			let previousId;
@@ -79,7 +79,7 @@ class CleanupMongoRepository extends AppMongoRepository {
 
 				let results3 = await collectionBoons.replaceOne({ 'id': previousId }, item, {upsert: true});
 
-				results2 = await this._fetchExtract(correlationId, await this._find(correlationId, collectionCharacters, {'boonGeneric1Id' : previousId }), response);
+				results2 = await this._fetchExtract(correlationId, collectionCharacters, {'boonGeneric1Id' : previousId }, response);
 				console.log(results2.data);
 				if (results2.count > 0) {
 					for (let item2 of results2.data) {
@@ -89,7 +89,7 @@ class CleanupMongoRepository extends AppMongoRepository {
 					}
 				}
 
-				results2 = await this._fetchExtract(correlationId, await this._find(correlationId, collectionCharacters, {'boonGeneric2Id' : previousId }), response);
+				results2 = await this._fetchExtract(correlationId, collectionCharacters, {'boonGeneric2Id' : previousId }, response);
 				console.log(results2.data);
 				if (results2.count > 0) {
 					for (let item2 of results2.data) {
@@ -99,7 +99,7 @@ class CleanupMongoRepository extends AppMongoRepository {
 					}
 				}
 
-				results2 = await this._fetchExtract(correlationId, await this._find(correlationId, collectionCharacters, {'boonGeneric3Id' : previousId }), response);
+				results2 = await this._fetchExtract(correlationId, collectionCharacters, {'boonGeneric3Id' : previousId }, response);
 				console.log(results2.data);
 				if (results2.count > 0) {
 					for (let item2 of results2.data) {
@@ -109,7 +109,7 @@ class CleanupMongoRepository extends AppMongoRepository {
 					}
 				}
 
-				results2 = await this._fetchExtract(correlationId, await this._find(correlationId, collectionCharacters, {'scenarios.boon1Id' : previousId }), response);
+				results2 = await this._fetchExtract(correlationId, collectionCharacters, {'scenarios.boon1Id' : previousId }, response);
 				console.log(results2.data);
 				if (results2.count > 0) {
 					for (let item2 of results2.data) {
@@ -122,7 +122,7 @@ class CleanupMongoRepository extends AppMongoRepository {
 					}
 				}
 
-				results2 = await this._fetchExtract(correlationId, await this._find(correlationId, collectionCharacters, {'scenarios.boon2Id' : previousId }), response);
+				results2 = await this._fetchExtract(correlationId, collectionCharacters, {'scenarios.boon2Id' : previousId }, response);
 				console.log(results2.data);
 				if (results2.count > 0) {
 					for (let item2 of results2.data) {
@@ -156,7 +156,7 @@ class CleanupMongoRepository extends AppMongoRepository {
 
 			let collectionClasses = await this._getCollectionClasses(correlationId);
 			let collectionCharacters = await this._getCollectionCharacters(correlationId);
-			let results = await this._fetchExtract(correlationId, await this._find(correlationId, collectionClasses, { }), response);
+			let results = await this._fetchExtract(correlationId, collectionClasses, { }, response);
 
 			let id;
 			let previousId;
@@ -168,7 +168,7 @@ class CleanupMongoRepository extends AppMongoRepository {
 
 				let results3 = await collectionClasses.replaceOne({ 'id': previousId }, item, {upsert: true});
 
-				results2 = await this._fetchExtract(correlationId, await this._find(correlationId, collectionCharacters, {'classId' : previousId }), response);
+				results2 = await this._fetchExtract(correlationId, collectionCharacters, {'classId' : previousId }, response);
 				console.log(results2.data);
 				if (results2.count > 0) {
 					for (let item2 of results2.data) {
@@ -178,7 +178,7 @@ class CleanupMongoRepository extends AppMongoRepository {
 					}
 				}
 
-				results2 = await this._fetchExtract(correlationId, await this._find(correlationId, collectionCharacters, {'archetypeId' : previousId }), response);
+				results2 = await this._fetchExtract(correlationId, collectionCharacters, {'archetypeId' : previousId }, response);
 				console.log(results2.data);
 				if (results2.count > 0) {
 					for (let item2 of results2.data) {
@@ -210,7 +210,7 @@ class CleanupMongoRepository extends AppMongoRepository {
 		try {
 			await this._transactionStart(correlationId, session);
 
-			let results = await this._fetchExtract(correlationId, await this._find(correlationId, collectionFactions, { }), response);
+			let results = await this._fetchExtract(correlationId, collectionFactions, { }, response);
 
 			let id;
 			let previousId;
@@ -222,7 +222,7 @@ class CleanupMongoRepository extends AppMongoRepository {
 
 				let results3 = await collectionFactions.replaceOne({ 'id': previousId }, item, {upsert: true});
 
-				results2 = await this._fetchExtract(correlationId, await this._find(correlationId, collectionCharacters, {'factionId' : previousId }), response);
+				results2 = await this._fetchExtract(correlationId, collectionCharacters, {'factionId' : previousId }, response);
 				console.log(results2.data);
 				if (results2.count > 0) {
 					for (let item2 of results2.data) {
@@ -232,7 +232,7 @@ class CleanupMongoRepository extends AppMongoRepository {
 					}
 				}
 
-				results2 = await this._fetchExtract(correlationId, await this._find(correlationId, collectionCharacters, {'scenarios.fameFactionId' : previousId }), response);
+				results2 = await this._fetchExtract(correlationId, collectionCharacters, {'scenarios.fameFactionId' : previousId }, response);
 				console.log(results2.data);
 				if (results2.count > 0) {
 					for (let item2 of results2.data) {
@@ -245,7 +245,7 @@ class CleanupMongoRepository extends AppMongoRepository {
 					}
 				}
 
-				results2 = await this._fetchExtract(correlationId, await this._find(correlationId, collectionCharacters, {'scenarios.reputationFactionId' : previousId }), response);
+				results2 = await this._fetchExtract(correlationId, collectionCharacters, {'scenarios.reputationFactionId' : previousId }, response);
 				console.log(results2.data);
 				if (results2.count > 0) {
 					for (let item2 of results2.data) {
@@ -258,7 +258,7 @@ class CleanupMongoRepository extends AppMongoRepository {
 					}
 				}
 
-				results2 = await this._fetchExtract(correlationId, await this._find(correlationId, collectionCharacters, {'scenarios.reputationAdditionalFactionId' : previousId }), response);
+				results2 = await this._fetchExtract(correlationId, collectionCharacters, {'scenarios.reputationAdditionalFactionId' : previousId }, response);
 				console.log(results2.data);
 				if (results2.count > 0) {
 					for (let item2 of results2.data) {
@@ -294,7 +294,7 @@ class CleanupMongoRepository extends AppMongoRepository {
 		try {
 			await this._transactionStart(correlationId, session);
 
-			let results = await this._fetchExtract(correlationId, await this._find(correlationId, collectionScenarios, { }), response);
+			let results = await this._fetchExtract(correlationId, collectionScenarios, { }, response);
 
 			let id;
 			let previousId;
@@ -306,7 +306,7 @@ class CleanupMongoRepository extends AppMongoRepository {
 
 				let results3 = await collectionScenarios.replaceOne({ 'id': previousId }, item, {upsert: true});
 
-				results2 = await this._fetchExtract(correlationId, await this._find(correlationId, collectionCharacters, {'scenarios.scenarioId' : previousId }), response);
+				results2 = await this._fetchExtract(correlationId, collectionCharacters, {'scenarios.scenarioId' : previousId }, response);
 				console.log(results2.data);
 				if (results2.count > 0) {
 					for (let item2 of results2.data) {
@@ -341,7 +341,7 @@ class CleanupMongoRepository extends AppMongoRepository {
 		try {
 			await this._transactionStart(correlationId, session);
 
-			let results = await this._fetchExtract(await this._find(collectionCharacters, { }), response);
+			let results = await this._fetchExtract(await collectionCharacters, { }, response);
 
 			let id;
 			let previousId;
