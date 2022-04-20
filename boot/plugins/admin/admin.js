@@ -8,11 +8,11 @@ import adminEquipmentRepository from '../../../repository/mongo/admin/equipment'
 import adminFactionsRepository from '../../../repository/mongo/admin/factions';
 import adminScenariosRepository from '../../../repository/mongo/admin/scenarios';
 
-import adminBoonsRoute from '../../../routes/admin/boons';
-import adminClassesRoute from '../../../routes/admin/classes';
-import adminEquipmentRoute from '../../../routes/admin/equipment';
-import adminFactionsRoute from '../../../routes/admin/factions';
-import adminScenariosRoute from '../../../routes/admin/scenarios';
+import adminBoonsRoute from '../../../routes/fastify/admin/boons';
+import adminClassesRoute from '../../../routes/fastify/admin/classes';
+import adminEquipmentRoute from '../../../routes/fastify/admin/equipment';
+import adminFactionsRoute from '../../../routes/fastify/admin/factions';
+import adminScenariosRoute from '../../../routes/fastify/admin/scenarios';
 
 import adminBoonsService from '../../../service/admin/boons';
 import adminClassesService from '../../../service/admin/classes';

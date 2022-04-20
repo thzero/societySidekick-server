@@ -1,6 +1,6 @@
-import Constants from '../../constants';
+import Constants from '../../../constants';
 
-import AdminRoute from '@thzero/library_server/routes/admin/index'
+import AdminRoute from '@thzero/library_server_fastify/routes/admin/index';
 
 class EquipmentAdminRoute extends AdminRoute {
 	constructor() {
