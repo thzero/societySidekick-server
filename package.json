@@ -38,13 +38,12 @@
     "@thzero/library_common": "^0.15.9",
     "@thzero/library_common_service": "^0.15.13",
     "@thzero/library_server": "^0.15.33",
+    "@thzero/library_server_fastify": "^0.15.32",
     "@thzero/library_server_firebase": "^0.15.7",
-    "@thzero/library_server_koa": "^0.15.34",
     "@thzero/library_server_logger_pino": "^0.15.10",
     "@thzero/library_server_repository_mongo": "^0.15.11",
     "@thzero/library_server_validation_joi": "^0.15.10",
     "decimal.js-light": "^2.5.1",
-    "koa-body": "^4.2.0",
     "pino-pretty": "^7.6.1"
   },
   "devDependencies": {

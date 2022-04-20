@@ -4,9 +4,11 @@ import AdminPlugin from './boot/plugins/admin/admin';
 import NewsAdminPlugin from './boot/plugins/admin/news';
 import UsersAdminPlugin from './boot/plugins/admin/users';
 
-import ApiPlugin from './boot/plugins/koa/api';
+import ApiPlugin from './boot/plugins/fastify/api';
+import NewsApiPlugin from './boot/plugins/fastify/news';
+import UsersApiPlugin from './boot/plugins/fastify/users';
 
-import BootMain from '@thzero/library_server_koa/boot/index';
+import BootMain from '@thzero/library_server_fastify/boot/index';
 
 import usageMetricsRepository from '@thzero/library_server_repository_mongo/usageMetrics';
 
@@ -23,5 +25,5 @@ class AppBootMain extends BootMain {
 }
 
 (async function() {
-	await (new AppBootMain()).start(ApiPlugin, AdminPlugin, NewsAdminPlugin, UsersAdminPlugin);
+	await (new AppBootMain()).start(ApiPlugin, NewsApiPlugin, UsersApiPlugin, AdminPlugin, NewsAdminPlugin, UsersAdminPlugin);
 })();

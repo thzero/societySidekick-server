@@ -1,4 +1,4 @@
-import UsersAdminBootPlugin from '@thzero/library_server_koa/boot/plugins/admin/users';
+import UsersAdminBootPlugin from '@thzero/library_server_fastify/boot/plugins/admin/users';
 
 import adminUsersRepository from '../../../repository/mongo/admin/users';
 

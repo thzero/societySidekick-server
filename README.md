@@ -29,7 +29,7 @@ An API layer to manage society play characters.  The following features are avai
 
 ## Project setup
 
-The server application is a KoaJS server application.  The server application provides the API for use by the companion client application (https://github.com/thzero/societySidekick-client).
+The server application is a Fastify server application.  The server application provides the API for use by the companion client application (https://github.com/thzero/societySidekick-client).
 
 ### Requirements
 
