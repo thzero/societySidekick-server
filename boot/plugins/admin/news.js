@@ -1,4 +1,4 @@
-import NewsAdminBootPlugin from '@thzero/library_server_fastify/boot/plugins/admin/news';
+import NewsAdminBootPlugin from '@thzero/library_server_koa/boot/plugins/admin/news';
 
 import adminNewsRepository from '../../../repository/mongo/admin/news';
 
