@@ -1,63 +1,64 @@
-import Constants from '../../constants';
+import Constants from '../../../constants';
 import RepositoryConstants from '@thzero/library_server_repository_mongo/constants';
 
-import FrontApiBootPlugin from '@thzero/library_server/boot/plugins/apiFront';
+import FrontApiBootPlugin from '@thzero/library_server_fastify/boot/plugins/apiFront';
 
-import boonsRepository from '../../repository/mongo/boons';
-import charactersRepository from '../../repository/mongo/characters';
-import cleanupRepository from '../../repository/mongo/cleanup';
-import classesRepository from '../../repository/mongo/classes';
-import equipmentRepository from '../../repository/mongo/equipment';
-import factionsRepository from '../../repository/mongo/factions';
-import gameSystemsRepository from '../../repository/mongo/gameSystems';
-import organizedPlayRepository from '../../repository/mongo/organizedPlay';
-import scenariosRepository from '../../repository/mongo/scenarios';
-import siteRepository from '../../repository/mongo/site';
+import boonsRepository from '../../../repository/mongo/boons';
+import charactersRepository from '../../../repository/mongo/characters';
+import cleanupRepository from '../../../repository/mongo/cleanup';
+import classesRepository from '../../../repository/mongo/classes';
+import equipmentRepository from '../../../repository/mongo/equipment';
+import factionsRepository from '../../../repository/mongo/factions';
+import gameSystemsRepository from '../../../repository/mongo/gameSystems';
+import organizedPlayRepository from '../../../repository/mongo/organizedPlay';
+import scenariosRepository from '../../../repository/mongo/scenarios';
+import siteRepository from '../../../repository/mongo/site';
 
-import apiRoute from '../../routes/api';
-import boonsRoute from '../../routes/boons'
-import charactersRoute from '../../routes/characters';
-import classesRoute from '../../routes/classes'
-import cleanupRoute from '../../routes/cleanup';
-import equipmentRoute from '../../routes/equipment';
-import factionsRoute from '../../routes/factions';
-import scenariosRoute from '../../routes/scenarios';
+import apiRoute from '../../../routes/fastify/api';
+import boonsRoute from '../../../routes/fastify/boons'
+import charactersRoute from '../../../routes/fastify/characters';
+import classesRoute from '../../../routes/fastify/classes'
+import cleanupRoute from '../../../routes/fastify/cleanup';
+import equipmentRoute from '../../../routes/fastify/equipment';
+import factionsRoute from '../../../routes/fastify/factions';
+import scenariosRoute from '../../../routes/fastify/scenarios';
+import usersRoute from '../../../routes/fastify/users';
 
-import apiService from '../../service/api';
-import boonsService from '../../service/boons';
-import charactersService from '../../service/characters';
-import classesService from '../../service/classes';
-import cleanupService from '../../service/cleanup';
-import equipmentService from '../../service/equipment';
-import factionsService from '../../service/factions';
-import gameSystemsService from '../../service/gameSystems';
+import apiService from '../../../service/api';
+import boonsService from '../../../service/boons';
+import charactersService from '../../../service/characters';
+import classesService from '../../../service/classes';
+import cleanupService from '../../../service/cleanup';
+import equipmentService from '../../../service/equipment';
+import factionsService from '../../../service/factions';
+import gameSystemsService from '../../../service/gameSystems';
 
 // GameSystems Update
-import gameSystemsUtilityService from '../../gameSystems/service/utility';
+import gameSystemsUtilityService from '../../../gameSystems/service/utility';
 // Pathfinder 2e
-import gameSystemsPathfinder2eService from '../../gameSystems/pathfinder2e/service/index';
-import gameSystemsCharacterPathfinder2eService from '../../gameSystems/pathfinder2e/service/character';
-import gameSystemsCharacterValidationPathfinder2eService from '../../gameSystems/pathfinder2e/service/validation/joi/character';
-import gameSystemsRulesPathfinder2eService from '../../common/gameSystems/pathfinder2e/service/rules';
-import gameSystemsScenarioPathfinder2eService from '../../gameSystems/pathfinder2e/service/scenario';
-import gameSystemsScenarioValidationPathfinder2eService from '../../gameSystems/pathfinder2e/service/validation/joi/scenario';
-import gameSystemsValidationPathfinder2eService from '../../gameSystems/pathfinder2e/service/validation/joi';
+import gameSystemsPathfinder2eService from '../../../gameSystems/pathfinder2e/service/index';
+import gameSystemsCharacterPathfinder2eService from '../../../gameSystems/pathfinder2e/service/character';
+import gameSystemsCharacterValidationPathfinder2eService from '../../../gameSystems/pathfinder2e/service/validation/joi/character';
+import gameSystemsRulesPathfinder2eService from '../../../common/gameSystems/pathfinder2e/service/rules';
+import gameSystemsScenarioPathfinder2eService from '../../../gameSystems/pathfinder2e/service/scenario';
+import gameSystemsScenarioValidationPathfinder2eService from '../../../gameSystems/pathfinder2e/service/validation/joi/scenario';
+import gameSystemsValidationPathfinder2eService from '../../../gameSystems/pathfinder2e/service/validation/joi';
 // Starfinder 1e
-import gameSystemsStarfinder1eService from '../../gameSystems/starfinder1e/service/index';
-import gameSystemsCharacterStarfinder1eService from '../../gameSystems/starfinder1e/service/character';
-import gameSystemsCharacterValidationStarfinder1eService from '../../gameSystems/starfinder1e/service/validation/joi/character';
-import gameSystemsRulesStarfinder1eService from '../../common/gameSystems/starfinder1e/service/rules';
-import gameSystemsScenarioStarfinder1eService from '../../gameSystems/starfinder1e/service/scenario';
-import gameSystemsScenarioValidationStarfinder1eService from '../../gameSystems/starfinder1e/service/validation/joi/scenario';
-import gameSystemsValidationStarfinder1eService from '../../gameSystems/starfinder1e/service/validation/joi';
+import gameSystemsStarfinder1eService from '../../../gameSystems/starfinder1e/service/index';
+import gameSystemsCharacterStarfinder1eService from '../../../gameSystems/starfinder1e/service/character';
+import gameSystemsCharacterValidationStarfinder1eService from '../../../gameSystems/starfinder1e/service/validation/joi/character';
+import gameSystemsRulesStarfinder1eService from '../../../common/gameSystems/starfinder1e/service/rules';
+import gameSystemsScenarioStarfinder1eService from '../../../gameSystems/starfinder1e/service/scenario';
+import gameSystemsScenarioValidationStarfinder1eService from '../../../gameSystems/starfinder1e/service/validation/joi/scenario';
+import gameSystemsValidationStarfinder1eService from '../../../gameSystems/starfinder1e/service/validation/joi';
 
-import repositoryCollectionsService from '../../repository/mongo/collections';
-import organizedPlayService from '../../service/organizedPlay';
-import scenariosService from '../../service/scenarios';
-import securityService from '../../service/security';
-import siteService from '../../service/site';
-import validationService from '../../service/validation/joi';
-import versionService from '../../service/version';
+import repositoryCollectionsService from '../../../repository/mongo/collections';
+import organizedPlayService from '../../../service/organizedPlay';
+import scenariosService from '../../../service/scenarios';
+import securityService from '../../../service/security';
+import siteService from '../../../service/site';
+import validationService from '../../../service/validation/joi';
+import versionService from '../../../service/version';
 
 class AppApiBootPlugin extends FrontApiBootPlugin {
 	async _initRepositories() {
@@ -86,6 +87,10 @@ class AppApiBootPlugin extends FrontApiBootPlugin {
 		this._initRoute(new factionsRoute());
 		this._initRoute(new scenariosRoute());
 		this._initRoute(new cleanupRoute());
+	}
+
+	_initRoutesUsers() {
+		return new usersRoute();
 	}
 
 	async _initServices() {

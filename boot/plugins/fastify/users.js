@@ -1,11 +1,13 @@
-import UsersApiBootPlugin from '@thzero/library_server/boot/plugins/usersExtended';
+import UsersApiBootPlugin from '@thzero/library_server_fastify/boot/plugins/usersExtended';
 
 import plansRepository from '@thzero/library_server_repository_mongo/plans';
-import userRepository from '../../repository/mongo/user';
+import userRepository from '../../../repository/mongo/user';
 
-import authService from '../../service/auth';
-import securityService from '../../service/security';
-import userService from '../../service/user';
+import usersRoute from '../../../routes/fastify/users';
+
+import authService from '../../../service/auth';
+import securityService from '../../../service/security';
+import userService from '../../../service/user';
 
 class AppUsersApiBootPlugin extends UsersApiBootPlugin {
 	_initRepositoriesPlans() {
@@ -14,6 +16,10 @@ class AppUsersApiBootPlugin extends UsersApiBootPlugin {
 
 	_initRepositoriesUsers() {
 		return new userRepository();
+	}
+
+	_initRoutesUsers() {
+		return new usersRoute();
 	}
 
 	_initServicesAuth() {

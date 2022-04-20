@@ -4,11 +4,13 @@ import AdminPlugin from './boot/plugins/admin/admin';
 import NewsAdminPlugin from './boot/plugins/admin/news';
 import UsersAdminPlugin from './boot/plugins/admin/users';
 
-import ApiPlugin from './boot/plugins/api';
-import NewsApiPlugin from './boot/plugins/news';
-import UsersApiPlugin from './boot/plugins/users';
+import ApiPlugin from './boot/plugins/fastify/api';
+// import ApiPlugin from './boot/plugins/koa/api';
+import NewsApiPlugin from './boot/plugins/fastify/news';
+import UsersApiPlugin from './boot/plugins/fastify/users';
 
-import BootMain from '@thzero/library_server/boot/koa';
+import BootMain from '@thzero/library_server_fastify/boot/index';
+// import BootMain from '@thzero/library_server_koa/boot/index';
 
 import usageMetricsRepository from '@thzero/library_server_repository_mongo/usageMetrics';
 
