@@ -1,7 +1,5 @@
 import Constants from '../../constants';
 
-import LibraryUtility from '@thzero/library_common/utility';
-
 import BaseRoute from '@thzero/library_server_fastify/routes/index';
 
 class ScenariosRoute extends BaseRoute {
@@ -23,7 +21,7 @@ class ScenariosRoute extends BaseRoute {
 			// eslint-disable-next-line
 			async (request, reply) => {
 				const response = (await router[Constants.InjectorKeys.SERVICE_SCENARIOS].listing(request.correlationId, request.params.gameSystemId)).check(request);
-				this._jsonResponse(reply, LibraryUtility.stringify(response));
+				this._jsonResponse(reply, response);
 			}
 		);
 
@@ -43,7 +41,7 @@ class ScenariosRoute extends BaseRoute {
 			// eslint-disable-next-line
 			async (request, reply) => {
 				const response = (await router[Constants.InjectorKeys.SERVICE_SCENARIOS].playedScenarios(request.correlationId, request.user, request.params.characterId)).check(request);
-				this._jsonResponse(reply, LibraryUtility.stringify(response));
+				this._jsonResponse(reply, response);
 			}
 		);
 	}

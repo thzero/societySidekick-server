@@ -1,8 +1,6 @@
 
 import LibraryConstants from '@thzero/library_server/constants';
 
-import LibraryUtility from '@thzero/library_common/utility';
-
 import BaseUsersRoute from '@thzero/library_server_fastify/routes/baseUsers';
 
 class UsersRoute extends BaseUsersRoute {
@@ -26,7 +24,7 @@ class UsersRoute extends BaseUsersRoute {
 			// eslint-disable-next-line
 			async (request, reply) => {
 				const response = (await router[LibraryConstants.InjectorKeys.SERVICE_USERS].fetchFavoritesByGamerId(request.correlationId, request.params.gamerId)).check(request);
-				this._jsonResponse(reply, LibraryUtility.stringify(response));
+				this._jsonResponse(reply, response);
 			}
 		);
 	}

@@ -1,7 +1,5 @@
 import Constants from '../../constants';
 
-import LibraryUtility from '@thzero/library_common/utility';
-
 import BaseRoute from '@thzero/library_server_fastify/routes/index';
 
 class ApiRoute extends BaseRoute {
@@ -25,7 +23,7 @@ class ApiRoute extends BaseRoute {
 			// eslint-disable-next-line
 			async (request, reply) => {
 				const response = (await router[Constants.InjectorKeys.SERVICE_GAMESYSTEMS].listing(request.correlationId)).check(request);
-				this._jsonResponse(reply, LibraryUtility.stringify(response));
+				this._jsonResponse(reply, response);
 			}
 		);
 
@@ -33,7 +31,7 @@ class ApiRoute extends BaseRoute {
 			// eslint-disable-next-line
 			async (request, reply) => {
 				const response = (await router[Constants.InjectorKeys.SERVICE_API].initialize(request.correlationId)).check(request);
-				this._jsonResponse(reply, LibraryUtility.stringify(response));
+				this._jsonResponse(reply, response);
 			}
 		);
 		
@@ -41,7 +39,7 @@ class ApiRoute extends BaseRoute {
 			// eslint-disable-next-line
 			async (request, reply) => {
 				const response = (await router[Constants.InjectorKeys.SERVICE_ORGANIZEDPLAY].listing(request.correlationId)).check(request);
-				this._jsonResponse(reply, LibraryUtility.stringify(response));
+				this._jsonResponse(reply, response);
 			}
 		);
 	}
