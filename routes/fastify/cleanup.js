@@ -1,7 +1,5 @@
 import Constants from '../../constants';
 
-import LibraryUtility from '@thzero/library_common/utility';
-
 import BaseRoute from '@thzero/library_server_fastify/routes/index';
 
 class CleanupRoute extends BaseRoute {
@@ -23,7 +21,7 @@ class CleanupRoute extends BaseRoute {
 			// eslint-disable-next-line
 			async (request, reply) => {
 				const response = (await router[Constants.InjectorKeys.SERVICE_CLEANUP].cleanup(request.correlationId)).check(request);
-				this._jsonResponse(reply, LibraryUtility.stringify(response));
+				this._jsonResponse(reply, response);
 			}
 		);
 	}

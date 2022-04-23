@@ -1,7 +1,5 @@
 import Constants from '../../constants';
 
-import LibraryUtility from '@thzero/library_common/utility';
-
 import BaseRoute from '@thzero/library_server_fastify/routes/index';
 
 class FactionRoute extends BaseRoute {
@@ -23,7 +21,7 @@ class FactionRoute extends BaseRoute {
 			// eslint-disable-next-line
 			async (request, reply) => {
 				const response = (await router[Constants.InjectorKeys.SERVICE_FACTIONS].listing(request.correlationId, request.params.gameSystemId)).check(request);
-				this._jsonResponse(reply, LibraryUtility.stringify(response));
+				this._jsonResponse(reply, response);
 			}
 		);
 	}

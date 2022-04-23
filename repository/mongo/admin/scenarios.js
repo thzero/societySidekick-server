@@ -6,10 +6,10 @@ class ScenariosMongoRepository extends BaseAdminMongoRepository {
 	}
 
 	// eslint-disable-next-line
-	_searchFilter(params, defaultFilter) {
+	_searchFilter(correlationId, params, defaultFilter) {
 		if (!params || !params.gameSystemId)
-			return defaultFilter
-		return { gameSystemId: params.gameSystemId }
+			return defaultFilter;
+		return { gameSystemId: params.gameSystemId };
 	}
 }
 
