@@ -16,6 +16,8 @@
 				"name": "ALTAS_DB_NAME"
 			}
 		},
+		"http2": "HTTP2_ENABLED",
+		"ip": "IP_ADDRESS",
 		"logging": {
 			"level": "LOGGING_LEVEL",
 			"prettify": "LOGGING_PRETTIFY"
