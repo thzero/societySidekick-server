@@ -10,9 +10,16 @@ class ScenarioGameSystemValidationService extends BaseGameSystemValidationServic
 	// _scenarioParticipant = Joi.string().trim().valid(...Object.values(SharedConstants.ScenarioParticipants));
 	// _scenarioStatus = Joi.string().trim().valid(...Object.values(SharedConstants.ScenarioStatus));
 
+	_scenarioExtendedName = Joi.string()
+		.trim()
+		//.alphanum()
+		.regex(/^[a-zA-Z0-9]+(['"._\-a-zA-Z0-9 :;,\(\)]*)*$/)
+		.min(3)
+		.max(75);
+
 	_scenarioCreateSchema = Joi.object({
 		gameSystemId: this._id.required(),
-		name: this._extendedName.required(),
+		name: this._scenarioExtendedName.required(),
 		description: this._description.allow(null).allow(''),
 		repeatable: Joi.boolean(),
 		scenario: this._scenarioNumber.allow(null).allow(''),
@@ -29,7 +36,7 @@ class ScenarioGameSystemValidationService extends BaseGameSystemValidationServic
 	_scenarioUpdateSchema = Joi.object({
 		id: this._id.required(),
 		gameSystemId: this._id.required(),
-		name: this._extendedName.required(),
+		name: this._scenarioExtendedName.required(),
 		description: this._description.allow(null).allow(''),
 		repeatable: Joi.boolean(),
 		scenario: this._scenarioNumber.allow(null).allow(''),

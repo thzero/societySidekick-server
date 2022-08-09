@@ -8,7 +8,7 @@ class BaseGameSystemValidationService extends JoiValidationService {
 	_scenarioNumber = Joi.string().trim()
 		.regex(/^([a-zA-Z0-9 ]*)*$/)
 		.min(1)
-		.max(5);
+		.max(10);
 	_scenarioParticipant = Joi.string().trim().valid(...Object.values(SharedConstants.ScenarioParticipants));
 	_scenarioStatus = Joi.string().trim().valid(...Object.values(SharedConstants.ScenarioStatus));
 	_scenarioSuccessResults = Joi.object({
