@@ -13,7 +13,7 @@ class ScenarioGameSystemValidationService extends BaseGameSystemValidationServic
 	_scenarioExtendedName = Joi.string()
 		.trim()
 		//.alphanum()
-		.regex(/^[a-zA-Z0-9]+(['"._\-a-zA-Z0-9 :;,\(\)]*)*$/)
+		.regex(/^[a-zA-Z0-9]+(['"._\-a-zA-Z0-9 :;,?!@#$%^&\*\(\)]*)*$/)
 		.min(3)
 		.max(75);
 
