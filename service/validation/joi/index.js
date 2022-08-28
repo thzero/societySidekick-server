@@ -70,13 +70,14 @@ class JoiValidationService extends GamerJoiValidationService {
 	_settingLocationName = Joi.string()
 		.trim()
 		//.alphanum()
-		.regex(/^[a-zA-Z0-9]+(['"_,.\-a-zA-Z0-9 \(\)]*)*$/)
+		.regex(/^[a-zA-Z0-9]+(['"_,.\-a-zA-Z0-9& \(\)]*)*$/)
 		.min(3)
-		.max(30);
+		.max(50);
 	_settingLocation = Joi.object({
 		id: this._id.required(),
 		location: this._settingLocationName.required(),
-		name: this._name.required()
+		name: this._settingLocationName.required(),
+		online: Joi.boolean().allow(null)
 	});
 	_settingLocationsSchema = Joi.array().items(this._settingLocation).allow(null);
 
