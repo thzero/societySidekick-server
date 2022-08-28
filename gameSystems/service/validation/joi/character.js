@@ -1,8 +1,8 @@
 import Joi from 'joi';
 
-import SharedConstants from '../../../../common/constants';
+import SharedConstants from '../../../../common/constants.js';
 
-import BaseGameSystemValidationService from './base';
+import BaseGameSystemValidationService from './base.js';
 
 class CharacterGameSystemValidationService extends BaseGameSystemValidationService {
 	_currencyBought(schema) {

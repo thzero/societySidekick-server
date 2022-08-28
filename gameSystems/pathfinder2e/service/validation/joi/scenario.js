@@ -1,8 +1,8 @@
 import Joi from 'joi';
 
-import Pathfinder2eSharedConstants from '../../../../../common/gameSystems/pathfinder2e/constants';
+import Pathfinder2eSharedConstants from '../../../../../common/gameSystems/pathfinder2e/constants.js';
 
-import ScenarioValidationService from '../../../../service/validation/joi/scenario';
+import ScenarioValidationService from '../../../../service/validation/joi/scenario.js';
 
 class Pathfinder2eScenarioValidationService extends ScenarioValidationService {
 	_scenarioAdvancementSpeeds = Joi.string().valid(...Object.values(Pathfinder2eSharedConstants.ScenarioAdvancementSpeeds));

@@ -1,9 +1,9 @@
-import NewsApiBootPlugin from '@thzero/library_server_fastify/boot/plugins/news';
+import NewsApiBootPlugin from '@thzero/library_server_fastify/boot/plugins/news.js';
 
-import newsRepository from '@thzero/library_server_repository_mongo/news';
+import newsRepository from '@thzero/library_server_repository_mongo/news.js';
 
-import newsService from '../../../service/news';
-import newsValidationService from '../../../service/news/validation/joi';
+import newsService from '../../../service/news/index.js';
+import newsValidationService from '../../../service/news/validation/joi/index.js';
 
 class AppNewsApiBootPlugin extends NewsApiBootPlugin {
 	_initRepositoriesNews() {

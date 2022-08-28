@@ -2,9 +2,9 @@ import Joi from 'joi';
 import JoiDate from '@joi/date';
 Joi.extend(JoiDate);
 
-import SharedConstants from '../../../common/constants';
+import SharedConstants from '../../../common/constants.js';
 
-import GamerJoiValidationService from '@thzero/library_server_validation_joi/gamer';
+import GamerJoiValidationService from '@thzero/library_server_validation_joi/gamer.js';
 
 class JoiValidationService extends GamerJoiValidationService {
 	_characterNumber = Joi.number().min(1).max(99);

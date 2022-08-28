@@ -1,8 +1,8 @@
-import Constants from '../../constants';
+import Constants from '../../constants.js';
 
-import GameSystemAdminService from './gameSystem';
+import GameSystemAdminService from './gameSystem.js';
 
-import BoonData from '../../common/data/boon';
+import BoonData from '../../common/data/boon.js';
 
 class BoonsAdminService extends GameSystemAdminService {
 	constructor() {

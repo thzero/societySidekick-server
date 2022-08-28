@@ -1,11 +1,11 @@
-import Constants from '../../../constants';
+import Constants from '../../../constants.js';
 
-import CharacterGameSystemsService from '../../service/character';
+import CharacterGameSystemsService from '../../service/character.js';
 
-import Pathfinder2eInventoryCharacter from '../../../common/gameSystems/pathfinder2e/data/character';
-import Pathfinder2eInventory from '../../../common/gameSystems/pathfinder2e/data/characterInventory';
-import Pathfinder2eCharacterBoon from '../../../common/gameSystems/pathfinder2e/data/characterBoon';
-import Pathfinder2eCharacterScenario from '../../../common/gameSystems/pathfinder2e/data/characterScenario';
+import Pathfinder2eInventoryCharacter from '../../../common/gameSystems/pathfinder2e/data/character.js';
+import Pathfinder2eInventory from '../../../common/gameSystems/pathfinder2e/data/characterInventory.js';
+import Pathfinder2eCharacterBoon from '../../../common/gameSystems/pathfinder2e/data/characterBoon.js';
+import Pathfinder2eCharacterScenario from '../../../common/gameSystems/pathfinder2e/data/characterScenario.js';
 
 class Pathfinder2eCharacterGameSystemsService extends CharacterGameSystemsService {
 	calculateScenario(correlationId, character, scenario) {

@@ -1,4 +1,4 @@
-import ApiCollectionsService from '@thzero/library_server_repository_mongo/collections/api';
+import ApiCollectionsService from '@thzero/library_server_repository_mongo/collections/api.js';
 
 class AppCollectionsService extends ApiCollectionsService {
 	getClientName() {

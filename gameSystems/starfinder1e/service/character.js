@@ -1,16 +1,16 @@
-import Constants from '../../../constants'
+import Constants from '../../../constants.js'
 
-import CharacterGameSystemsService from '../../service/character';
+import CharacterGameSystemsService from '../../service/character.js';
 
-import Stafinder1eCharacter from '../../../common/gameSystems/starfinder1e/data/character';
-import Stafinder1eInventory from '../../../common/gameSystems/starfinder1e/data/characterInventory'
-import Stafinder1eCharacterBoon from '../../../common/gameSystems/starfinder1e/data/characterBoon'
-import Stafinder1eCharacterScenario from '../../../common/gameSystems/starfinder1e/data/characterScenario'
+import Stafinder1eCharacter from '../../../common/gameSystems/starfinder1e/data/character.js';
+import Stafinder1eInventory from '../../../common/gameSystems/starfinder1e/data/characterInventory.js'
+import Stafinder1eCharacterBoon from '../../../common/gameSystems/starfinder1e/data/characterBoon.js'
+import Stafinder1eCharacterScenario from '../../../common/gameSystems/starfinder1e/data/characterScenario.js'
 
 class Starfinder1eCharacterGameSystemsService extends CharacterGameSystemsService {
 	calculateScenario(correlationId, character, scenario) {
 		this._serviceRules.calculateScenario(correlationId, scenario);
-		scenario.level = this_serviceRules.calculateScenarioLevel(correlationId, character, scenario);
+		scenario.level = this._serviceRules.calculateScenarioLevel(correlationId, character, scenario);
 	}
 
 	updateBoon(correlationId, boon, character, requestedBoon) {

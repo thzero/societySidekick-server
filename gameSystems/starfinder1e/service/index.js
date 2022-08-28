@@ -1,6 +1,6 @@
-import Constants from '../../../constants';
+import Constants from '../../../constants.js';
 
-import BaseGameSystemGameSystemsService from '../../service/base';
+import BaseGameSystemGameSystemsService from '../../service/base.js';
 
 class Starfinder1eGameSystemGameSystemsService extends BaseGameSystemGameSystemsService {
 	constructor() {

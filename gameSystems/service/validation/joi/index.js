@@ -1,8 +1,8 @@
 import Joi from 'joi';
 
-import BaseGameSystemValidationService from './base';
+import BaseGameSystemValidationService from './base.js';
 
-import NotImplementedError from '@thzero/library_common/errors/notImplemented';
+import NotImplementedError from '@thzero/library_common/errors/notImplemented.js';
 
 class GameSystemValidationService extends BaseGameSystemValidationService {
 	_equipmentCategories() {

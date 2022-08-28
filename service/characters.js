@@ -1,12 +1,12 @@
-import Constants from '../constants';
-import LibraryConstants from '@thzero/library_server/constants';
-import SharedConstants from '../common/constants';
+import Constants from '../constants.js';
+import LibraryConstants from '@thzero/library_server/constants.js';
+import SharedConstants from '../common/constants.js';
 
-import LibraryUtility from '@thzero/library_common/utility';
+import LibraryUtility from '@thzero/library_common/utility/index.js';
 
-import Service from '@thzero/library_server/service/index';
+import Service from '@thzero/library_server/service/index.js';
 
-import ScenarioResult from '../common/data/scenarioResult';
+import ScenarioResult from '../common/data/scenarioResult.js';
 
 class CharactersService extends Service {
 	constructor() {

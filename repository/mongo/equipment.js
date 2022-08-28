@@ -1,4 +1,4 @@
-import AppMongoRepository from './app';
+import AppMongoRepository from './app.js';
 
 class EquipmentMongoRepository extends AppMongoRepository {
 	async search(correlationId, gameSystemId, search) {

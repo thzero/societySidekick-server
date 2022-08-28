@@ -1,4 +1,4 @@
-import AppMongoRepository from './app';
+import AppMongoRepository from './app.js';
 
 class CharactersMongoRepository extends AppMongoRepository {
 	async create(correlationId, userId, character) {

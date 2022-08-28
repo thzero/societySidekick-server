@@ -1,6 +1,6 @@
-import BaseUsersAdminService from '@thzero/library_server/service/admin/users';
+import BaseUsersAdminService from '@thzero/library_server/service/admin/users.js';
 
-import UserData from '../../common/data/user';
+import UserData from '../../common/data/user.js';
 
 class UsersAdminService extends BaseUsersAdminService {
 	_initializeData() {

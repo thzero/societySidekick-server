@@ -1,8 +1,8 @@
 import Joi from 'joi';
 
-import Constants from '../../../../../constants';
+import Constants from '../../../../../constants.js';
 
-import CharacterValidationService from '../../../../service/validation/joi/character';
+import CharacterValidationService from '../../../../service/validation/joi/character.js';
 
 class Pathfinder2eCharacterValidationService extends CharacterValidationService {
 	constructor() {

@@ -1,8 +1,8 @@
-import Constants from '../../constants';
+import Constants from '../../constants.js';
 
-import LibraryUtility from '@thzero/library_common/utility';
+import LibraryUtility from '@thzero/library_common/utility/index.js';
 
-import BaseRoute from '@thzero/library_server_fastify/routes/index';
+import BaseRoute from '@thzero/library_server_fastify/routes/index.js';
 
 class CharactersRoute extends BaseRoute {
 	constructor() {

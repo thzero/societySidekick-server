@@ -1,7 +1,7 @@
-import Constants from '../../constants';
-import SharedConstants from '../../common/constants';
+import Constants from '../../constants.js';
+import SharedConstants from '../../common/constants.js';
 
-import Service from '@thzero/library_server/service/index';
+import Service from '@thzero/library_server/service/index.js';
 
 class UtilityGameSystemsService extends Service {
 	characterByGameSystemId(correlationId, gameSystemId) {
