@@ -1,4 +1,4 @@
-import AppMongoRepository from './app';
+import AppMongoRepository from './app.js';
 
 class SiteMongoRepository extends AppMongoRepository {
 	async fetch(correlationId) {

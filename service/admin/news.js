@@ -1,6 +1,6 @@
-import BaseNewsAdminService from '@thzero/library_server/service/admin/news';
+import BaseNewsAdminService from '@thzero/library_server/service/admin/news.js';
 
-import NewsData from '../../common/data/news';
+import NewsData from '../../common/data/news.js';
 
 class NewsAdminService extends BaseNewsAdminService {
 	_initializeData() {

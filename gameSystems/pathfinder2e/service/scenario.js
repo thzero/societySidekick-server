@@ -1,4 +1,4 @@
-import ScenarioGameSystemsService from '../../service/scenario';
+import ScenarioGameSystemsService from '../../service/scenario.js';
 
 class Pathfinder2eScenarioGameSystemsService extends ScenarioGameSystemsService {
 }

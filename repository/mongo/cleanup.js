@@ -1,6 +1,6 @@
-import AppMongoRepository from './app';
+import AppMongoRepository from './app.js';
 
-import LibraryUtility from '@thzero/library_common/utility';
+import LibraryUtility from '@thzero/library_common/utility/index.js';
 
 class CleanupMongoRepository extends AppMongoRepository {
 	async cleanup(correlationId) {

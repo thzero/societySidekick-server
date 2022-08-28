@@ -1,4 +1,4 @@
-import MongoRepository from '@thzero/library_server_repository_mongo/index';
+import MongoRepository from '@thzero/library_server_repository_mongo/index.js';
 
 class AppMongoRepository extends MongoRepository {
 	async _getCollectionBoons(correlationId) {

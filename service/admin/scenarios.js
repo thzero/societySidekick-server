@@ -1,8 +1,8 @@
-import Constants from '../../constants';
+import Constants from '../../constants.js';
 
-import GameSystemAdminService from './gameSystem';
+import GameSystemAdminService from './gameSystem.js';
 
-import ScenarioData from '../../common/data/scenario';
+import ScenarioData from '../../common/data/scenario.js';
 
 class ScenariosAdminService extends GameSystemAdminService {
 	constructor() {

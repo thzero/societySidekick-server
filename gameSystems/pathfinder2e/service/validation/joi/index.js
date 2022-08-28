@@ -1,8 +1,8 @@
 import Joi from 'joi';
 
-import Pathfinder2eSharedConstants from '../../../../../common/gameSystems/pathfinder2e/constants';
+import Pathfinder2eSharedConstants from '../../../../../common/gameSystems/pathfinder2e/constants.js';
 
-import BaseValidationService from '../../../../service/validation/joi';
+import BaseValidationService from '../../../../service/validation/joi/index.js';
 
 class Pathfinder2eValidationService extends BaseValidationService {
 	_currencyEarned(schema) {

@@ -1,6 +1,6 @@
-import BaseGameSystemsService from './index';
+import BaseGameSystemsService from './index.js';
 
-import NotImplementedError from '@thzero/library_common/errors/notImplemented';
+import NotImplementedError from '@thzero/library_common/errors/notImplemented.js';
 
 class BaseGameSystemGameSystemsService extends BaseGameSystemsService {
 	determineCharactersService(correlationId) {

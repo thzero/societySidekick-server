@@ -1,64 +1,64 @@
-import Constants from '../../../constants';
-import RepositoryConstants from '@thzero/library_server_repository_mongo/constants';
+import Constants from '../../../constants.js';
+import RepositoryConstants from '@thzero/library_server_repository_mongo/constants.js';
 
-import FrontApiBootPlugin from '@thzero/library_server_fastify/boot/plugins/apiFront';
+import FrontApiBootPlugin from '@thzero/library_server_fastify/boot/plugins/apiFront.js';
 
-import boonsRepository from '../../../repository/mongo/boons';
-import charactersRepository from '../../../repository/mongo/characters';
-import cleanupRepository from '../../../repository/mongo/cleanup';
-import classesRepository from '../../../repository/mongo/classes';
-import equipmentRepository from '../../../repository/mongo/equipment';
-import factionsRepository from '../../../repository/mongo/factions';
-import gameSystemsRepository from '../../../repository/mongo/gameSystems';
-import organizedPlayRepository from '../../../repository/mongo/organizedPlay';
-import scenariosRepository from '../../../repository/mongo/scenarios';
-import siteRepository from '../../../repository/mongo/site';
+import boonsRepository from '../../../repository/mongo/boons.js';
+import charactersRepository from '../../../repository/mongo/characters.js';
+import cleanupRepository from '../../../repository/mongo/cleanup.js';
+import classesRepository from '../../../repository/mongo/classes.js';
+import equipmentRepository from '../../../repository/mongo/equipment.js';
+import factionsRepository from '../../../repository/mongo/factions.js';
+import gameSystemsRepository from '../../../repository/mongo/gameSystems.js';
+import organizedPlayRepository from '../../../repository/mongo/organizedPlay.js';
+import scenariosRepository from '../../../repository/mongo/scenarios.js';
+import siteRepository from '../../../repository/mongo/site.js';
 
-import apiRoute from '../../../routes/fastify/api';
-import boonsRoute from '../../../routes/fastify/boons'
-import charactersRoute from '../../../routes/fastify/characters';
-import classesRoute from '../../../routes/fastify/classes'
-import cleanupRoute from '../../../routes/fastify/cleanup';
-import equipmentRoute from '../../../routes/fastify/equipment';
-import factionsRoute from '../../../routes/fastify/factions';
-import scenariosRoute from '../../../routes/fastify/scenarios';
-import usersRoute from '../../../routes/fastify/users';
+import apiRoute from '../../../routes/fastify/api.js';
+import boonsRoute from '../../../routes/fastify/boons.js'
+import charactersRoute from '../../../routes/fastify/characters.js';
+import classesRoute from '../../../routes/fastify/classes.js'
+import cleanupRoute from '../../../routes/fastify/cleanup.js';
+import equipmentRoute from '../../../routes/fastify/equipment.js';
+import factionsRoute from '../../../routes/fastify/factions.js';
+import scenariosRoute from '../../../routes/fastify/scenarios.js';
+import usersRoute from '../../../routes/fastify/users.js';
 
-import apiService from '../../../service/api';
-import boonsService from '../../../service/boons';
-import charactersService from '../../../service/characters';
-import classesService from '../../../service/classes';
-import cleanupService from '../../../service/cleanup';
-import equipmentService from '../../../service/equipment';
-import factionsService from '../../../service/factions';
-import gameSystemsService from '../../../service/gameSystems';
+import apiService from '../../../service/api.js';
+import boonsService from '../../../service/boons.js';
+import charactersService from '../../../service/characters.js';
+import classesService from '../../../service/classes.js';
+import cleanupService from '../../../service/cleanup.js';
+import equipmentService from '../../../service/equipment.js';
+import factionsService from '../../../service/factions.js';
+import gameSystemsService from '../../../service/gameSystems.js';
 
 // GameSystems Update
-import gameSystemsUtilityService from '../../../gameSystems/service/utility';
+import gameSystemsUtilityService from '../../../gameSystems/service/utility.js';
 // Pathfinder 2e
-import gameSystemsPathfinder2eService from '../../../gameSystems/pathfinder2e/service/index';
-import gameSystemsCharacterPathfinder2eService from '../../../gameSystems/pathfinder2e/service/character';
-import gameSystemsCharacterValidationPathfinder2eService from '../../../gameSystems/pathfinder2e/service/validation/joi/character';
-import gameSystemsRulesPathfinder2eService from '../../../common/gameSystems/pathfinder2e/service/rules';
-import gameSystemsScenarioPathfinder2eService from '../../../gameSystems/pathfinder2e/service/scenario';
-import gameSystemsScenarioValidationPathfinder2eService from '../../../gameSystems/pathfinder2e/service/validation/joi/scenario';
-import gameSystemsValidationPathfinder2eService from '../../../gameSystems/pathfinder2e/service/validation/joi';
+import gameSystemsPathfinder2eService from '../../../gameSystems/pathfinder2e/service/index.js';
+import gameSystemsCharacterPathfinder2eService from '../../../gameSystems/pathfinder2e/service/character.js';
+import gameSystemsCharacterValidationPathfinder2eService from '../../../gameSystems/pathfinder2e/service/validation/joi/character.js';
+import gameSystemsRulesPathfinder2eService from '../../../common/gameSystems/pathfinder2e/service/rules.js';
+import gameSystemsScenarioPathfinder2eService from '../../../gameSystems/pathfinder2e/service/scenario.js';
+import gameSystemsScenarioValidationPathfinder2eService from '../../../gameSystems/pathfinder2e/service/validation/joi/scenario.js';
+import gameSystemsValidationPathfinder2eService from '../../../gameSystems/pathfinder2e/service/validation/joi/index.js';
 // Starfinder 1e
-import gameSystemsStarfinder1eService from '../../../gameSystems/starfinder1e/service/index';
-import gameSystemsCharacterStarfinder1eService from '../../../gameSystems/starfinder1e/service/character';
-import gameSystemsCharacterValidationStarfinder1eService from '../../../gameSystems/starfinder1e/service/validation/joi/character';
-import gameSystemsRulesStarfinder1eService from '../../../common/gameSystems/starfinder1e/service/rules';
-import gameSystemsScenarioStarfinder1eService from '../../../gameSystems/starfinder1e/service/scenario';
-import gameSystemsScenarioValidationStarfinder1eService from '../../../gameSystems/starfinder1e/service/validation/joi/scenario';
-import gameSystemsValidationStarfinder1eService from '../../../gameSystems/starfinder1e/service/validation/joi';
+import gameSystemsStarfinder1eService from '../../../gameSystems/starfinder1e/service/index.js';
+import gameSystemsCharacterStarfinder1eService from '../../../gameSystems/starfinder1e/service/character.js';
+import gameSystemsCharacterValidationStarfinder1eService from '../../../gameSystems/starfinder1e/service/validation/joi/character.js';
+import gameSystemsRulesStarfinder1eService from '../../../common/gameSystems/starfinder1e/service/rules.js';
+import gameSystemsScenarioStarfinder1eService from '../../../gameSystems/starfinder1e/service/scenario.js';
+import gameSystemsScenarioValidationStarfinder1eService from '../../../gameSystems/starfinder1e/service/validation/joi/scenario.js';
+import gameSystemsValidationStarfinder1eService from '../../../gameSystems/starfinder1e/service/validation/joi/index.js';
 
-import repositoryCollectionsService from '../../../repository/mongo/collections';
-import organizedPlayService from '../../../service/organizedPlay';
-import scenariosService from '../../../service/scenarios';
-import securityService from '../../../service/security';
-import siteService from '../../../service/site';
-import validationService from '../../../service/validation/joi';
-import versionService from '../../../service/version';
+import repositoryCollectionsService from '../../../repository/mongo/collections.js';
+import organizedPlayService from '../../../service/organizedPlay.js';
+import scenariosService from '../../../service/scenarios.js';
+import securityService from '../../../service/security.js';
+import siteService from '../../../service/site.js';
+import validationService from '../../../service/validation/joi/index.js';
+import versionService from '../../../service/version.js';
 
 class AppApiBootPlugin extends FrontApiBootPlugin {
 	async _initRepositories() {

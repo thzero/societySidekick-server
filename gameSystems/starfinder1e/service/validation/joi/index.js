@@ -1,8 +1,8 @@
 import Joi from 'joi';
 
-import Starfinder1eShared2eConstants from '../../../../../common/gameSystems/starfinder1e/constants';
+import Starfinder1eShared2eConstants from '../../../../../common/gameSystems/starfinder1e/constants.js';
 
-import BaseValidationService from '../../../../service/validation/joi';
+import BaseValidationService from '../../../../service/validation/joi/index.js';
 
 class Starfinder1eValidationService extends BaseValidationService {
 	_currencyEarned(schema) {

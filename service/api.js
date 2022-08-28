@@ -1,7 +1,7 @@
-import Constants from '../constants';
-import LibraryConstants from '@thzero/library_server/constants';
+import Constants from '../constants.js';
+import LibraryConstants from '@thzero/library_server/constants.js';
 
-import Service from '@thzero/library_server/service/index';
+import Service from '@thzero/library_server/service/index.js';
 
 class ApiService extends Service {
 	constructor() {

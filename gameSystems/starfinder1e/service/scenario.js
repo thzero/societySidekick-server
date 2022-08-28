@@ -1,4 +1,4 @@
-import ScenarioGameSystemsService from '../../service/scenario';
+import ScenarioGameSystemsService from '../../service/scenario.js';
 
 class Starfinder1eScenarioGameSystemsService extends ScenarioGameSystemsService {
 	iniializeResult(result, scenario, characterScenario) {

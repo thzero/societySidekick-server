@@ -1,8 +1,8 @@
 import Joi from 'joi';
 
-import SharedConstants from '../../../../common/constants';
+import SharedConstants from '../../../../common/constants.js';
 
-import JoiValidationService from '../../../../service/validation/joi';
+import JoiValidationService from '../../../../service/validation/joi/index.js';
 
 class BaseGameSystemValidationService extends JoiValidationService {
 	_scenarioNumber = Joi.string().trim()

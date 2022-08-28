@@ -1,6 +1,6 @@
-import Constants from '../../../constants';
+import Constants from '../../../constants.js';
 
-import AdminRoute from '@thzero/library_server_fastify/routes/admin/index';
+import AdminRoute from '@thzero/library_server_fastify/routes/admin/index.js';
 
 class ScenariosAdminRoute extends AdminRoute {
 	constructor() {

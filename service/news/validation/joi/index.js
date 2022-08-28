@@ -1,6 +1,6 @@
 import Joi from 'joi';
 
-import BaseNewsJoiBaseValidationService from '@thzero/library_server_validation_joi/news';
+import BaseNewsJoiBaseValidationService from '@thzero/library_server_validation_joi/news/index.js';
 
 class NewsJoiBaseValidationService extends BaseNewsJoiBaseValidationService {
 	getNewsSchema() {

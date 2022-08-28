@@ -1,12 +1,12 @@
-import Constants from '../constants';
-import LibraryConstants from '@thzero/library_server/constants';
-import SharedConstants from '../common/constants';
+import Constants from '../constants.js';
+import LibraryConstants from '@thzero/library_server/constants.js';
+import SharedConstants from '../common/constants.js';
 
-import AppUtility from '../utility/app'
+import AppUtility from '../utility/app.js'
 
-import BaseUserService from '@thzero/library_server/service/baseUser';
+import BaseUserService from '@thzero/library_server/service/baseUser.js';
 
-import UserData from '../common/data/user';
+import UserData from '../common/data/user.js';
 
 class UserService extends BaseUserService {
 	constructor() {

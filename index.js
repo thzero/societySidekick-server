@@ -1,16 +1,16 @@
-import Constants from './constants';
+import Constants from './constants.js';
 
-import AdminPlugin from './boot/plugins/admin/admin';
-import NewsAdminPlugin from './boot/plugins/admin/news';
-import UsersAdminPlugin from './boot/plugins/admin/users';
+import AdminPlugin from './boot/plugins/admin/admin.js';
+import NewsAdminPlugin from './boot/plugins/admin/news.js';
+import UsersAdminPlugin from './boot/plugins/admin/users.js';
 
-import ApiPlugin from './boot/plugins/fastify/api';
-import NewsApiPlugin from './boot/plugins/fastify/news';
-import UsersApiPlugin from './boot/plugins/fastify/users';
+import ApiPlugin from './boot/plugins/fastify/api.js';
+import NewsApiPlugin from './boot/plugins/fastify/news.js';
+import UsersApiPlugin from './boot/plugins/fastify/users.js';
 
-import BootMain from '@thzero/library_server_fastify/boot/index';
+import BootMain from '@thzero/library_server_fastify/boot/index.js';
 
-import usageMetricsRepository from '@thzero/library_server_repository_mongo/usageMetrics';
+import usageMetricsRepository from '@thzero/library_server_repository_mongo/usageMetrics.js';
 
 import pinoLoggerService from '@thzero/library_server_logger_pino';
 

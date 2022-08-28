@@ -1,8 +1,8 @@
 import Joi from 'joi';
 
-import Starfinder1eShared2eConstants from '../../../../../common/gameSystems/starfinder1e/constants';
+import Starfinder1eShared2eConstants from '../../../../../common/gameSystems/starfinder1e/constants.js';
 
-import ScenarioValidationService from '../../../../service/validation/joi/scenario';
+import ScenarioValidationService from '../../../../service/validation/joi/scenario.js';
 
 class Starfinder1eScenarioValidationService extends ScenarioValidationService {
 	_scenarioAdvancementSpeeds = Joi.string().valid(...Object.values(Starfinder1eShared2eConstants.ScenarioAdvancementSpeeds));

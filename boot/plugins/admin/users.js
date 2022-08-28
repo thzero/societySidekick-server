@@ -1,8 +1,8 @@
-import UsersAdminBootPlugin from '@thzero/library_server_fastify/boot/plugins/admin/users';
+import UsersAdminBootPlugin from '@thzero/library_server_fastify/boot/plugins/admin/users.js';
 
-import adminUsersRepository from '../../../repository/mongo/admin/users';
+import adminUsersRepository from '../../../repository/mongo/admin/users.js';
 
-import adminUsersService from '../../../service/admin/users';
+import adminUsersService from '../../../service/admin/users.js';
 
 class AppUsersAdminBootPlugin extends UsersAdminBootPlugin {
 	_initRepositoriesAdminUsers() {

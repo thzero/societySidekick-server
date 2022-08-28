@@ -1,24 +1,24 @@
-import Constants from '../../../constants';
+import Constants from '../../../constants.js';
 
-import BootPlugin from '@thzero/library_server/boot/plugins/index';
+import BootPlugin from '@thzero/library_server/boot/plugins/index.js';
 
-import adminBoonsRepository from '../../../repository/mongo/admin/boons';
-import adminClassesRepository from '../../../repository/mongo/admin/classes';
-import adminEquipmentRepository from '../../../repository/mongo/admin/equipment';
-import adminFactionsRepository from '../../../repository/mongo/admin/factions';
-import adminScenariosRepository from '../../../repository/mongo/admin/scenarios';
+import adminBoonsRepository from '../../../repository/mongo/admin/boons.js';
+import adminClassesRepository from '../../../repository/mongo/admin/classes.js';
+import adminEquipmentRepository from '../../../repository/mongo/admin/equipment.js';
+import adminFactionsRepository from '../../../repository/mongo/admin/factions.js';
+import adminScenariosRepository from '../../../repository/mongo/admin/scenarios.js';
 
-import adminBoonsRoute from '../../../routes/fastify/admin/boons';
-import adminClassesRoute from '../../../routes/fastify/admin/classes';
-import adminEquipmentRoute from '../../../routes/fastify/admin/equipment';
-import adminFactionsRoute from '../../../routes/fastify/admin/factions';
-import adminScenariosRoute from '../../../routes/fastify/admin/scenarios';
+import adminBoonsRoute from '../../../routes/fastify/admin/boons.js';
+import adminClassesRoute from '../../../routes/fastify/admin/classes.js';
+import adminEquipmentRoute from '../../../routes/fastify/admin/equipment.js';
+import adminFactionsRoute from '../../../routes/fastify/admin/factions.js';
+import adminScenariosRoute from '../../../routes/fastify/admin/scenarios.js';
 
-import adminBoonsService from '../../../service/admin/boons';
-import adminClassesService from '../../../service/admin/classes';
-import adminEquipmentService from '../../../service/admin/equipment';
-import adminFactionsService from '../../../service/admin/factions';
-import adminScenariosService from '../../../service/admin/scenarios';
+import adminBoonsService from '../../../service/admin/boons.js';
+import adminClassesService from '../../../service/admin/classes.js';
+import adminEquipmentService from '../../../service/admin/equipment.js';
+import adminFactionsService from '../../../service/admin/factions.js';
+import adminScenariosService from '../../../service/admin/scenarios.js';
 
 class AppAdminBootPlugin extends BootPlugin {
 	async _initRepositories() {

@@ -1,6 +1,6 @@
 import Joi from 'joi';
 
-import BaseGameSystemValidationService from './base';
+import BaseGameSystemValidationService from './base.js';
 
 class ScenarioGameSystemValidationService extends BaseGameSystemValidationService {
 	// _scenarioNumber = Joi.string().trim()

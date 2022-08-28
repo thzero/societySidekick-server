@@ -1,4 +1,4 @@
-import SharedConstants from './common/constants';
+import SharedConstants from './common/constants.js';
 
 const BaseKeys = {
 	SERVICE_GAMESYSTEMS: 'serviceGameSystems.' ,

@@ -1,8 +1,8 @@
-import NewsAdminBootPlugin from '@thzero/library_server_fastify/boot/plugins/admin/news';
+import NewsAdminBootPlugin from '@thzero/library_server_fastify/boot/plugins/admin/news.js';
 
-import adminNewsRepository from '../../../repository/mongo/admin/news';
+import adminNewsRepository from '../../../repository/mongo/admin/news.js';
 
-import adminNewsService from '../../../service/admin/news';
+import adminNewsService from '../../../service/admin/news.js';
 
 class AppNewsAdminBootPlugin extends NewsAdminBootPlugin {
 	_initRepositoriesAdminNews() {

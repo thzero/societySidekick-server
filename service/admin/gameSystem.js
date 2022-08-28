@@ -1,8 +1,8 @@
-import Constants from '../../constants';
+import Constants from '../../constants.js';
 
-import NotImplementedError from '@thzero/library_common/errors/notImplemented'
+import NotImplementedError from '@thzero/library_common/errors/notImplemented.js'
 
-import BaseAdminService from '@thzero/library_server/service/admin/index';
+import BaseAdminService from '@thzero/library_server/service/admin/index.js';
 
 class GameSystemAdminService extends BaseAdminService {
 	constructor() {
