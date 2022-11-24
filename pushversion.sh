@@ -1,4 +1,4 @@
 #!/bin/bash
 
-npm run cli-update-w -- --silent
+library-cli --updateversion --pi --silent
 source ./push.sh "%1"
