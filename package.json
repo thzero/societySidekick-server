@@ -22,7 +22,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "debug": "set NODE_ENV=dev && SET LOG_LEVEL=debug && nodemon --experimental-specifier-resolution=node --nolazy --inspect-brk=9229 index.js",
+    "debug": "set NODE_ENV=dev && SET LOG_LEVEL=debug && nodemon --nolazy --inspect-brk=9229 index.js",
     "start": "node -nolazy --trace-uncaught index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "./node_modules/.bin/eslint .",
