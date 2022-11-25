@@ -145,12 +145,12 @@ Enable the following APIs
 
 ### Setup Google Cloud Source Repositories
 
-This is a mirror of the GitHub repo for https://img.shields.io/github/package-json/v/thzero/rocket_tools-common.
+This is a mirror of the GitHub repo for https://img.shields.io/github/package-json/v/thzero/societySidekick-common.
 
 * Add Repository
 * Connect external repository
 * Select the project setup by Firebase, then GitHub
-* Select the rocket_tools-common repo
+* Select the societySidekick-common repo
 * Connect selected repositories
 
 Select repository, then permissions.  Verify that the Cloud Build Service Account is listed.
