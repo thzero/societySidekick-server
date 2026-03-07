@@ -21,7 +21,7 @@ class ScenariosRoute extends BaseRoute {
 			// eslint-disable-next-line
 			async (request, reply) => {
 				const response = (await router[Constants.InjectorKeys.SERVICE_SCENARIOS].listing(request.correlationId, request.params.gameSystemId)).check(request);
-				this._jsonResponse(reply, response);
+				return this._jsonResponse(reply, response);
 			}
 		);
 
@@ -41,7 +41,7 @@ class ScenariosRoute extends BaseRoute {
 			// eslint-disable-next-line
 			async (request, reply) => {
 				const response = (await router[Constants.InjectorKeys.SERVICE_SCENARIOS].playedScenarios(request.correlationId, request.user, request.params.characterId)).check(request);
-				this._jsonResponse(reply, response);
+				return this._jsonResponse(reply, response);
 			}
 		);
 	}
