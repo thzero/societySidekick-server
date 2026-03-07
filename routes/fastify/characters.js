@@ -385,7 +385,7 @@ class CharactersRoute extends BaseRoute {
 			}
 		);
 
-		router.post(this._join('/'),
+		router.post(this._join(''),
 			// authentication(true),
 			// authorization('character'),
 			{
@@ -400,7 +400,7 @@ class CharactersRoute extends BaseRoute {
 			},
 			// eslint-disable-next-line
 			async (request, reply) => {
-				const response = (await router[Constants.InjectorKeys.SERVICE_CHARACTERS].updateScenario(request.correlationId, request.user, request.body)).check(request);
+				const response = (await router[Constants.InjectorKeys.SERVICE_CHARACTERS].create(request.correlationId, request.user, request.body)).check(request);
 				this._jsonResponse(reply, response);
 			}
 		);
