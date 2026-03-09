@@ -21,7 +21,7 @@ class ClassesRoute extends BaseRoute {
 			// eslint-disable-next-line
 			async (request, reply) => {
 				const response = (await router[Constants.InjectorKeys.SERVICE_CLASSES].listing(request.correlationId, request.params.gameSystemId)).check(request);
-				this._jsonResponse(reply, response);
+				return this._jsonResponse(reply, response);
 			}
 		);
 	}

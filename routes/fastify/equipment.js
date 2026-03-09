@@ -21,7 +21,7 @@ class EquipmentRoute extends BaseRoute {
 			// eslint-disable-next-line
 			async (request, reply) => {
 				const response = (await router[Constants.InjectorKeys.SERVICE_EQUIPMENT].search(request.correlationId, request.params.gameSystemId, request.body)).check(request);
-				this._jsonResponse(reply, response);
+				return this._jsonResponse(reply, response);
 			}
 		);
 	}

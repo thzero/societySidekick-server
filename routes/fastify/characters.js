@@ -35,7 +35,7 @@ class CharactersRoute extends BaseRoute {
 			// eslint-disable-next-line
 			async (request, reply) => {
 				const response = (await router[Constants.InjectorKeys.SERVICE_CHARACTERS].delete(request.correlationId, request.user, request.params.characterId)).check(request);
-				this._jsonResponse(reply, LibraryUtility.stringify(response));
+				return this._jsonResponse(reply, LibraryUtility.stringify(response));
 			}
 		);
 
@@ -55,7 +55,7 @@ class CharactersRoute extends BaseRoute {
 			// eslint-disable-next-line
 			async (request, reply) => {
 				const response = (await router[Constants.InjectorKeys.SERVICE_CHARACTERS].deleteBoon(request.correlationId, request.user, request.params.characterId, request.params.boonId)).check(request);
-				this._jsonResponse(reply, LibraryUtility.stringify(response));
+				return this._jsonResponse(reply, LibraryUtility.stringify(response));
 			}
 		);
 
@@ -75,7 +75,7 @@ class CharactersRoute extends BaseRoute {
 			// eslint-disable-next-line
 			async (request, reply) => {
 				const response = (await router[Constants.InjectorKeys.SERVICE_CHARACTERS].deleteInventory(request.correlationId, request.user, request.params.characterId, request.params.inventoryId)).check(request);
-				this._jsonResponse(reply, LibraryUtility.stringify(response));
+				return this._jsonResponse(reply, LibraryUtility.stringify(response));
 			}
 		);
 
@@ -95,7 +95,7 @@ class CharactersRoute extends BaseRoute {
 			// eslint-disable-next-line
 			async (request, reply) => {
 				const response = (await router[Constants.InjectorKeys.SERVICE_CHARACTERS].deleteScenario(request.correlationId, request.user, request.params.characterId, request.params.scenarioId)).check(request);
-				this._jsonResponse(reply, LibraryUtility.stringify(response));
+				return this._jsonResponse(reply, LibraryUtility.stringify(response));
 			}
 		);
 
@@ -117,7 +117,7 @@ class CharactersRoute extends BaseRoute {
 			async (request, reply) => {
 				const response = (await router[Constants.InjectorKeys.SERVICE_CHARACTERS].initialize(request.correlationId, request.user)).check(request);
 				response.results = { lookups: response.results };
-				this._jsonResponse(reply, LibraryUtility.stringify(response));
+				return this._jsonResponse(reply, LibraryUtility.stringify(response));
 			}
 		);
 
@@ -138,7 +138,7 @@ class CharactersRoute extends BaseRoute {
 			// eslint-disable-next-line
 			async (request, reply) => {
 				const response = (await router[Constants.InjectorKeys.SERVICE_CHARACTERS].listingByFavorites(request.correlationId, request.user)).check(request);
-				this._jsonResponse(reply, LibraryUtility.stringify(response));
+				return this._jsonResponse(reply, LibraryUtility.stringify(response));
 			}
 		);
 
@@ -159,7 +159,7 @@ class CharactersRoute extends BaseRoute {
 			// eslint-disable-next-line
 			async (request, reply) => {
 				const response = (await router[Constants.InjectorKeys.SERVICE_CHARACTERS].listingByGamerId(request.correlationId, request.user, request.params.gamerId, request.params.gameSystemId)).check(request);
-				this._jsonResponse(reply, LibraryUtility.stringify(response));
+				return this._jsonResponse(reply, LibraryUtility.stringify(response));
 			}
 		);
 
@@ -180,7 +180,7 @@ class CharactersRoute extends BaseRoute {
 			// eslint-disable-next-line
 			async (request, reply) => {
 				const response = (await router[Constants.InjectorKeys.SERVICE_CHARACTERS].listingByGamerTag(request.correlationId, request.user, request.params.gamerTag, request.params.gameSystemId)).check(request);
-				this._jsonResponse(reply, LibraryUtility.stringify(response));
+				return this._jsonResponse(reply, LibraryUtility.stringify(response));
 			}
 		);
 
@@ -201,7 +201,7 @@ class CharactersRoute extends BaseRoute {
 			// eslint-disable-next-line
 			async (request, reply) => {
 				const response = (await router[Constants.InjectorKeys.SERVICE_CHARACTERS].listing(request.correlationId, request.user, request.body)).check(request);
-				this._jsonResponse(reply, response);
+				return this._jsonResponse(reply, response);
 			}
 		);
 
@@ -221,7 +221,7 @@ class CharactersRoute extends BaseRoute {
 			// eslint-disable-next-line
 			async (request, reply) => {
 				const response = (await router[Constants.InjectorKeys.SERVICE_CHARACTERS].listingByFavorites(request.correlationId, request.user)).check(request);
-				this._jsonResponse(reply, response);
+				return this._jsonResponse(reply, response);
 			}
 		);
 
@@ -241,7 +241,7 @@ class CharactersRoute extends BaseRoute {
 			// eslint-disable-next-line
 			async (request, reply) => {
 				const response = (await router[Constants.InjectorKeys.SERVICE_CHARACTERS].playedScenarios(request.correlationId, request.user, request.params.characterId)).check(request);
-				this._jsonResponse(reply, response);
+				return this._jsonResponse(reply, response);
 			}
 		);
 
@@ -261,7 +261,7 @@ class CharactersRoute extends BaseRoute {
 			// eslint-disable-next-line
 			async (request, reply) => {
 				const response = (await router[Constants.InjectorKeys.SERVICE_CHARACTERS].fetchNumber(request.correlationId, request.user, request.params.gameSystemId)).check(request);
-				this._jsonResponse(reply, response);
+				return this._jsonResponse(reply, response);
 			}
 		);
 
@@ -281,7 +281,7 @@ class CharactersRoute extends BaseRoute {
 			// eslint-disable-next-line
 			async (request, reply) => {
 				const response = (await router[Constants.InjectorKeys.SERVICE_CHARACTERS].fetch(request.correlationId, request.user, request.params.characterId)).check(request);
-				this._jsonResponse(reply, response);
+				return this._jsonResponse(reply, response);
 			}
 		);
 
@@ -301,7 +301,7 @@ class CharactersRoute extends BaseRoute {
 			// eslint-disable-next-line
 			async (request, reply) => {
 				const response = (await router[Constants.InjectorKeys.SERVICE_CHARACTERS].updateDetails(request.correlationId, request.user, request.params.characterId, request.body)).check(request);
-				this._jsonResponse(reply, response);
+				return this._jsonResponse(reply, response);
 			}
 		);
 
@@ -321,7 +321,7 @@ class CharactersRoute extends BaseRoute {
 			// eslint-disable-next-line
 			async (request, reply) => {
 				const response = (await router[Constants.InjectorKeys.SERVICE_CHARACTERS].updateDetails(request.correlationId, request.user, request.params.characterId, request.params.gearSetId)).check(request);
-				this._jsonResponse(reply, response);
+				return this._jsonResponse(reply, response);
 			}
 		);
 
@@ -341,7 +341,7 @@ class CharactersRoute extends BaseRoute {
 			// eslint-disable-next-line
 			async (request, reply) => {
 				const response = (await router[Constants.InjectorKeys.SERVICE_CHARACTERS].updateBoon(request.correlationId, request.user, request.params.characterId, request.body)).check(request);
-				this._jsonResponse(reply, response);
+				return this._jsonResponse(reply, response);
 			}
 		);
 
@@ -361,7 +361,7 @@ class CharactersRoute extends BaseRoute {
 			// eslint-disable-next-line
 			async (request, reply) => {
 				const response = (await router[Constants.InjectorKeys.SERVICE_CHARACTERS].updateInventory(request.correlationId, request.user, request.params.characterId, request.body)).check(request);
-				this._jsonResponse(reply, response);
+				return this._jsonResponse(reply, response);
 			}
 		);
 
@@ -381,7 +381,7 @@ class CharactersRoute extends BaseRoute {
 			// eslint-disable-next-line
 			async (request, reply) => {
 				const response = (await router[Constants.InjectorKeys.SERVICE_CHARACTERS].updateScenario(request.correlationId, request.user, request.params.characterId, request.body)).check(request);
-				this._jsonResponse(reply, response);
+				return this._jsonResponse(reply, response);
 			}
 		);
 
@@ -401,7 +401,7 @@ class CharactersRoute extends BaseRoute {
 			// eslint-disable-next-line
 			async (request, reply) => {
 				const response = (await router[Constants.InjectorKeys.SERVICE_CHARACTERS].create(request.correlationId, request.user, request.body)).check(request);
-				this._jsonResponse(reply, response);
+				return this._jsonResponse(reply, response);
 			}
 		);
 	}
