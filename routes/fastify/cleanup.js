@@ -21,7 +21,7 @@ class CleanupRoute extends BaseRoute {
 			// eslint-disable-next-line
 			async (request, reply) => {
 				const response = (await router[Constants.InjectorKeys.SERVICE_CLEANUP].cleanup(request.correlationId)).check(request);
-				this._jsonResponse(reply, response);
+				return this._jsonResponse(reply, response);
 			}
 		);
 	}
