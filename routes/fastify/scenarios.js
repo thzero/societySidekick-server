@@ -25,7 +25,7 @@ class ScenariosRoute extends BaseRoute {
 			}
 		);
 
-		router.get('/played/:characterId',
+		router.get(this._join('/played/:characterId'),
 			// authentication(true),
 			// authorization('character'),
 			{
