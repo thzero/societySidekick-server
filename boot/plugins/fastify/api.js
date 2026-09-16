@@ -11,6 +11,7 @@ import equipmentRepository from '../../../repository/mongo/equipment.js';
 import factionsRepository from '../../../repository/mongo/factions.js';
 import gameSystemsRepository from '../../../repository/mongo/gameSystems.js';
 import organizedPlayRepository from '../../../repository/mongo/organizedPlay.js';
+import pubSubRepository from '../../../repository/mongo/pubSub.js';
 import scenariosRepository from '../../../repository/mongo/scenarios.js';
 import siteRepository from '../../../repository/mongo/site.js';
 
@@ -54,6 +55,7 @@ import gameSystemsValidationStarfinder1eService from '../../../gameSystems/starf
 
 import repositoryCollectionsService from '../../../repository/mongo/collections.js';
 import organizedPlayService from '../../../service/organizedPlay.js';
+import pubSubService from '../../../service/pubSub.js';
 import scenariosService from '../../../service/scenarios.js';
 import securityService from '../../../service/security.js';
 import siteService from '../../../service/site.js';
@@ -72,6 +74,7 @@ class AppApiBootPlugin extends FrontApiBootPlugin {
 		this._injectRepository(Constants.InjectorKeys.REPOSITORY_FACTIONS, new factionsRepository());
 		this._injectRepository(Constants.InjectorKeys.REPOSITORY_GAMESYSTEMS, new gameSystemsRepository());
 		this._injectRepository(Constants.InjectorKeys.REPOSITORY_ORGANIZEDPLAY, new organizedPlayRepository());
+		this._injectRepository(Constants.InjectorKeys.REPOSITORY_PUBSUB, new pubSubRepository());
 		this._injectRepository(Constants.InjectorKeys.REPOSITORY_SCENARIOS, new scenariosRepository());
 		this._injectRepository(Constants.InjectorKeys.REPOSITORY_SITE, new siteRepository());
 	}
@@ -127,6 +130,7 @@ class AppApiBootPlugin extends FrontApiBootPlugin {
 		this._injectService(Constants.InjectorKeys.SERVICE_GAMESYSTEMS_VALIDATION_STARFINDER_1E, new gameSystemsValidationStarfinder1eService());
 
 		this._injectService(Constants.InjectorKeys.SERVICE_ORGANIZEDPLAY, new organizedPlayService());
+		this._injectService(Constants.InjectorKeys.SERVICE_PUBSUB, new pubSubService());
 		this._injectService(Constants.InjectorKeys.SERVICE_SCENARIOS, new scenariosService());
 		this._injectService(Constants.InjectorKeys.SERVICE_SITE, new siteService());
 		this._injectService(Constants.InjectorKeys.SERVICE_VALIDATION, new validationService());

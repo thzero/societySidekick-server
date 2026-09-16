@@ -26,6 +26,7 @@ const Constants = {
 		REPOSITORY_FACTIONS: 'repositoryFactions',
 		REPOSITORY_GAMESYSTEMS: 'repositoryGameSystems',
 		REPOSITORY_ORGANIZEDPLAY: 'repositoryOrganizedPlay',
+		REPOSITORY_PUBSUB: 'repositoryPubSub',
 		REPOSITORY_SCENARIOS: 'repositoryScenarios',
 		REPOSITORY_SITE: 'repositorySite',
 		REPOSITORY_CLEANUP: 'repositoryCleanup',
@@ -67,6 +68,7 @@ const Constants = {
 
 		SERVICE_LOGGER_PINO: 'serviceLoggerPino',
 		SERVICE_ORGANIZEDPLAY: 'serviceOrganizedPlay',
+		SERVICE_PUBSUB: 'servicePubSub',
 		SERVICE_SCENARIOS: 'serviceScenarios',
 		SERVICE_SITE: 'serviceSite',
 		SERVICE_VALIDATION: 'serviceValidation',
