@@ -2,7 +2,7 @@ import BaseAdminMongoRepository from '@thzero/library_server_repository_mongo/ad
 
 class FactionsMongoRepository extends BaseAdminMongoRepository {
 	async _getCollectionAdmin(correlationId) {
-		return await this._getCollectionFromConfig(correlationId, this._collectionsConfig.getCollectionFactions());
+		return await this._getCollectionFromConfig(correlationId, this._collectionsConfig.getCollectionFactions(correlationId));
 	}
 }
 

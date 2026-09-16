@@ -2,7 +2,7 @@ import BaseAdminMongoRepository from '@thzero/library_server_repository_mongo/ad
 
 class ScenariosMongoRepository extends BaseAdminMongoRepository {
 	async _getCollectionAdmin(correlationId) {
-		return await this._getCollectionFromConfig(correlationId, this._collectionsConfig.getCollectionScenarios());
+		return await this._getCollectionFromConfig(correlationId, this._collectionsConfig.getCollectionScenarios(correlationId));
 	}
 
 	// eslint-disable-next-line
