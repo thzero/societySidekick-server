@@ -75,7 +75,7 @@ class JoiValidationService extends GamerJoiValidationService {
 		.max(50);
 	_settingLocation = Joi.object({
 		id: this._id.required(),
-		location: this._settingLocationName.required(),
+		location: this._settingLocationName.allow(null, ''),
 		name: this._settingLocationName.required(),
 		online: Joi.boolean().allow(null)
 	});
