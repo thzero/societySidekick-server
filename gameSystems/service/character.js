@@ -17,7 +17,7 @@ class CharacterGameSystemsService extends Service {
 		return await this._serviceRules.calculateCharacter(correlationId, character, user);
 	}
 
-	calculateScenario(correlationId, scenario) {
+	calculateScenario(correlationId, character, scenario) {
 	}
 
 	initializeBoon(boon, requestedBoon) {

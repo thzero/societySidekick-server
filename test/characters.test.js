@@ -6,6 +6,7 @@ import { fake, gameSystems, gameSystemIds, id, success, user } from './helpers.j
 import Constants from '../constants.js';
 import LibraryConstants from '@thzero/library_server/constants.js';
 import SharedConstants from '../common/constants.js';
+import Pathfinder2eConstants from '../common/gameSystems/pathfinder2e/constants.js';
 
 import Pathfinder2eCharacterData from '../common/gameSystems/pathfinder2e/data/character.js';
 import Pathfinder2eCharacterInventory from '../common/gameSystems/pathfinder2e/data/characterInventory.js';
@@ -62,6 +63,15 @@ describe('CharacterGameSystemsService (Pathfinder 2e)', () => {
 		(await service()).updateInventory('test', inventory, { quantity: 4, value: 2.5 });
 		assert.equal(inventory.value, 2.5);
 		assert.equal(inventory.total, 10);
+	});
+
+	it('fills in the awards and level of a scenario', async () => {
+		const value = character();
+		const scenario = { order: 1, scenario: { type: Pathfinder2eConstants.ScenarioAdventures.ADVENTURE_PATH }, scenarioParticipant: SharedConstants.ScenarioParticipants.PLAYER, scenarioEvent: Pathfinder2eConstants.ScenarioEvents.STANDARD };
+		(await service()).calculateScenario('test', value, scenario);
+		assert.equal(scenario.experiencePointsEarned, 12);
+		assert.equal(scenario.achievementPointsEarned, 12);
+		assert.equal(scenario.level, 2);
 	});
 
 	it('clears the boon slots that held a deleted boon', async () => {

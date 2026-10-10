@@ -203,11 +203,7 @@ describe('Pathfinder2eRules.calculateCharacter', () => {
 		assert.equal(value.currencyTotal, 30);
 	});
 
-	// common/gameSystems/services/baseRules.js adds the running item.currencySold
-	// to currencyGained instead of the half value just computed, and adds the
-	// full inventory total to item.currencySold. The character totals are right;
-	// the per scenario figures are not. The fix belongs in societySidekick-common.
-	it('records the sold half value on the scenario it was sold in', { todo: 'baseRules.js sold inventory per scenario totals' }, async () => {
+	it('records the sold half value on the scenario it was sold in', async () => {
 		const rules = await create();
 		const bought = scenario(1, { currencyEarned: 20 });
 		const sold = scenario(2);
@@ -216,6 +212,17 @@ describe('Pathfinder2eRules.calculateCharacter', () => {
 		await rules.calculateCharacter('test', value);
 		assert.equal(sold.currencySold, 5);
 		assert.equal(sold.currencyGained, 5);
+		assert.equal(sold.currencySpendable, 30);
+	});
+
+	it('sells inventory that has no stored total', async () => {
+		const rules = await create();
+		const sold = scenario(1);
+		const value = character(sold);
+		value.inventory.push(inventory({ boughtScenarioId: id('elsewhere'), soldScenarioId: sold.id, quantity: 2, value: 3 }));
+		await rules.calculateCharacter('test', value);
+		assert.equal(sold.currencySold, 3);
+		assert.equal(value.currencyTotal, 18);
 	});
 
 	it('totals fame by faction', async () => {
@@ -265,12 +272,53 @@ describe('Pathfinder2eRules.calculateCharacter', () => {
 		assert.equal(settings.achievementPoints, 14);
 		assert.equal(characters.calls.listing.length, 1);
 	});
+
+	it('adds the game system settings when the user has none yet', async () => {
+		const value = character(scenario(1, { achievementPointsEarned: 4 }));
+		const characters = fake({ listing: () => success({ data: [ { id: id('other'), achievementPoints: 10 } ] }) });
+		const rules = await create({ [Constants.InjectorKeys.SERVICE_CHARACTERS]: characters });
+		const owner = { ...user, settings: { gameSystems: [] } };
+		await rules.calculateCharacter('test', value, owner);
+		assert.equal(owner.settings.gameSystems.length, 1);
+		assert.equal(owner.settings.gameSystems[0].id, gameSystemIds.pathfinder2e);
+		assert.equal(owner.settings.gameSystems[0].achievementPoints, 14);
+	});
+});
+
+describe('Pathfinder2eRules.calculateScenarioLevel', () => {
+	it('levels from the scenarios played before it plus its own', async () => {
+		const rules = await create();
+		const third = scenario(3);
+		const value = character(scenario(1), scenario(2), third, scenario(4));
+		assert.equal(rules.calculateScenarioLevel('test', value, third), 2);
+		assert.equal(rules.calculateScenarioLevel('test', value, scenario(2)), 1);
+	});
+
+	it('leaves out ignored scenarios', async () => {
+		const rules = await create();
+		const third = scenario(3);
+		const value = character(scenario(1), scenario(2, { scenarioStatus: SharedConstants.ScenarioStatus.IGNORE }), third);
+		assert.equal(rules.calculateScenarioLevel('test', value, third), 1);
+	});
+
+	it('counts a new scenario that is not on the character yet', async () => {
+		const rules = await create();
+		const value = character(scenario(1), scenario(2));
+		assert.equal(rules.calculateScenarioLevel('test', value, scenario(3)), 2);
+	});
+
+	it('returns null without a character or scenario', async () => {
+		const rules = await create();
+		assert.equal(rules.calculateScenarioLevel('test', null, scenario(1)), null);
+		assert.equal(rules.calculateScenarioLevel('test', character(), null), null);
+	});
 });
 
 describe('Pathfinder2eRules currency helpers', () => {
 	it('multiplies quantity by value', async () => {
 		const rules = await create();
 		assert.equal(rules.calculateItemTotalFixed('test', 3, 0.1), 0.3);
+		assert.equal(rules.calculateItemTotal('test', 3, 0.1), 0.3);
 		assert.equal(rules.calculateItemTotal('test', 0, 5), 0);
 		assert.equal(rules.calculateItemTotal('test', 2, null), 0);
 	});

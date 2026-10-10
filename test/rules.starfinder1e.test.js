@@ -84,9 +84,14 @@ describe('Starfinder1eRules.calculateCharacter', () => {
 		assert.equal(value.reputationEarned, 4);
 	});
 
-	// common/gameSystems/starfinder1e/data/character.js stamps the initial
-	// scenario with the Pathfinder 2e id. The fix belongs in societySidekick-common.
-	it('gives the initial scenario the Starfinder game system', { todo: 'starfinder1e initial scenario gameSystemId' }, () => {
+	it('gives the initial scenario the Starfinder game system', () => {
 		assert.equal(character().scenarios[0].gameSystemId, gameSystemIds.starfinder1e);
+	});
+
+	it('levels a scenario every 3 experience points', async () => {
+		const rules = await create();
+		const third = scenario(3);
+		const value = character(scenario(1), scenario(2), third);
+		assert.equal(rules.calculateScenarioLevel('test', value, third), 2);
 	});
 });
