@@ -9,20 +9,20 @@ import Pathfinder2eCharacterScenario from '../../../common/gameSystems/pathfinde
 
 class Pathfinder2eCharacterGameSystemsService extends CharacterGameSystemsService {
 	calculateScenario(correlationId, character, scenario) {
-		this_serviceRules.calculateScenario(correlationId, scenario);
-		scenario.level = this_serviceRules.calculateScenarioLevel(correlationId, character, scenario);
+		this._serviceRules.calculateScenario(correlationId, scenario);
+		scenario.level = this._serviceRules.calculateScenarioLevel(correlationId, character, scenario);
 	}
 
 	deleteBoon(correlationId, character, boonId) {
-		if (character.boonAdvancedId == boonId)
+		if (character.boonAdvancedId === boonId)
 			character.boonAdvancedId = null;
-		if (character.boonFactionId == boonId)
+		if (character.boonFactionId === boonId)
 			character.boonFactionId = null;
-		if (character.boonGeneric1Id == boonId)
+		if (character.boonGeneric1Id === boonId)
 			character.boonGeneric1Id = null;
-		if (character.boonGeneric2Id == boonId)
+		if (character.boonGeneric2Id === boonId)
 			character.boonGeneric2Id = null;
-		if (character.boonGeneric3Id == boonId)
+		if (character.boonGeneric3Id === boonId)
 			character.boonGeneric3Id = null;
 	}
 
@@ -36,11 +36,11 @@ class Pathfinder2eCharacterGameSystemsService extends CharacterGameSystemsServic
 			return response;
 
 		character.archetypeIds = details.archetypeIds;
-		character.boonAdvancedId = details.boonAdvancedId,
-		character.boonFactionId = details.boonFactionId,
-		character.boonGeneric1Id = details.boonGeneric1Id,
-		character.boonGeneric2Id = details.boonGeneric2Id,
-		character.boonGeneric3Id = details.boonGeneric3Id,
+		character.boonAdvancedId = details.boonAdvancedId;
+		character.boonFactionId = details.boonFactionId;
+		character.boonGeneric1Id = details.boonGeneric1Id;
+		character.boonGeneric2Id = details.boonGeneric2Id;
+		character.boonGeneric3Id = details.boonGeneric3Id;
 		character.classId = details.classId;
 		character.factionId = details.factionId;
 		character.number = details.number;

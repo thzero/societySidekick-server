@@ -93,7 +93,6 @@ class UserMongoRepository extends BaseUserMongoRepository {
 			'settings.favorites': 0,
 			'settings.gameSystems.gearSets': 0,
 			'settings.home': 0,
-			'settings.favorites': 0,
 			'settings.locations': 0,
 			'settings.scenarios': 0,
 			'updatedTimestamp': 0,

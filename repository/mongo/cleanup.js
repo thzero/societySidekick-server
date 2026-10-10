@@ -77,7 +77,7 @@ class CleanupMongoRepository extends AppMongoRepository {
 				previousId = item.id;
 				item.id = id;
 
-				let results3 = await collectionBoons.replaceOne({ 'id': previousId }, item, {upsert: true});
+				await collectionBoons.replaceOne({ 'id': previousId }, item, {upsert: true});
 
 				results2 = await this._fetchExtract(correlationId, collectionCharacters, {'boonGeneric1Id' : previousId }, response);
 				console.log(results2.data);
@@ -166,7 +166,7 @@ class CleanupMongoRepository extends AppMongoRepository {
 				previousId = item.id;
 				item.id = id;
 
-				let results3 = await collectionClasses.replaceOne({ 'id': previousId }, item, {upsert: true});
+				await collectionClasses.replaceOne({ 'id': previousId }, item, {upsert: true});
 
 				results2 = await this._fetchExtract(correlationId, collectionCharacters, {'classId' : previousId }, response);
 				console.log(results2.data);
@@ -220,7 +220,7 @@ class CleanupMongoRepository extends AppMongoRepository {
 				previousId = item.id;
 				item.id = id;
 
-				let results3 = await collectionFactions.replaceOne({ 'id': previousId }, item, {upsert: true});
+				await collectionFactions.replaceOne({ 'id': previousId }, item, {upsert: true});
 
 				results2 = await this._fetchExtract(correlationId, collectionCharacters, {'factionId' : previousId }, response);
 				console.log(results2.data);
@@ -304,7 +304,7 @@ class CleanupMongoRepository extends AppMongoRepository {
 				previousId = item.id;
 				item.id = id;
 
-				let results3 = await collectionScenarios.replaceOne({ 'id': previousId }, item, {upsert: true});
+				await collectionScenarios.replaceOne({ 'id': previousId }, item, {upsert: true});
 
 				results2 = await this._fetchExtract(correlationId, collectionCharacters, {'scenarios.scenarioId' : previousId }, response);
 				console.log(results2.data);

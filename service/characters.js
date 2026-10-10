@@ -105,7 +105,7 @@ class CharactersService extends Service {
 		if (!character)
 			return this._error('CharactersService', 'deleteBoon', null, null, null, null, correlationId);
 
-		const boon = character.boons.find(l => l.id == boonId);
+		const boon = character.boons.find(l => l.id === boonId);
 		if (!boon)
 			return this._error('CharactersService', 'deleteBoon', null, null, null, null, correlationId);
 		character.boons = character.boons.filter(l => l.id !== boonId);
@@ -113,7 +113,7 @@ class CharactersService extends Service {
 		const serviceResponse = this._characterServiceByGameSystemId(correlationId, character.gameSystemId);
 		if (this._hasFailed(serviceResponse))
 			return serviceResponse;
-		serviceResponse.results.deleteBoon(character, boon.boonId);
+		serviceResponse.results.deleteBoon(correlationId, character, boon.boonId);
 
 		const calculateResponse = await this._calculate(correlationId, character.gameSystemId, character, user);
 		if (this._hasFailed(calculateResponse))
@@ -123,7 +123,7 @@ class CharactersService extends Service {
 		if (this._hasFailed(respositoryResponse))
 			return respositoryResponse;
 
-		const userSettingsResponse = await this._updateSettings(correlationId, user, user.settings);
+		await this._updateSettings(correlationId, user, user.settings);
 		return respositoryResponse;
 	}
 
@@ -149,7 +149,7 @@ class CharactersService extends Service {
 		if (!character)
 			return this._error('CharactersService', 'deleteInventory', null, null, null, null, correlationId);
 
-		const inventory = character.inventory.filter(l => l.id == inventoryId);
+		const inventory = character.inventory.find(l => l.id === inventoryId);
 		if (!inventory)
 			return this._error('CharactersService', 'deleteInventory', null, null, null, null, correlationId);
 		character.inventory = character.inventory.filter(l => l.id !== inventoryId);
@@ -162,7 +162,7 @@ class CharactersService extends Service {
 		if (this._hasFailed(respositoryResponse))
 			return respositoryResponse;
 
-		const userSettingsResponse = await this._updateSettings(correlationId, user, user.settings);
+		await this._updateSettings(correlationId, user, user.settings);
 		return respositoryResponse;
 	}
 
@@ -188,7 +188,7 @@ class CharactersService extends Service {
 		if (!character)
 			return this._error('CharactersService', 'deleteScenario', null, null, null, null, correlationId);
 
-		const scenario = character.scenarios.filter(l => l.id == scenarioId);
+		const scenario = character.scenarios.find(l => l.id === scenarioId);
 		if (!scenario)
 			return this._error('CharactersService', 'deleteScenario', null, null, null, null, correlationId);
 		character.scenarios = character.scenarios.filter(l => l.id !== scenarioId);
@@ -201,7 +201,7 @@ class CharactersService extends Service {
 		if (this._hasFailed(respositoryResponse))
 			return respositoryResponse;
 
-		const userSettingsResponse = await this._updateSettings(correlationId, user, user.settings);
+		await this._updateSettings(correlationId, user, user.settings);
 		return respositoryResponse;
 	}
 
@@ -412,9 +412,9 @@ class CharactersService extends Service {
 		if (this._hasFailed(respositoryScenarioListingResponse))
 			return respositoryScenarioListingResponse;
 
-		const scenarios = respositoryScenarioListingResponse.results;
+		const scenarios = respositoryScenarioListingResponse.results.data;
 
-		const response = this._initResponse();
+		const response = this._initResponse(correlationId);
 		response.results = {
 			played: [],
 			valid: true
@@ -423,8 +423,8 @@ class CharactersService extends Service {
 		let characterScenario;
 		let scenario;
 		let scenarioResult;
-		for (const characterI in respositoryListingResponse.results) {
-			for (characterScenario in characterI.scenarios) {
+		for (const characterI of respositoryListingResponse.results.data) {
+			for (characterScenario of characterI.scenarios) {
 				scenarioResult = this._initValidScenarioResponse();
 				scenarioResult.characterId = characterI.id;
 				scenarioResult.scenarioId = characterScenario.scenarioId;
@@ -433,7 +433,7 @@ class CharactersService extends Service {
 				if (scenario) {
 					scenarioResult.repeatable = scenario.repeatable;
 				}
-				results.played.push(scenarioResult);
+				response.results.played.push(scenarioResult);
 			}
 		}
 
@@ -630,7 +630,7 @@ class CharactersService extends Service {
 		if (this._hasFailed(respositoryResponse))
 			return respositoryResponse;
 
-		const userSettingsResponse = await this._updateSettings(correlationId, user, user.settings);
+		await this._updateSettings(correlationId, user, user.settings);
 		return respositoryResponse;
 	}
 
@@ -712,7 +712,7 @@ class CharactersService extends Service {
 		return this._serviceGameSystemsUtility.characterValidateByGameSystemId(correlationId, gameSystemId, value, type, params)
 	}
 
-	_updateBoon(cgameSystemId, character, requestedBoon) {
+	_updateBoon(correlationId, gameSystemId, character, requestedBoon) {
 		if (!character || !requestedBoon)
 			return this._error('CharactersService', '_updateBoon', null, null, null, null, correlationId);
 
@@ -725,7 +725,7 @@ class CharactersService extends Service {
 		let boon = null
 		if (!character.boons)
 			character.boons = []
-		const found = character.boons.find(l => l.id == requestedBoon.id);
+		const found = character.boons.find(l => l.id === requestedBoon.id);
 		if (found)
 			boon = found
 
@@ -735,7 +735,7 @@ class CharactersService extends Service {
 			character.boons.push(boon);
 		}
 
-		serviceResponse.results.updateBoon(boon, character, requestedBoon);
+		serviceResponse.results.updateBoon(correlationId, boon, character, requestedBoon);
 
 		return this._success(correlationId);
 	}
@@ -753,7 +753,7 @@ class CharactersService extends Service {
 		let inventory = null
 		if (!character.inventory)
 			character.inventory = []
-		const found = character.inventory.find(l => l.id == requestedInventory.id);
+		const found = character.inventory.find(l => l.id === requestedInventory.id);
 		if (found)
 			inventory = found
 
@@ -781,7 +781,7 @@ class CharactersService extends Service {
 		let scenario = null
 		if (!character.scenarios)
 			character.scenarios = []
-		const found = character.scenarios.find(l => l.id == requestedScenario.id);
+		const found = character.scenarios.find(l => l.id === requestedScenario.id);
 		if (found)
 			scenario = found
 
