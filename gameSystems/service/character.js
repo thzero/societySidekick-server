@@ -17,7 +17,7 @@ class CharacterGameSystemsService extends Service {
 		return await this._serviceRules.calculateCharacter(correlationId, character, user);
 	}
 
-	calculateScenario(correlationId, scenario) {
+	calculateScenario(correlationId, character, scenario) {
 	}
 
 	initializeBoon(boon, requestedBoon) {
@@ -61,7 +61,7 @@ class CharacterGameSystemsService extends Service {
 
 	updateDetails(correlationId, character, details) {
 		character.name = details.name.trim();
-		if (!details.name)
+		if (String.isNullOrEmpty(character.name))
 			return this._error('CharacterGameSystemsService', 'updateDetails', 'Empty name after trim.', null, null, null, correlationId);
 
 		character.tagLine = details && details.tagLine ? details.tagLine.trim() : null;
@@ -77,8 +77,8 @@ class CharacterGameSystemsService extends Service {
 		inventory.soldScenarioId = requestedInventory.soldScenarioId;
 		inventory.used = requestedInventory.used;
 		inventory.usedScenarioId = requestedInventory.usedScenarioId;
-		inventory.total = this._serviceRules.calculateItemTotal(correlationId, inventory.quantity, inventory.value);
 		inventory.value = requestedInventory.value;
+		inventory.total = this._serviceRules.calculateItemTotal(correlationId, inventory.quantity, inventory.value);
 	}
 
 	updateScenario(correlationId, scenario, character, requestedScenario) {

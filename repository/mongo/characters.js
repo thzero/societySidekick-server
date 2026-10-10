@@ -72,7 +72,7 @@ class CharactersMongoRepository extends AppMongoRepository {
 
 		response.results = await this._fetch(correlationId, await this._aggregate(correlationId, collection, query));
 
-		response.success = response.results != null;
+		response.success = response.results !== null;
 		return response;
 	}
 

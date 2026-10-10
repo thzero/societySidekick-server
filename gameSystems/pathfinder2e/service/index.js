@@ -35,7 +35,7 @@ class Pathfinder2eGameSystemGameSystemsService extends BaseGameSystemGameSystems
 		switch (type) {
 			case Constants.ValidationSchemaTypes.CharacterBoonCreate:
 				return this._serviceCharactersValidation.characterBoonCreateSchema();
-			case Constants.ValidationSchemaTypes.characterBoonUpdate:
+			case Constants.ValidationSchemaTypes.CharacterBoonUpdate:
 				return this._serviceCharactersValidation.characterBoonUpdateSchema();
 			case Constants.ValidationSchemaTypes.CharacterDetailsUpdate:
 				return this._serviceCharactersValidation.characterDetailUpdateSchema();
@@ -85,10 +85,6 @@ class Pathfinder2eGameSystemGameSystemsService extends BaseGameSystemGameSystems
 				return this._serviceValidation.settingScenariosAdditionalSchema();
 		}
 		return null;
-	}
-
-	initializeCharacter() {
-		return new CharacterData();
 	}
 }
 

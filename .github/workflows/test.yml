@@ -1,0 +1,39 @@
+name: Test
+
+on:
+  pull_request:
+  push:
+    branches: [ master, dev ]
+
+# A newer push to the same branch or pull request cancels the run it replaces.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      # common is the public thzero/societySidekick-common repository, so the
+      # default token can check it out.
+      - uses: actions/checkout@v7
+        with:
+          submodules: true
+
+      # Test against the latest common, as pullsm.bat does locally, rather than
+      # the commit the submodule records.
+      - run: git submodule update --remote
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm test
+
+      - run: npm run lint

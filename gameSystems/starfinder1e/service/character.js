@@ -14,7 +14,7 @@ class Starfinder1eCharacterGameSystemsService extends CharacterGameSystemsServic
 	}
 
 	updateBoon(correlationId, boon, character, requestedBoon) {
-		super.updateBoon(boon, character, requestedBoon);
+		super.updateBoon(correlationId, boon, character, requestedBoon);
 	}
 
 	updateDetails(correlationId, character, details) {
@@ -22,12 +22,12 @@ class Starfinder1eCharacterGameSystemsService extends CharacterGameSystemsServic
 		if (this._hasFailed(response))
 			return response;
 
-		character.boonAllyId = details.boonAllyId,
-		character.boonFactionId = details.boonFactionId,
-		character.boonPersonalId = details.boonPersonalId,
-		character.boonPromoId = details.boonPromoId,
-		character.boonSocialId = details.boonSocialId,
-		character.boonStarshipId = details.boonStarshipId,
+		character.boonAllyId = details.boonAllyId;
+		character.boonFactionId = details.boonFactionId;
+		character.boonPersonalId = details.boonPersonalId;
+		character.boonPromoId = details.boonPromoId;
+		character.boonSocialId = details.boonSocialId;
+		character.boonStarshipId = details.boonStarshipId;
 		character.factionId = details.factionId;
 		character.number = details.number;
 		character.themeId = details.themeId;

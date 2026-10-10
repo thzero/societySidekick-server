@@ -62,19 +62,19 @@ class Starfinder1eGameSystemGameSystemsService extends BaseGameSystemGameSystems
 	determineValidation(correlationId, type) {
 		switch (type) {
 			case Constants.ValidationSchemaTypes.BoonCreate:
-				return this._serviceValidation.boonCreatechema();
+				return this._serviceValidation.boonCreateSchema();
 			case Constants.ValidationSchemaTypes.BoonUpdate:
 				return this._serviceValidation.boonUpdateSchema();
 			case Constants.ValidationSchemaTypes.ClassCreate:
-				return this._serviceValidation.classCreatechema();
+				return this._serviceValidation.classCreateSchema();
 			case Constants.ValidationSchemaTypes.ClassUpdate:
 				return this._serviceValidation.classUpdateSchema();
 			case Constants.ValidationSchemaTypes.EquipmentCreate:
-				return this._serviceValidation.equipmentCreatechema();
+				return this._serviceValidation.equipmentCreateSchema();
 			case Constants.ValidationSchemaTypes.EquipmentUpdate:
 				return this._serviceValidation.equipmentUpdateSchema();
 			case Constants.ValidationSchemaTypes.FactionCreate:
-				return this._serviceValidation.factionCreatechema();
+				return this._serviceValidation.factionCreateSchema();
 			case Constants.ValidationSchemaTypes.FactionUpdate:
 				return this._serviceValidation.factionUpdateSchema();
 			case Constants.ValidationSchemaTypes.UserSettingsSchema:

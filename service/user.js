@@ -50,7 +50,7 @@ class UserService extends BaseUserService {
 		const users = respositoryUsersResponse.results.data;
 		let user2;
 		for (const fav of user.settings.favorites) {
-			user2 = users.find(l => l.id == fav.id);
+			user2 = users.find(l => l.id === fav.id);
 			fav.name = user2 && user2.settings ? user2.settings.gamerTag : null;
 		}
 		response.results = user.settings.favorites;
@@ -97,8 +97,7 @@ class UserService extends BaseUserService {
 
 		if (requestedSettings.settings && requestedSettings.settings.scenarios && requestedSettings.settings.scenarios.additional) {
 			let validationResponse = null;
-			const entries = Object.entries(requestedSettings.settings.scenarios.additional)
-			for (const [key, value] of entries) {
+			for (const value of Object.values(requestedSettings.settings.scenarios.additional)) {
 				validationResponse = this._validateId(correlationId, value.id);
 				if (this._hasFailed(validationResponse))
 					return validationResponse;
