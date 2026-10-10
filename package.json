@@ -1,10 +1,10 @@
 {
   "name": "skick_server",
   "type": "module",
-  "version": "0.14.59",
+  "version": "0.14.60",
   "version_major": 0,
   "version_minor": 14,
-  "version_patch": 59,
+  "version_patch": 60,
   "version_date": "10/10/2026",
   "description": "An API layer to manage society play characters.",
   "author": "thZero",
